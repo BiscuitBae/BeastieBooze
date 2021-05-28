@@ -8,12 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/persis-randolph/BeastieBooze.git"
+    "url": "git+https://github.com/BiscuitBae/BeastieBooze.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/persis-randolph/BeastieBooze/issues"
+    "url": "https://github.com/BiscuitBae/BeastieBooze/issues"
   },
-  "homepage": "https://github.com/persis-randolph/BeastieBooze#readme"
+  "homepage": "https://github.com/BiscuitBae/BeastieBooze#readme",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  }
 }
