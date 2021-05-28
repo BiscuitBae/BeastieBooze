@@ -13,8 +13,9 @@ module.exports = {
         use: ['babel-loader'],
       },
     ],
+  },
     resolve: {
-      extension: ['', '.js', '.jsx']
+      extensions: ['', '.js', '.jsx']
     },
     output: {
       filename: 'bundle.js',
@@ -24,5 +25,5 @@ module.exports = {
     devServer: {
       contentBase: `${DIST_DIR}`
     }
-  },
-};
+  };
+
