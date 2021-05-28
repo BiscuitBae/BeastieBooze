@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/BiscuitBae/BeastieBooze#readme",
   "dependencies": {
+    "cookie-session": "^1.4.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
     "@popperjs/core": "^2.9.2",
     "acorn-jsx": "^5.3.1",
     "axios": "^0.21.1",
