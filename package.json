@@ -4,16 +4,32 @@
   "description": "Drinks app",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "build:dev": "webpack serve --config ./webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/persis-randolph/BeastieBooze.git"
+    "url": "git+https://github.com/BiscuitBae/BeastieBooze.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/persis-randolph/BeastieBooze/issues"
+    "url": "https://github.com/BiscuitBae/BeastieBooze/issues"
   },
-  "homepage": "https://github.com/persis-randolph/BeastieBooze#readme"
+  "homepage": "https://github.com/BiscuitBae/BeastieBooze#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/node": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
 }
