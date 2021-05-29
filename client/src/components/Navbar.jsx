@@ -1,22 +1,11 @@
 // navbar will contain logo on the far left, signup/login or logout/username(profile view) buttons on the far right
 // buttons to switch to either custom drinks page or the main feed
 
-// import React, { useState } from 'react'
-// import { Link, Switch, Route } from 'react-router-dom'
-
-// import bootstrap from 'bootstrap' 
-
-// import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap/dist/css/bootstrap-theme.css";
 import React from "react";
-// import Navbar from "react-bootstrap/lib/Navbar";
-// import Nav from "react-bootstrap/lib/Nav";
-// import NavItem from "react-bootstrap/lib/NavItem";
 import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
 
 const Navbar = () => {
-
+  //* links to endpoints that will be handled by Routes in App component
   return (
     <nav>
       <button>

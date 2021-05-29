@@ -4,18 +4,17 @@ import DrinkTile from './DrinkTile'
 
 const Feed = () => {
 
-  console.log('this should be our drinks data: ', drinks);
-  // drinks = JSON.parse(drinks);
-
+  //* map over dummy drinks, or a random 10 api call, and pass each entry to the 
+  //* drinkTile component
+  
   const drinkList = drinks.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
 
   return (
     <div>
-      <h1>This is our feed</h1>
+      <h1>This is our drinks feed</h1>
       {drinkList}
-
     </div>
 
   )
