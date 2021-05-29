@@ -24,5 +24,9 @@ module.exports = {
     'react-hooks',
   ],
   rules: {
+    'import/extensions': ['error', {
+      jsx: 'always',
+      json: 'always',
+    }]
   },
 };
