@@ -4,6 +4,8 @@
   "description": "Drinks app",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "build:dev": "webpack serve --config ./webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,14 +15,16 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BiscuitBae/BeastieBooze"
+    "url": "https://github.com/BiscuitBae/BeastieBooze/issues"
   },
   "homepage": "https://github.com/BiscuitBae/BeastieBooze#readme",
   "dependencies": {
+    "cookie-session": "^1.4.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
     "@popperjs/core": "^2.9.2",
     "acorn-jsx": "^5.3.1",
     "axios": "^0.21.1",
-    "babel": "^6.23.0",
     "bootstrap": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -33,12 +37,21 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
     "@babel/eslint-parser": "^7.14.4",
+    "@babel/node": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

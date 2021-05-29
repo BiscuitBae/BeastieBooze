@@ -1,2 +1,8 @@
+# node modules
 node_modules
+
+# environment variables
 .env
+
+#webpack bundle
+client/dist/bundle.js
