@@ -2,8 +2,13 @@
 // render all of our different views
 // view switcher - main, single drink, create, profile, login/signup buttons, search bar
 
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/css/bootstrap-theme.css";
+
+
+
 import React from 'react'
-import { Link, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import Navbar from './Navbar'
 import Create from './Create'
