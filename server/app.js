@@ -1,8 +1,16 @@
+const express = require('express');
+const path = require('path');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 require('./passport-setup');
 
-// this is where we listen for the server
+const PORT = 3000;
+const DIST_DIR = path.resolve(__dirname, '..', 'client/dist');
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(DIST_DIR))
 
 app.use(cookieSession({
   name: 'beastie-session',
@@ -43,3 +51,7 @@ app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/')
 })
+
+app.listen(PORT, () => {
+  console.log(`Server is listening at: http://127.0.0.1:${PORT}`);
+});
