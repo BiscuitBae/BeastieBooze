@@ -3,14 +3,19 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './component/App.jsx';
+import { BrowserRouter as Router } from 'react-router-dom'
+import App from './components/App';
 
-const Heading = () => {
-  return (
-    <div>
-      <h1>Beaverages for the Bold</h1>
-    </div>
-  )
-}
+// const Heading = () => {
+//   return (
+//     <div>
+//       <h1>Beaverages for the Bold</h1>
+//     </div>
+//   )
+// }
 
-ReactDOM.render(<Heading />, document.getElementById('app'))
+ReactDOM.render(
+<Router>
+  <App />
+</Router>
+  , document.getElementById('app'))
