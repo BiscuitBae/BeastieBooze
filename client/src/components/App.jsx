@@ -13,15 +13,12 @@ const App = () => {
 
   return (
     <div>
-      <nav>
-        <Link to="/">Feed</Link>
-        <Link to="/create">Add a drink</Link>
-      </nav>
+      <Navbar />
       <Switch>
-        <Route exact route='/'>
+        <Route exact path='/'>
           <Feed />
         </Route>
-        <Route exact route="/create">
+        <Route exact path="/create">
           <Create />
         </Route>
       </Switch>

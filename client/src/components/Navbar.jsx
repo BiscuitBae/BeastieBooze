@@ -10,8 +10,12 @@ const Navbar = () => {
 
   return (
     <nav>
-      <Link to="/">Feed</Link>
-      <Link to="/create">Add a drink</Link>
+      <button>
+        <Link to="/">Feed</Link>
+      </button>
+      <button>
+        <Link to="/create">Add a drink</Link>
+      </button>
     </nav>
    
 
