@@ -10,6 +10,8 @@ import Navbar from './Navbar'
 import Create from './Create'
 import Feed from './Feed'
 import DrinkView from './DrinkView'
+import Login from './Login'
+import Register from './Register'
 
 const App = () => {
 
@@ -30,6 +32,12 @@ const App = () => {
         </Route>
         <Route path='/drink/:drinkId'>  {/* // takes a param and dynamically renders a drinkView */}
            <DrinkView />                {/* according to the drinkId passed in from the DrinkTile component */}
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/register">
+          <Register />
         </Route>
       </Switch>
     </div> 
