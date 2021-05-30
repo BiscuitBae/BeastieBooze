@@ -37,8 +37,8 @@ const DrinkView = () => {
       <hr></hr>
       <h5>Ingredients</h5>
       <ul>
-        {ingredients.map(i => {
-          return <li>{i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
+        {ingredients.map((i, index) => {
+          return <li key={index}>{i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
         })}
       </ul>
       <h4>Directions</h4>
