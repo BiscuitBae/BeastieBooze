@@ -20,8 +20,9 @@ return (
               {hovering ? 
                 "img-fluid drink-thumb border border-secondary tint" :
                 "img-fluid drink-thumb border border-secondary" 
-              } src={thumbnail}>
-                </img>
+              } 
+            src={thumbnail}
+            alt={name} />
             <div className= {hovering ? "wrap-text" : "wrap-text hidden"}>{ingredient}</div>
         </div>
 )

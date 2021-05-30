@@ -11,6 +11,10 @@ body {
   padding: 25px 50px;
 }
 
+.sub-heading {
+  /* text-align: center; */
+}
+
 /* Drink Tile Styles */
 .drink-tile {
 padding: 10px 10px;
@@ -20,6 +24,7 @@ padding: 10px 10px;
   position: relative;
   text-align: center;
   color: white;
+  font-size: x-large;
 }
 
 .wrap-text {
@@ -38,9 +43,9 @@ padding: 10px 10px;
 }
 
 .tint {
-  filter: opacity(40%);
-  filter: brightness(70%);
-  filter: saturate(135%)
+  filter: opacity(200%) brightness(70%) saturate(135%);
+  /* filter: brightness(70%);
+  filter: saturate(135%); */
 }
 
 .drink-name {
@@ -48,6 +53,14 @@ padding: 10px 10px;
 }
 
 /* DrinkView Styles */
-.virgin-button {
-  text-align: center;
+
+.drink-display {
+  filter: saturate(120%);
+  padding-bottom: 50px;
 }
+
+.virgin-button {
+  padding-top: 20px;
+  /* text-align: center; */
+}
+
