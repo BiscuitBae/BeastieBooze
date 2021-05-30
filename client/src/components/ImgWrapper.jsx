@@ -4,7 +4,11 @@ import useHover from '../../utils/useHover'
 const ImgWrapper = ({drink}) => {
 
    //* grabbing properties from drink object and reassigning them to less dumb variable names 
-  const { strDrink: name, strDrinkThumb: thumbnail, strIngredient1: ingredient } = drink
+  const { 
+    strDrink: name, 
+    strDrinkThumb: thumbnail, 
+    strIngredient1: ingredient 
+    } = drink
 
   //create hover state
   const [hoverRef, hovering] = useHover();

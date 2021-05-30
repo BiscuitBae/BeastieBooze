@@ -6,6 +6,12 @@ body {
   background: rgb(230, 235, 235);
 }
 
+.page-heading {
+  text-align: center;
+  padding: 25px 50px;
+}
+
+/* Drink Tile Styles */
 .drink-tile {
 padding: 10px 10px;
 }
@@ -37,7 +43,6 @@ padding: 10px 10px;
   filter: saturate(135%)
 }
 
-.page-heading {
+.drink-name {
   text-align: center;
-  padding: 25px 50px;
 }
