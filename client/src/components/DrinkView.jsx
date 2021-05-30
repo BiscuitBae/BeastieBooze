@@ -33,11 +33,11 @@ const DrinkView = () => {
       <h2 className="page-heading">{name}</h2>
       <div className="row">
         <div className="col-md-8">
-      <img src={thumbnail} />
+      <img src={thumbnail} className="img-fluid drink-display" alt={name} />
         </div>
       <div className="col-md-4">
       <h4>{alcoholic}</h4>
-      <h4>{glass}</h4>
+      <h4>Glass: {glass}</h4>
       <hr></hr>
       <h5>Ingredients</h5>
       <ul>
@@ -45,9 +45,11 @@ const DrinkView = () => {
           return <li key={index}>{i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
         })}
       </ul>
-      <h4>Directions</h4>
+      <h4 className="sub-heading">Directions</h4>
       <p>{directions}</p>
-      <button type="button" className="btn btn-dark virgin-button">Make Virgin</button>
+      <div className='virgin-button'>
+      <button type="button" className="btn btn-dark">Make Virgin</button>
+      </div>
       </div>
       </div>
     </div>
