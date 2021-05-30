@@ -9,11 +9,6 @@ const DrinkTile = ({ drink }) => {
   //* grabbing properties from drink object and reassigning them to less dumb variable names
   
   const { idDrink: id, strDrink: name, strDrinkThumb: thumbnail, strIngredient1: ingredient } = drink
-  const clickHandler = () => {
-    return (
-      <Link to={`/drink/${id}`}></Link>
-      )
-    }
 
   //create hover state
   const [hoverRef, hovering] = useHover();
@@ -22,16 +17,18 @@ const DrinkTile = ({ drink }) => {
   return (
     <div className="col-md-3">
       <div className="drink-tile">
+        <Link to={`/drink/${id}`}>
         <div className="img-wrap" ref={hoverRef}>
           <img 
-            onClick={() => clickHandler()} 
             className=
               {hovering ? 
                 "img-fluid drink-thumb border border-secondary tint" :
                 "img-fluid drink-thumb border border-secondary" 
-              } src={thumbnail} />
+              } src={thumbnail}>
+                </img>
             <div className= {hovering ? "wrap-text" : "wrap-text hidden"}>{ingredient}</div>
         </div>
+        </Link>
         <h3>
           <Link to={`/drink/${id}`}>
           {name}
