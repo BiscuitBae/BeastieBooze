@@ -18,10 +18,10 @@ const App = () => {
         <Link to="/create">Add a drink</Link>
       </nav>
       <Switch>
-        <Route exact route='/'>
+        <Route exact path='/'>
           <Feed />
         </Route>
-        <Route exact route="/create">
+        <Route exact path="/create">
           <Create />
         </Route>
       </Switch>

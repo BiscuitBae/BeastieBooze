@@ -9,11 +9,11 @@ import bootstrap from 'bootstrap'
 const Navbar = () => {
 
   return (
-    <nav>
+    <nav className="navbar navbar-light">
+       <a className="navbar-brand">Navbar</a>
       <Link to="/">Feed</Link>
       <Link to="/create">Add a drink</Link>
     </nav>
-   
 
 //   <nav className="navbar navbar-light bg-light justify-content-between">
 //   <a className="navbar-brand">Navbar</a>
