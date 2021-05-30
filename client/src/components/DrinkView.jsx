@@ -47,6 +47,7 @@ const DrinkView = () => {
       </ul>
       <h4>Directions</h4>
       <p>{directions}</p>
+      <button type="button" className="btn btn-dark virgin-button">Make Virgin</button>
       </div>
       </div>
     </div>
