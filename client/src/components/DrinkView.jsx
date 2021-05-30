@@ -29,9 +29,13 @@ const DrinkView = () => {
   } = drink;
 
   return (
-    <div>
+    <div className="container">
+      <h2 className="page-heading">{name}</h2>
+      <div className="row">
+        <div className="col-md-8">
       <img src={thumbnail} />
-      <h2>{name}</h2>
+        </div>
+      <div className="col-md-4">
       <h4>{alcoholic}</h4>
       <h4>{glass}</h4>
       <hr></hr>
@@ -43,7 +47,8 @@ const DrinkView = () => {
       </ul>
       <h4>Directions</h4>
       <p>{directions}</p>
-
+      </div>
+      </div>
     </div>
   )
 
