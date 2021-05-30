@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   //* links to endpoints that will be handled by Routes in App component
   return (
-    <nav>
+    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <button>
         <Link to="/">Feed</Link>
       </button>

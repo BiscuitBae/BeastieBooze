@@ -12,9 +12,11 @@ const Feed = () => {
   })
 
   return (
-    <div>
-      <h1>This is our drinks feed</h1>
+    <div className="container">
+      <h1 className="page-heading">Featured Drinks</h1>
+      <div className="row">
       {drinkList}
+      </div>
     </div>
 
   )

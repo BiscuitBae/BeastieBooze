@@ -8,14 +8,15 @@ const DrinkTile = ({ drink }) => {
   const { idDrink: id, strDrink: name, strDrinkThumb: thumbnail } = drink
 
   return (
-    <div className="drink-tile">
-      <img src={thumbnail} />
+    <div className="col-md-3">
+      <div className="drink-tile">
+      <img className="img-fluid drink-thumb border border-secondary" src={thumbnail} />
       <h3>
         <Link to={`/drink/${id}`}>
         {name}
         </Link>
         </h3>
-      <hr />
+        </div>
     </div>
   )
 

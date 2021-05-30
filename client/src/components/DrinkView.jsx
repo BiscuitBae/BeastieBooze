@@ -5,7 +5,7 @@ import { drinks } from '../../dummyData'
 import ingredientParser from '../../utils/parseIng'
 
 const DrinkView = () => {
-  //* useParams will grab the param passed in url. grabbing drinkId from params.
+  // useParams will grab the param passed in url. grabbing drinkId from params.
   const { drinkId } = useParams()
 
   //! this will be replaced by an axios call. for now we're just grabbing 

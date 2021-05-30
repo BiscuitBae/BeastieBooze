@@ -1,0 +1,16 @@
+body {
+  background: rgb(230, 235, 235);
+}
+
+.app-body {
+  background: rgb(230, 235, 235);
+}
+
+.drink-tile {
+padding: 10px 10px;
+}
+
+.page-heading {
+  text-align: center;
+  padding: 25px 50px;
+}

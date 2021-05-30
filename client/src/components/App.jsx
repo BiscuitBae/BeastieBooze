@@ -19,7 +19,7 @@ const App = () => {
   
   //* using react router to conditionally render views. We'll add more as we go
   return (
-    <div>
+    <div className="app-body">
       <Navbar />
       <Switch>
         <Route exact path='/'>
@@ -28,8 +28,8 @@ const App = () => {
         <Route exact path="/create">
           <Create />
         </Route>
-        <Route path='/drink/:drinkId'>  //* takes a param and dynamically renders a drinkView
-          <DrinkView />                 //* according to the drinkId passed in from the DrinkTile component
+        <Route path='/drink/:drinkId'>  {/* // takes a param and dynamically renders a drinkView */}
+           <DrinkView />                {/* according to the drinkId passed in from the DrinkTile component */}
         </Route>
       </Switch>
     </div> 
