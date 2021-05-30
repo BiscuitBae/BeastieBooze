@@ -8,7 +8,7 @@ const DrinkTile = ({ drink }) => {
 
   //* grabbing properties from drink object and reassigning them to less dumb variable names
   
-  const { idDrink: id, strDrink: name, strDrinkThumb: thumbnail } = drink
+  const { idDrink: id, strDrink: name, strDrinkThumb: thumbnail, strIngredient1: ingredient } = drink
   const clickHandler = () => {
     return (
       <Link to={`/drink/${id}`}></Link>
@@ -22,16 +22,22 @@ const DrinkTile = ({ drink }) => {
   return (
     <div className="col-md-3">
       <div className="drink-tile">
-      <img 
-        onClick={() => clickHandler()} 
-        ref={hoverRef}
-        className="img-fluid drink-thumb border border-secondary" src={ hovering ? '' : thumbnail} />
-      <h3>
-        <Link to={`/drink/${id}`}>
-        {name}
-        </Link>
-        </h3>
+        <div className="img-wrap" ref={hoverRef}>
+          <img 
+            onClick={() => clickHandler()} 
+            className=
+              {hovering ? 
+                "img-fluid drink-thumb border border-secondary tint" :
+                "img-fluid drink-thumb border border-secondary" 
+              } src={thumbnail} />
+            <div className= {hovering ? "wrap-text" : "wrap-text hidden"}>{ingredient}</div>
         </div>
+        <h3>
+          <Link to={`/drink/${id}`}>
+          {name}
+          </Link>
+        </h3>
+      </div>
     </div>
   )
 

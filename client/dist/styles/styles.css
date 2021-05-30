@@ -10,8 +10,31 @@ body {
 padding: 10px 10px;
 }
 
+.img-wrap {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.wrap-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hidden {
+  display: none;
+}
+
 .drink-thumb {
   cursor: pointer;
+}
+
+.tint {
+  filter: opacity(40%);
+  filter: brightness(70%);
+  filter: saturate(135%)
 }
 
 .page-heading {
