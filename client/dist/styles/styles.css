@@ -10,6 +10,10 @@ body {
 padding: 10px 10px;
 }
 
+.drink-thumb {
+  cursor: pointer;
+}
+
 .page-heading {
   text-align: center;
   padding: 25px 50px;
