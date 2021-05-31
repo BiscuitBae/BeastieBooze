@@ -14,6 +14,7 @@ module.exports = {
       },
     ],
   },
+
     resolve: {
       extensions: ['', '.js', '.jsx']
     },
@@ -23,8 +24,5 @@ module.exports = {
       path: `${DIST_DIR}`,
     },
     devtool: "source-map"
-    // devServer: {
-    //   contentBase: `${DIST_DIR}`
-    // }
   };
 
