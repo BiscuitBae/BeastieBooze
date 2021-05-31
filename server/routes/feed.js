@@ -7,7 +7,7 @@ const feedRouter = Router();
 const { API_KEY } = require('../config.js')
 
 
-feedRouter.get('/', (req, res) => {
+feedRouter.get('/feed', (req, res) => {
   axios.get(`www.thecocktaildb.com/api/json/v2/${API_KEY}/randomselection.php`)
     .then((response) => {
       res.status(200).send(response.data.drinks);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { drinks } from '../../dummyData'
 import DrinkTile from './DrinkTile'
 import axios from 'axios'
@@ -8,13 +8,17 @@ const Feed = () => {
   //* map over dummy drinks, or a random 10 api call, and pass each entry to the 
   //* drinkTile component
 
-  // const [apiDrinks, loadDrinks] = useState([]);
+  const [apiDrinks, setApiDrinks] = useState([]);
 
-  //   loadDrinks = () => {
-  //     axios.get
-  //   }
+  useEffect(async() => {
+    const results = await axios.get('/feed')
+    console.log(results)
+    setApiDrinks(results)
+  }, [])
+
   
-  const drinkList = drinks.map(drink => {
+  
+  const drinkList = apiDrinks.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
 
