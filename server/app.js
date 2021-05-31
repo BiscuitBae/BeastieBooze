@@ -4,7 +4,8 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const router = require('./routes/index.js')
 require('./passport-setup');
-const { COOKIEKEY } = require('./config')
+const { COOKIEKEY } = require('./config');
+const { User, Drink } = require('./database/Models');
 
 const PORT = 8080;
 const DIST_DIR = path.resolve(__dirname, '..', 'client/dist');

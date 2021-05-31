@@ -34,11 +34,10 @@ passport.use(new GoogleStrategy({
     const {
       id: googleId, // this will be a unique value we can use to check if they are already stored in our db
       displayName: username,
-      email: email
     } = profile;
 
     // create a new user object
-    const user = { googleId, username, email };
+    const user = { googleId, username };
 
     // use the profile info (mainly the google id) to check if the user is registered in your db
 
