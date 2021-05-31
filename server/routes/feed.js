@@ -1,14 +1,14 @@
 const {Router} = require("express");
 const axios = require('axios');
 const dotenv = require('dotenv')
+dotenv.config()
 
 const feedRouter = Router();
-
-dotenv.config()
+const { API_KEY } = require('./config')
 
 
 feedRouter.get('/', (req, res) => {
-  axios.get(`www.thecocktaildb.com/api/json/v2/${process.env.API_KEY}/randomselection.php`)
+  axios.get(`www.thecocktaildb.com/api/json/v2/${API_KEY}/randomselection.php`)
     .then((response) => {
       res.status(200).send(response.data.drinks);
     })
