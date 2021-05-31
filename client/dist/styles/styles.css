@@ -68,3 +68,13 @@ padding: 10px 10px;
   padding-top: 20px;
 }
 
+/* Register / Login Styles */
+
+.input-form {
+  margin: 75px;
+}
+
+.submit {
+  padding-top: 20px;
+}
+

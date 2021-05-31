@@ -7,7 +7,7 @@ const Create = () => {
   that of the api results
 */
   return (
-    <h1>This is the create a drink page</h1>
+    <h1 className="page-heading">This is the create a drink page</h1>
   )
 }
 
