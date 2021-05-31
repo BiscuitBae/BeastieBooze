@@ -6,8 +6,10 @@ const Create = () => {
   will most likely need to format our schema to match
   that of the api results
 */
+
+//need the schema to fill this out
   return (
-    <h1>This is the create a drink page</h1>
+    <h1 className="page-heading">This is the create a drink page</h1>
   )
 }
 

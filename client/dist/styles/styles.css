@@ -1,0 +1,80 @@
+body {
+  background: rgb(230, 235, 235);
+}
+
+.app-body {
+  background: rgb(230, 235, 235);
+}
+
+.page-heading {
+  text-align: center;
+  padding: 25px 50px;
+}
+
+.sub-heading {
+  /* text-align: center; */
+}
+
+/* Drink Tile Styles */
+.drink-tile {
+padding: 10px 10px;
+}
+
+.img-wrap {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-size: x-large;
+}
+
+.wrap-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hidden {
+  display: none;
+}
+
+.drink-thumb {
+  cursor: pointer;
+}
+
+.tint {
+  filter: opacity(200%) brightness(70%) saturate(135%);
+  /* filter: brightness(70%);
+  filter: saturate(135%); */
+}
+
+.drink-name {
+  text-align: center;
+}
+
+/* DrinkView Styles */
+
+.drink-display {
+  filter: saturate(120%);
+  padding-bottom: 50px;
+}
+
+.virgin-button {
+  padding-top: 20px;
+  /* text-align: center; */
+}
+
+.favorite-button {
+  padding-top: 20px;
+}
+
+/* Register / Login Styles */
+
+.input-form {
+  margin: 75px;
+}
+
+.submit {
+  padding-top: 20px;
+}
+
