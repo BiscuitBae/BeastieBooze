@@ -15,7 +15,7 @@ import App from './components/App';
 // }
 
 ReactDOM.render(
-<Router>
-  <App />
-</Router>
-  , document.getElementById('app'))
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('app'));

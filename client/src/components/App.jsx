@@ -16,7 +16,7 @@ const App = () => {
   //* not doing anything yet, but I reckon we'll wanna keep track of whether the user is
   //* logged in and adjust our views accordingly
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
-  
+
   //* using react router to conditionally render views. We'll add more as we go
   return (
     <div>
@@ -32,7 +32,7 @@ const App = () => {
           <DrinkView />                 //* according to the drinkId passed in from the DrinkTile component
         </Route>
       </Switch>
-    </div> 
+    </div>
   )
 
 }
