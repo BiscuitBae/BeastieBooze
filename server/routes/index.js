@@ -1,5 +1,5 @@
-import feedRouter from './feed.js'
+import feedRouter from './feed.js';
 
 export default (app) => {
-  app.use('/routes/feed', feedRouter)
-}
+  app.use('/routes/feed', feedRouter);
+};
