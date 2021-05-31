@@ -1,0 +1,1 @@
+//Profile component to connect. An option if a user registers to be a member of the site.

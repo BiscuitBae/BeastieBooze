@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session');
 const router = require('./routes/index.js')
 require('./passport-setup');
 
-const PORT = 3000;
+const PORT = 8080;
 const DIST_DIR = path.resolve(__dirname, '..', 'client/dist');
 const app = express();
 
@@ -54,5 +54,5 @@ app.get('/logout', (req, res) => {
 })
 router(app);
 app.listen(PORT, () => {
-  console.log(`Server is listening at: http://127.0.0.1:${PORT}`);
+  console.log(`Server is listening at: http://localhost:${PORT}`);
 });
