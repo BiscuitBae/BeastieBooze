@@ -52,7 +52,7 @@ passport.use(new GoogleStrategy({
         if (currentUser.length) {
           done(null, currentUser[0]);
         } else {
-          // if not create a new users in the db
+          // if not create a new user in the db
           createUser(user);
           getUser(googleId)
             .then(newUser => {
