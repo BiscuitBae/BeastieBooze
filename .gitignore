@@ -6,4 +6,4 @@ node_modules
 
 #webpack bundle
 client/dist/bundle.js
-bundle.js.map
+client/dist/bundle.js.map
