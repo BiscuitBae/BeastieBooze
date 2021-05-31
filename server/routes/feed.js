@@ -1,10 +1,10 @@
-const {Router} = require("express");
+const { Router } = require("express");
 const axios = require('axios');
 const dotenv = require('dotenv')
 dotenv.config()
 
 const feedRouter = Router();
-const { API_KEY } = require('./config')
+const { API_KEY } = require('../config.js')
 
 
 feedRouter.get('/', (req, res) => {
