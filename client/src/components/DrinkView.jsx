@@ -33,27 +33,33 @@ const DrinkView = () => {
       <h2 className="page-heading">{name}</h2>
       <div className="row">
         <div className="col-md-8">
-      <img src={thumbnail} className="img-fluid drink-display" alt={name} />
+          <img src={thumbnail} className="img-fluid drink-display" alt={name} />
         </div>
-      <div className="col-md-4">
-      <h4>{alcoholic}</h4>
-      <h4>Glass: {glass}</h4>
-      <hr></hr>
-      <h5>Ingredients</h5>
-      <ul>
-        {ingredients.map((i, index) => {
-          return <li key={index}>{i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
-        })}
-      </ul>
-      <h4 className="sub-heading">Directions</h4>
-      <p>{directions}</p>
-      <div className='virgin-button'>
-      <button type="button" className="btn btn-dark">Make Virgin</button>
+        <div className="col-md-4">
+          <h4>{alcoholic}</h4>
+          <h4>Glass: {glass}</h4>
+          <hr></hr>
+          <h5>Ingredients</h5>
+          <ul>
+            {ingredients.map((i, index) => {
+              return <li key={index}>{i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
+            })}
+          </ul>
+          <h4 className="sub-heading">Directions</h4>
+          <p>{directions}</p>
+        <div className='virgin-button'>
+          <button type="button" className="btn btn-dark">Make Virgin</button>
+        </div>
+        <div className="favorite-button">
+        <button type="button" class="btn btn-info">Add To Favorites</button>
+        </div>
       </div>
-      <div className="favorite-button">
-      <button type="button" class="btn btn-info">Add To Favorites</button>
       </div>
-      </div>
+      <div className="row">
+        <div className="col">
+        <hr></hr>
+        <h2 className="page-heading">Reviews</h2>
+        </div>
       </div>
     </div>
   )

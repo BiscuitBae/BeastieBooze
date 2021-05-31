@@ -8,12 +8,12 @@ const Register = () => {
   <form className="input-form">
     <div className="form-row">
       <div className="col-md-6">
-        <label for="inputFirstName">First Name</label>
-        <input type="text" class="form-control" id="inputFirstName" placeholder="" />
+        <label for="username">Desired Username</label>
+        <input type="text" class="form-control" id="username" placeholder="" />
       </div>
     <div className="col-md-6">
-      <label for="inputLastName">Last Name</label>
-      <input type="text" className="form-control" id="inputLastName" placeholder="" />
+      <label for="alias">Desired Alias</label>
+      <input type="text" className="form-control" id="alias" placeholder="" />
     </div>
   </div>
   <div className="form-row">
