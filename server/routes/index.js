@@ -1,4 +1,4 @@
-import feedRouter from './feed.js'
+import feedRouter from './feed.js';
 
 
 module.exports = (app) => {

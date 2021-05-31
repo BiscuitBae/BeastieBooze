@@ -10,16 +10,16 @@ const Login = () => {
       <form className="input-form">
         <div className="form-row">
           <div className="col-md-6">
-            <label for="inputLogin">Login</label>
-            <input type="text" class="form-control" id="inputLogin" placeholder="" />
+            <label htmlFor="inputLogin">Login</label>
+            <input type="text" className="form-control" id="inputLogin" placeholder="" />
           </div>
         <div className="col-md-6">
-          <label for="inputPassword">Password</label>
+          <label htmlFor="inputPassword">Password</label>
           <input type="text" className="form-control" id="inputPassword" placeholder="" />
         </div>
         </div>
         <div className="submit-button submit">
-      <button type="button" class="btn btn-success">Register</button>
+      <button type="button" className="btn btn-success">Register</button>
       </div>
       </form>
   </div>
