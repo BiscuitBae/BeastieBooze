@@ -5,7 +5,7 @@ import React from 'react'
 
 const Register = () => {
 
-  console.log(Form)
+  // console.log(Form)
 
   return (
     <div>

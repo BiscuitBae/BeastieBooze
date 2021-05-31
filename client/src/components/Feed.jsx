@@ -13,7 +13,7 @@ const Feed = () => {
   useEffect(() => {
     axios.get('/routes/feed')
     .then(( { data }) => {
-    console.log('THIS IS OUR RESULTS DATA!', data)
+    // console.log('THIS IS OUR RESULTS DATA!', data)
     setApiDrinks(data)
     })
     .catch((err) => console.error('THIS IS OUR ERROR!', err))
