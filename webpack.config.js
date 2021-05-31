@@ -22,8 +22,9 @@ module.exports = {
       publicPath: '/',
       path: `${DIST_DIR}`,
     },
-    devServer: {
-      contentBase: `${DIST_DIR}`
-    }
+    devtool: "source-map"
+    // devServer: {
+    //   contentBase: `${DIST_DIR}`
+    // }
   };
 
