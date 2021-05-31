@@ -22,8 +22,8 @@ module.exports = {
       publicPath: '/',
       path: `${DIST_DIR}`,
     },
-    devServer: {
-      contentBase: `${DIST_DIR}`
-    }
+    // devServer: {
+    //   contentBase: `${DIST_DIR}`
+    // }
   };
 

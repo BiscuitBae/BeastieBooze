@@ -51,7 +51,7 @@ const DrinkView = () => {
           <button type="button" className="btn btn-dark">Make Virgin</button>
         </div>
         <div className="favorite-button">
-        <button type="button" class="btn btn-info">Add To Favorites</button>
+        <button type="button" className="btn btn-info">Add To Favorites</button>
         </div>
       </div>
       </div>

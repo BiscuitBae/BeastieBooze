@@ -2,6 +2,8 @@ import React from 'react'
 import { drinks } from '../../dummyData'
 import DrinkTile from './DrinkTile'
 
+// import axios from 'axios'
+
 const Feed = () => {
 
   //* map over dummy drinks, or a random 10 api call, and pass each entry to the 

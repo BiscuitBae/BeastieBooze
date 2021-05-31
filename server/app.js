@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // example routes for good and bad login attempts
-app.get('/', (req, res) => res.send('You are not logged in.'));
+// app.get('/', (req, res) => res.send('You are not logged in.'));
 app.get('/failed', (req, res) => res.send('You failed to log in.'))
 app.get('/good', isLoggedIn, (req, res) => res.send(`Welcome ${req.user.displayName}!`))
 
