@@ -7,15 +7,29 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   //* links to endpoints that will be handled by Routes in App component
   return (
-    <nav>
-      <button>
-        <Link to="/">Feed</Link>
-      </button>
-      <button>
-        <Link to="/create">Add a drink</Link>
-      </button>
-    </nav>
-
+ 
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  <Link to="/" className="navbar-brand">Beastie Booze</Link>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item active">
+        <Link to="/" className="nav-link">Feed</Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/create" className="nav-link">Add a drink</Link>
+      </li>
+      <li className="nav-item">
+      <Link to="/login" className="nav-link">Login</Link>
+      </li>
+      <li className="nav-item">
+      <Link to="/register" className="nav-link">Register</Link>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 
 
@@ -37,15 +51,6 @@ const Navbar = () => {
     //   </Navbar.Collapse>
     // </Navbar>
 
-
-    //* this is a bootstrap navbar template 
-    //   <nav className="navbar navbar-light bg-light justify-content-between">
-    //   <a className="navbar-brand">Navbar</a>
-    //   <form className="form-inline">
-    //     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    //     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    //   </form>
-    // </nav>
   )
 }
 
