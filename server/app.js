@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+const router = require('./routes/index.js')
 require('./passport-setup');
 
 const PORT = 3000;
@@ -51,7 +52,7 @@ app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/')
 })
-
+router(app);
 app.listen(PORT, () => {
   console.log(`Server is listening at: http://127.0.0.1:${PORT}`);
 });
