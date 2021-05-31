@@ -12,8 +12,7 @@ const DrinkView = () => {
 
   console.log()
 
-  //! this will be replaced by an axios call. for now we're just grabbing 
-  //! the corresponding drink object from the dummy data
+  //call with dummy data
   // const drink = drinks.find(e => {
   //   return drinkId == e.idDrink;
   // });
@@ -75,8 +74,8 @@ const DrinkView = () => {
       </div>
       <div className="row">
         <div className="col">
-        <hr></hr>
-        <h2 className="page-heading">Reviews</h2>
+          <hr></hr>
+          <h2 className="page-heading">Reviews</h2>
         </div>
       </div>
     </div>
