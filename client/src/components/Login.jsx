@@ -1,5 +1,7 @@
 import React from 'react'
 
+//example Login component if we go this direction.
+
 const Login = () => {
 
   return (

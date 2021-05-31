@@ -17,6 +17,7 @@ return (
   <div className="img-wrap" ref={hoverRef}>
           <img 
             className=
+            // toggling classes for hover state
               {hovering ? 
                 "img-fluid drink-thumb border border-secondary tint" :
                 "img-fluid drink-thumb border border-secondary" 
