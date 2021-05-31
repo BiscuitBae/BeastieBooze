@@ -14,6 +14,7 @@ module.exports = {
       },
     ],
   },
+ 
     resolve: {
       extensions: ['', '.js', '.jsx']
     },
@@ -22,5 +23,6 @@ module.exports = {
       publicPath: '/',
       path: `${DIST_DIR}`,
     },
+    devtool: "source-map"
   };
 
