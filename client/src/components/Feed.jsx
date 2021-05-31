@@ -10,14 +10,15 @@ const Feed = () => {
 
   const [apiDrinks, setApiDrinks] = useState([]);
 
-  useEffect(async() => {
-    const results = await axios.get('/feed')
-    console.log(results)
-    setApiDrinks(results)
+  useEffect(() => {
+    axios.get('/routes/feed')
+    .then(( { data }) => {
+    console.log('THIS IS OUR RESULTS DATA!', data)
+    setApiDrinks(data)
+    })
+    .catch((err) => console.error('THIS IS OUR ERROR!', err))
   }, [])
 
-  
-  
   const drinkList = apiDrinks.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
