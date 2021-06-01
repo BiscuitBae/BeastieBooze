@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
     "build:dev": "webpack --config webpack.config.js --mode development --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "restart": "pm2 startOrRestart ecosystem.config.js",
+    "deploy": "pm2 deploy ecosystem.config.js production"
   },
   "repository": {
     "type": "git",
@@ -35,8 +37,8 @@
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.7.1",
     "react-google-login": "^5.2.2",
+    "react-hook-form": "^7.7.1",
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.2.0"
   },
@@ -54,6 +56,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "nodemon": "^2.0.7",
+    "pm2": "^4.5.6",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
