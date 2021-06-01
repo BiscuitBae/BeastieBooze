@@ -1,59 +1,71 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
-//example Login component if we go this direction.
+const clientId = '862811879315-ur20fqc030th5oure5vsmkdg8ll94o8r.apps.googleusercontent.com';
+
+const refreshTokenSetup = (res) => {
+  let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
+
+  const refreshToken = () => {
+    res.reloadAuthResponse()
+      .then(newAuthRes => {
+        refreshTiming = (newAuthRes.expires_in || 3600 - 5 * 60) * 1000;
+        console.log('newAuthRes:', newAuthRes);
+        console.log('new auth Token', newAuthRes.id_token);
+        setTimeout(refreshToken, refreshTiming);
+      })
+  }
+  setTimeout(refreshToken, refreshTiming);
+}
 
 const Login = () => {
 
-  const [ auth, setAuth ] = useState('');
+  const [showLoginButton, setShowLoginButton] = useState(true);
+  const [showLogoutButton, setShowLogoutButton] = useState(false);
 
-  useEffect(() => {
-    axios.get('/routes/login')
-      .then(({ data }) => {
-        console.log('this is the login data:', data);
-        // setAuth(data);
-      })
-      .catch(err => console.log('error logging in:', err));
-  }, []);
+  const onLoginSuccess = (res) => {
+    console.log('[Login Success] currentUser:', res.profileObj);
+    setShowLoginButton(false);
+    setShowLogoutButton(true);
 
-  // const [ username, setUsername ] = useState('');
-  // const [ password, setPassword ] = useState('');
+    // refreshTokenSetup(res);
+  };
+
+  const onLoginFailure = (res) => {
+    console.log('[Login failed] res:', res);
+  };
+
+  const onSignoutSuccess = () => {
+    alert('You have been logged out successfully');
+    console.clear();
+    setShowLoginButton(true);
+    setShowLogoutButton(false);
+  }
 
   return (
     <div>
-      {auth}
-      {/* <h1 className="page-heading">This is the login page</h1>
-      <form className="input-form">
-        <div className="form-row">
-          <div className="col-md-6">
-            <label htmlFor="inputLogin">Login</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputLogin"
-              placeholder=""
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-            />
-          </div>
-        <div className="col-md-6">
-          <label htmlFor="inputPassword">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="inputPassword"
-            placeholder=""
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </div>
-        </div>
-        <div className="submit-button submit">
-      <button type="button" className="btn btn-success">Register</button>
-      </div>
-      </form> */}
-  </div>
+      {showLoginButton ?
+        <GoogleLogin
+          clientId={clientId}
+          buttonText='Login'
+          onSuccess={onLoginSuccess}
+          onFailure={onLoginFailure}
+          cookiePolicy={'single_host_origin'}
+          isSignedIn={true}
+          className='googleBtn'
+      /> : null}
+
+      {showLogoutButton ?
+        <GoogleLogout
+          clientId={clientId}
+          buttonText='Sign Out'
+          onLogoutSuccess={onSignoutSuccess}
+          className='googleBtn'
+        >
+        </GoogleLogout> : null
+      }
+    </div>
   )
 }
 
-export default Login
+export default Login;
