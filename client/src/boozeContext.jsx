@@ -10,6 +10,8 @@ function BoozeContextProvider({children}) {
   const [drinksFeed, setDrinksFeed] = useState([]);
   const [aDrink, setADrink] = useState({});
   const [customDrinks, setCustomDrinks] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  
 
 // gets 10 random drinks from our api
   const random10 = () => {
@@ -39,20 +41,32 @@ function BoozeContextProvider({children}) {
 
   //Functions to handle state for Search component
 
-  const searchDrinks = (userinput) => {
-    // example calls
-    // cocktail
-    // 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
-    // ingredient
-    // 'www.thecocktaildb.com/api/json/v1/1/search.php?i=vodka'
+  const searchDrinks = ({searchParam, query}) => {
+    
+    query = query.split(' ').join('_');
+    let param = 'search';
+    let tag = 's';
 
+    if (searchParam === 'ingredient') {
+      param = 'filter'
+      tag = 'i'
+    }
+
+    const queryString = `http://www.thecocktaildb.com/api/json/v1/1/${param}.php?${tag}=${query}`;
+    
+    axios.get(queryString)
+    .then(({ data }) => {
+      console.log(data)
+      setSearchResults(data)
+    })
+    .catch(err => console.log('error fetching data from api in Context: ', err));
 
   };
 
  
 // anything we want to pass on to other components must go in this value object
   return (
-    <BoozeContext.Provider value={{drinksFeed, random10, renderDrink, aDrink, makeADrink}}>
+    <BoozeContext.Provider value={{drinksFeed, random10, renderDrink, aDrink, makeADrink, searchDrinks, searchResults}}>
       {children}
     </BoozeContext.Provider>
   )
