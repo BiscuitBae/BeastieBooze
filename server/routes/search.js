@@ -2,7 +2,7 @@ const { Router } = require("express");
 const dotenv = require('dotenv')
 dotenv.config()
 
-import axios from 'axios'
+const axios = require('axios');
 
 const searchRouter = Router();
 const { API_KEY } = require('../config.js')
@@ -23,5 +23,4 @@ searchRouter.get('/', (req, res) => {
     });
 })
 
-
-export default searchRouter
+module.exports = {searchRouter};

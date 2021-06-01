@@ -2,7 +2,7 @@ const { Router } = require("express");
 const dotenv = require('dotenv')
 dotenv.config()
 
-import axios from 'axios'
+const axios = require('axios');
 
 const drinkRouter = Router();
 //Premium API key doesn't work for certain requests. 
@@ -22,4 +22,4 @@ drinkRouter.get('/:drinkId', (req, res) => {
 })
 
 
-export default drinkRouter
+module.exports = {drinkRouter};

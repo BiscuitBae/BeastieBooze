@@ -1,6 +1,6 @@
-import feedRouter from './feed.js';
-import drinkRouter from './drinkView.js';
-import searchRouter from './search.js'
+const { feedRouter } = require('./feed.js');
+const { drinkRouter } = require('./drinkView.js');
+const { searchRouter } = require('./search.js');
 
 // import loginRouter from './login.js';
 
