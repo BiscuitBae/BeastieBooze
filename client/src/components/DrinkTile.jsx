@@ -16,7 +16,7 @@ const DrinkTile = ({ drink }) => {
   return (
     <div className="col-md-3">
       <div className="drink-tile">
-        <Link to={`/drink/:${id}`}>
+        <Link to={`/drink/${id}`}>
         <ImgWrapper drink={ drink } />
         </Link>
         <h3 className="drink-name">

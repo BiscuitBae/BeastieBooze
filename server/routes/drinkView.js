@@ -9,11 +9,10 @@ const drinkRouter = Router();
 const { API_KEY } = require('../config.js')
 
 
-drinkRouter.get('/', (req, res) => {
-  const drinkId = req.baseUrl.slice(15)
+drinkRouter.get('/:drinkId', (req, res) => {
+  const drinkId = req.params.drinkId.slice(1)
   axios.get(`http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
   .then(( { data }) => {
-      console.log(req.params)
       res.status(200).send(data);
     })
     .catch((err) => {

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+
+//dummy data that can be imported into project
 import { drinks } from '../../dummyData'
 
 import axios from 'axios'
@@ -10,15 +12,16 @@ const DrinkView = () => {
   // useParams will grab the param passed in url. grabbing drinkId from params.
   const { drinkId } = useParams()
 
-  console.log()
+  console.log(drinkId)
 
-  //call with dummy data
+  //call to test with dummy data
   // const drink = drinks.find(e => {
   //   return drinkId == e.idDrink;
   // });
 
 
-  // starting the axios request //
+  // Axios request to route in /server/routes/drinkView.js 
+  // Call must be made to populate DrinkView component with drink data
 
   const [currentDrink, setCurrentDrink] = useState({});
 
@@ -64,13 +67,13 @@ const DrinkView = () => {
           </ul>
           <h4 className="sub-heading">Directions</h4>
           <p>{directions}</p>
-        <div className='virgin-button'>
-          <button type="button" className="btn btn-dark">Make Virgin</button>
+          <div className='virgin-button'>
+            <button type="button" className="btn btn-dark">Make Virgin</button>
+          </div>
+          <div className="favorite-button">
+            <button type="button" className="btn btn-info">Add To Favorites</button>
+          </div>
         </div>
-        <div className="favorite-button">
-        <button type="button" className="btn btn-info">Add To Favorites</button>
-        </div>
-      </div>
       </div>
       <div className="row">
         <div className="col">
