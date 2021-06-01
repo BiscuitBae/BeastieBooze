@@ -11,10 +11,6 @@ import Feed from '../pages/Feed'
 import DrinkView from '../pages/DrinkView'
 import Login from '../pages/Login'
 import Search from '../pages/Search'
-import Create from './Create'
-import Feed from './Feed'
-import DrinkView from './DrinkView'
-import Login from './Login'
 
 const App = () => {
 
