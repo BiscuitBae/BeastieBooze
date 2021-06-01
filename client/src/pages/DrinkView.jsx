@@ -15,11 +15,11 @@ const DrinkView = () => {
     renderDrink(drinkId)
   }, [])
 
-  //* the ingredients and measurements come in a pretty weird format, so we wrote a helper function
-  //* to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
+  // the ingredients and measurements come in a pretty weird format, so we wrote a helper function
+  // to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
   const ingredients = ingredientParser(aDrink);
 
-  //* grab what we need from drink object, reassign names for clarity and brevity 
+  // grab what we need from drink object, reassign names for clarity and brevity 
   const { 
     idDrink: id, 
     strDrink: name, 

@@ -4,13 +4,13 @@ import {BoozeContext} from '../boozeContext'
 
 const Feed = () => {
 
-  const {drinks, random10} = useContext(BoozeContext)
+  const {drinksFeed, random10} = useContext(BoozeContext)
   
   useEffect(() => {
     random10()
   }, [])
 
-  const drinkList = drinks.map(drink => {
+  const drinkList = drinksFeed.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
 
