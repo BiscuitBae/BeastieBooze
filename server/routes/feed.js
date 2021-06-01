@@ -2,7 +2,7 @@ const { Router } = require("express");
 const dotenv = require('dotenv')
 dotenv.config()
 
-import axios from 'axios'
+const axios = require('axios');
 
 const feedRouter = Router();
 const { API_KEY } = require('../config.js')
@@ -20,4 +20,4 @@ feedRouter.get('/', (req, res) => {
 })
 
 
-export default feedRouter
+module.exports = {feedRouter};
