@@ -10,7 +10,7 @@ const { API_KEY } = require('../config.js')
 
 
 drinkRouter.get('/:drinkId', (req, res) => {
-  const drinkId = req.params.drinkId.slice(1)
+  const drinkId = req.params.drinkId
   axios.get(`http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
   .then(( { data }) => {
       res.status(200).send(data);
