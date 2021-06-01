@@ -78,3 +78,10 @@ padding: 10px 10px;
   padding-top: 20px;
 }
 
+.googleBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+}

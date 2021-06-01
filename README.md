@@ -3,12 +3,12 @@
 # Initialization
 
 Webpack:
- 1) BeastieBooze's react components are bundled/compiled using webpack and babel. 
- 2) The configuration for webpack can be found at webpack.config.js while the babel presets are located at .babelrc. 
- 3) The command to run webpack is <npm run build:dev>. This command must be run throughout dev to contiguously package 
+ 1) BeastieBooze's react components are bundled/compiled using webpack and babel.
+ 2) The configuration for webpack can be found at webpack.config.js while the babel presets are located at .babelrc.
+ 3) The command to run webpack is <npm run build:dev>. This command must be run throughout dev to contiguously package
     any changes that will render on the client side.
 
-# Client-Side 
+# Client-Side
 
 React Components:
 Using React Router to render all views on client side through main App component.
@@ -29,11 +29,11 @@ Using Google's Oauth (Google+ API) and Passport for authorization.
  3) With this authorization code we can request their info from google.
  4) With that user info we can either save the user to our database, or render properly based upon the data they've previously saved.
 
-# Server Side 
+# Server Side
 
-Routes: 
+Routes:
 Server Side Routes are contained within /server/routes folder:
  1) server routes are directed to /server/routes/index.js to export to router within /server/app.js
  2) feed.js holds feedRouter that handles routes for the Feed component i.e. loading main feed of drinks using cocktaildb Api
  3) drinkView.js holds drinkRouter that handles routes for drinkView component i.e. taking id param and serving correct cocktail
-  
+
