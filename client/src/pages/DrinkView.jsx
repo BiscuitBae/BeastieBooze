@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import {BoozeContext} from '../boozeContext'
 
+
 import ingredientParser from '../../utils/parseIng'
 
 const DrinkView = () => {
@@ -14,6 +15,16 @@ const DrinkView = () => {
   useEffect(() => {
     renderDrink(drinkId)
   }, [])
+
+  //? not using for now. May want to switch to making request to server to retrieve the drink with the given 
+  //? id. For now, we're passing the id to BoozeContext and retreiving the drink from state.
+   // useEffect(() => {
+  //   axios.get(`/routes/drink/${drinkId}`)
+  //   .then(( { data }) => {
+  //   setCurrentDrink(data.drinks[0])
+  //   })
+  //   .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
+  // }, [])
 
   // the ingredients and measurements come in a pretty weird format, so we wrote a helper function
   // to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
@@ -28,6 +39,7 @@ const DrinkView = () => {
     strGlass: glass,
     strInstructions: directions, 
   } = aDrink;
+  
 
   return (
     <div className="container">
@@ -48,18 +60,18 @@ const DrinkView = () => {
           </ul>
           <h4 className="sub-heading">Directions</h4>
           <p>{directions}</p>
-        <div className='virgin-button'>
-          <button type="button" className="btn btn-dark">Make Virgin</button>
+          <div className='virgin-button'>
+            <button type="button" className="btn btn-dark">Make Virgin</button>
+          </div>
+          <div className="favorite-button">
+            <button type="button" className="btn btn-info">Add To Favorites</button>
+          </div>
         </div>
-        <div className="favorite-button">
-        <button type="button" className="btn btn-info">Add To Favorites</button>
-        </div>
-      </div>
       </div>
       <div className="row">
         <div className="col">
-        <hr></hr>
-        <h2 className="page-heading">Reviews</h2>
+          <hr></hr>
+          <h2 className="page-heading">Reviews</h2>
         </div>
       </div>
     </div>
