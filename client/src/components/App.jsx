@@ -10,7 +10,6 @@ import Create from './Create'
 import Feed from './Feed'
 import DrinkView from './DrinkView'
 import Login from './Login'
-import Register from './Register'
 
 const App = () => {
 
@@ -34,9 +33,6 @@ const App = () => {
         </Route>
         <Route path="/login">
           <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
         </Route>
       </Switch>
     </div>
