@@ -37,6 +37,18 @@ function BoozeContextProvider({children}) {
 
   }
 
+  //Functions to handle state for Search component
+
+  const searchDrinks = (userinput) => {
+    // example calls
+    // cocktail
+    // 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
+    // ingredient
+    // 'www.thecocktaildb.com/api/json/v1/1/search.php?i=vodka'
+
+
+  };
+
  
 // anything we want to pass on to other components must go in this value object
   return (

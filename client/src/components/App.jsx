@@ -12,6 +12,7 @@ import Feed from '../pages/Feed'
 import DrinkView from '../pages/DrinkView'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import Search from '../pages/Search'
 
 const App = () => {
 
@@ -29,6 +30,10 @@ const App = () => {
         </Route>
         <Route exact path="/create">
           <Create />
+        </Route>
+        </Route>
+        <Route exact path="/search">
+          <Search />
         </Route>
         <Route path='/drink/:drinkId'>  {/* // takes a param and dynamically renders a drinkView */}
            <DrinkView />                {/* according to the drinkId passed in from the DrinkTile component */}
