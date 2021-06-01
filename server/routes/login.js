@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const loginRouter = Router();
 
-loginRouter.get('/login', (req, res) => {
+loginRouter.get('/', async (req, res) => {
   // axios.get('<URL>')
   // .then(( { data }) => {
   //     res.status(200).send(data);
@@ -15,10 +15,13 @@ loginRouter.get('/login', (req, res) => {
   //     console.error(err);
   //     res.sendStatus(500);
   //   });
-  axios.get('/login')
-    .then(() => {
-      passport.authenticate('google', { scope: ['profile', 'email'] });
-    })
+  try {
+    const auth = await passport.authenticate('google', { scope: ['profile', 'email'] });
+    console.log(auth);
+  } catch (err) {
+    console.log('error in loginRouter');
+  }
+
 })
 
 
