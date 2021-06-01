@@ -5,14 +5,12 @@
 
 import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
-
 import Navbar from './Navbar'
 import Create from '../pages/Create'
 import Feed from '../pages/Feed'
 import DrinkView from '../pages/DrinkView'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
 import Search from '../pages/Search'
+import Login from './Login'
 
 const App = () => {
 
@@ -37,11 +35,8 @@ const App = () => {
         <Route path='/drink/:drinkId'>  {/* // takes a param and dynamically renders a drinkView */}
            <DrinkView />                {/* according to the drinkId passed in from the DrinkTile component */}
         </Route>
-        <Route exact path="/login">
+        <Route path="/login">
           <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
         </Route>
       </Switch>
     </div>

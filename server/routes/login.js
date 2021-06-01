@@ -1,5 +1,12 @@
-const express = require('express');
-const userRouter = express.Router();
+// const { Router } = require("express");
+// const dotenv = require('dotenv')
+// dotenv.config()
+// const passport = require('passport');
 
-userRouter.get();
-userRouter.post();
+// const loginRouter = Router();
+
+// loginRouter.get('/', passport.authenticate('google', {
+//   scope: ['profile', 'email']
+// }));
+
+// export default loginRouter
