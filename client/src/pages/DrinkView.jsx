@@ -1,5 +1,6 @@
-import React, {useEffect, useContext} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import { useParams } from 'react-router-dom'
+import axios from 'axios';
 
 import {BoozeContext} from '../boozeContext'
 
@@ -10,21 +11,28 @@ const DrinkView = () => {
   // useParams will grab the param passed in url. grabbing drinkId from params.
   const { drinkId } = useParams()
 
-  const {renderDrink, aDrink} = useContext(BoozeContext)
+  // const {renderDrink, aDrink} = useContext(BoozeContext)
  
-  useEffect(() => {
-    renderDrink(drinkId)
-  }, [])
-
-  //? not using for now. May want to switch to making request to server to retrieve the drink with the given 
-  //? id. For now, we're passing the id to BoozeContext and retreiving the drink from state.
-   // useEffect(() => {
-  //   axios.get(`/routes/drink/${drinkId}`)
-  //   .then(( { data }) => {
-  //   setCurrentDrink(data.drinks[0])
-  //   })
-  //   .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
+  // useEffect(() => {
+  //   if (aDrink && aDrink.idDrink != drinkId) {
+  //     renderDrink(drinkId)
+  //   }
   // }, [])
+
+ 
+//? Here we want to disgard the state and axios call in this component and pass that responsibility to 
+//? context, as with the above commented out code. The problem there is that data isn't persisting 
+//? after refreshing DrinkView page currently. When we figure that out we'll switch back to using context 
+
+  const [aDrink, setADrink] = useState({})
+
+   useEffect(() => {
+    axios.get(`/routes/drink/${drinkId}`)
+    .then(( { data }) => {
+    setADrink(data.drinks[0])
+    })
+    .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
+  }, [])
 
   // the ingredients and measurements come in a pretty weird format, so we wrote a helper function
   // to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]

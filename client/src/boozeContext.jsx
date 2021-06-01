@@ -24,6 +24,8 @@ function BoozeContextProvider({children}) {
 // and passes said id through this function to grab the corresponding drink object from our drinksFeed
 // Will update to this as we have drinks coming from other sources, like our custom drink database
   const renderDrink = (id) => {
+    console.log('drinkId in Context: ', id)
+    console.log(drinksFeed)
     const displayDrink = drinksFeed.find(drink => drink.idDrink == id)
     setADrink(displayDrink)
   }
