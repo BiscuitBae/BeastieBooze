@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+
+//dummy data that can be imported into project
 import { drinks } from '../../dummyData'
+
+import axios from 'axios'
 
 import ingredientParser from '../../utils/parseIng'
 
@@ -8,15 +12,31 @@ const DrinkView = () => {
   // useParams will grab the param passed in url. grabbing drinkId from params.
   const { drinkId } = useParams()
 
-  //! this will be replaced by an axios call. for now we're just grabbing 
-  //! the corresponding drink object from the dummy data
-  const drink = drinks.find(e => {
-    return drinkId == e.idDrink;
-  });
+  console.log(drinkId)
+
+  //call to test with dummy data
+  // const drink = drinks.find(e => {
+  //   return drinkId == e.idDrink;
+  // });
+
+
+  // Axios request to route in /server/routes/drinkView.js 
+  // Call must be made to populate DrinkView component with drink data
+
+  const [currentDrink, setCurrentDrink] = useState({});
+
+  useEffect(() => {
+    axios.get(`/routes/drink/${drinkId}`)
+    .then(( { data }) => {
+    setCurrentDrink(data.drinks[0])
+    })
+    .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
+  }, [])
+
 
   //* the ingredients and measurements come in a pretty weird format, so we wrote a helper function
   //* to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
-  const ingredients = ingredientParser(drink);
+  const ingredients = ingredientParser(currentDrink);
 
   //* grab what we need from drink object, reassign names for clarity and brevity 
   const { 
@@ -26,7 +46,7 @@ const DrinkView = () => {
     strAlcoholic: alcoholic,
     strGlass: glass,
     strInstructions: directions, 
-  } = drink;
+  } = currentDrink;
 
   return (
     <div className="container">
@@ -47,18 +67,18 @@ const DrinkView = () => {
           </ul>
           <h4 className="sub-heading">Directions</h4>
           <p>{directions}</p>
-        <div className='virgin-button'>
-          <button type="button" className="btn btn-dark">Make Virgin</button>
+          <div className='virgin-button'>
+            <button type="button" className="btn btn-dark">Make Virgin</button>
+          </div>
+          <div className="favorite-button">
+            <button type="button" className="btn btn-info">Add To Favorites</button>
+          </div>
         </div>
-        <div className="favorite-button">
-        <button type="button" className="btn btn-info">Add To Favorites</button>
-        </div>
-      </div>
       </div>
       <div className="row">
         <div className="col">
-        <hr></hr>
-        <h2 className="page-heading">Reviews</h2>
+          <hr></hr>
+          <h2 className="page-heading">Reviews</h2>
         </div>
       </div>
     </div>

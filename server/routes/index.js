@@ -4,6 +4,6 @@ import loginRouter from './login.js';
 
 module.exports = (app) => {
   app.use('/routes/feed', feedRouter),
-  app.use('/routes/drink', drinkRouter),
+  app.use('/routes/drink/', drinkRouter),
   app.use('/routes/login', loginRouter)
 }
