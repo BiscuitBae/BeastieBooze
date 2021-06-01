@@ -1,4 +1,4 @@
-const { User, Drink } = require('./database/Models');
+const { User, Drink } = require('./Models');
 
 // for the oauth to work need 2 functions here
 // getUser and createUser

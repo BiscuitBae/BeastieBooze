@@ -42,8 +42,8 @@ app.get('/failed', (req, res) => res.send('You failed to log in.'))
 app.get('/good', isLoggedIn, (req, res) => res.send(`Welcome ${req.user.displayName}!`))
 
 // callback takes the strategy name (google) and the scope we are trying to retrieve from google (the profile info and email)
-app.get('/login',
-  passport.authenticate('google', { scope: ['profile', 'email'] }));
+// app.get('/login',
+//   passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 // when a user is redirected back from google it follows this route
 app.get('/googleRedirect',

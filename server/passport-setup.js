@@ -1,7 +1,8 @@
 require('dotenv').config();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const { CLIENT_ID, CLIENT_SECRET } = require('./config')
+const { CLIENT_ID, CLIENT_SECRET } = require('./config');
+const { getUser, createUser } = require('./database/helpers.js');
 
 // this gives our user a unique identifier to store to the cookie
 passport.serializeUser((user, done) => {
@@ -44,6 +45,7 @@ passport.use(new GoogleStrategy({
     // we need to create getUser and createUser helper functions for the db to use this
     getUser(googleId)
       .then(currentUser => {
+        console.log('in getUser, currentUser is: ', currentUser);
         currentUser;
 
         // if the response includes a user obj from our db -> this may need to change depending on the response we expect from our db,
