@@ -9,14 +9,11 @@ import Navbar from './Navbar'
 import Create from '../pages/Create'
 import Feed from '../pages/Feed'
 import DrinkView from '../pages/DrinkView'
+import Login from '../pages/Login'
 import Search from '../pages/Search'
-import Login from './Login'
 
 const App = () => {
 
-  //* not doing anything yet, but I reckon we'll wanna keep track of whether the user is
-  //* logged in and adjust our views accordingly
-  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
   //* using react router to conditionally render views. We'll add more as we go
   return (

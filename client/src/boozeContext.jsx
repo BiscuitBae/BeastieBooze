@@ -41,20 +41,19 @@ function BoozeContextProvider({children}) {
 
   //Functions to handle state for Search component
 
-  const searchDrinks = ({searchParam, query}) => {
+  const searchDrinks = ({search, query}) => {
     
+    // get params to pass on to server 
     query = query.split(' ').join('_');
-    let param = 'search';
+    let searchParam = 'search';
     let tag = 's';
 
-    if (searchParam === 'ingredient') {
-      param = 'filter'
+    if (search === 'ingredient') {
+      searchParam = 'filter'
       tag = 'i'
     }
-
-    const queryString = `http://www.thecocktaildb.com/api/json/v1/1/${param}.php?${tag}=${query}`;
-    
-    axios.get(queryString)
+ 
+    axios.get('/routes/search', {params: {searchParam, tag, query}})
     .then(({ data }) => {
       console.log(data)
       setSearchResults(data)
