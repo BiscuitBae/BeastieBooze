@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import { useParams } from 'react-router-dom'
+import axios from 'axios';
 
-//dummy data that can be imported into project
-import { drinks } from '../../dummyData'
+import {BoozeContext} from '../boozeContext'
 
-import axios from 'axios'
 
 import ingredientParser from '../../utils/parseIng'
 
@@ -12,33 +11,34 @@ const DrinkView = () => {
   // useParams will grab the param passed in url. grabbing drinkId from params.
   const { drinkId } = useParams()
 
-  console.log(drinkId)
+  // const {renderDrink, aDrink} = useContext(BoozeContext)
+ 
+  // useEffect(() => {
+  //   if (aDrink && aDrink.idDrink != drinkId) {
+  //     renderDrink(drinkId)
+  //   }
+  // }, [])
 
-  //call to test with dummy data
-  // const drink = drinks.find(e => {
-  //   return drinkId == e.idDrink;
-  // });
+ 
+//? Here we want to disgard the state and axios call in this component and pass that responsibility to 
+//? context, as with the above commented out code. The problem there is that data isn't persisting 
+//? after refreshing DrinkView page currently. When we figure that out we'll switch back to using context 
 
+  const [aDrink, setADrink] = useState({})
 
-  // Axios request to route in /server/routes/drinkView.js 
-  // Call must be made to populate DrinkView component with drink data
-
-  const [currentDrink, setCurrentDrink] = useState({});
-
-  useEffect(() => {
+   useEffect(() => {
     axios.get(`/routes/drink/${drinkId}`)
     .then(( { data }) => {
-    setCurrentDrink(data.drinks[0])
+    setADrink(data.drinks[0])
     })
     .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
   }, [])
 
+  // the ingredients and measurements come in a pretty weird format, so we wrote a helper function
+  // to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
+  const ingredients = ingredientParser(aDrink);
 
-  //* the ingredients and measurements come in a pretty weird format, so we wrote a helper function
-  //* to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
-  const ingredients = ingredientParser(currentDrink);
-
-  //* grab what we need from drink object, reassign names for clarity and brevity 
+  // grab what we need from drink object, reassign names for clarity and brevity 
   const { 
     idDrink: id, 
     strDrink: name, 
@@ -46,7 +46,8 @@ const DrinkView = () => {
     strAlcoholic: alcoholic,
     strGlass: glass,
     strInstructions: directions, 
-  } = currentDrink;
+  } = aDrink;
+  
 
   return (
     <div className="container">

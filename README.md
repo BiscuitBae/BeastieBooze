@@ -14,6 +14,8 @@ React Components:
 Using React Router to render all views on client side through main App component.
 Eh.. We'll add more to this as we flesh it out
 
+BoozeContext:
+
 Client-Side Helper Functions:
 Client side helper functions are contained within the /client/utils folder:
  1) ParseIng: ParseIng is imported to the DrinkView component to enable matching ingredients to measurements in drink instructions
