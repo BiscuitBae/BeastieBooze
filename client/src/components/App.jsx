@@ -7,11 +7,11 @@ import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import Navbar from './Navbar'
-import Create from './Create'
-import Feed from './Feed'
-import DrinkView from './DrinkView'
-import Login from './Login'
-import Register from './Register'
+import Create from '../pages/Create'
+import Feed from '../pages/Feed'
+import DrinkView from '../pages/DrinkView'
+import Login from '../pages/Login'
+import Register from '../pages/Register'
 
 const App = () => {
 

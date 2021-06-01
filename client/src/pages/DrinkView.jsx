@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useEffect, useContext} from 'react'
 import { useParams } from 'react-router-dom'
-import { drinks } from '../../dummyData'
+
+import {BoozeContext} from '../boozeContext'
 
 import ingredientParser from '../../utils/parseIng'
 
@@ -8,15 +9,15 @@ const DrinkView = () => {
   // useParams will grab the param passed in url. grabbing drinkId from params.
   const { drinkId } = useParams()
 
-  //! this will be replaced by an axios call. for now we're just grabbing 
-  //! the corresponding drink object from the dummy data
-  const drink = drinks.find(e => {
-    return drinkId == e.idDrink;
-  });
+  const {renderDrink, aDrink} = useContext(BoozeContext)
+ 
+  useEffect(() => {
+    renderDrink(drinkId)
+  }, [])
 
   //* the ingredients and measurements come in a pretty weird format, so we wrote a helper function
   //* to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
-  const ingredients = ingredientParser(drink);
+  const ingredients = ingredientParser(aDrink);
 
   //* grab what we need from drink object, reassign names for clarity and brevity 
   const { 
@@ -26,7 +27,7 @@ const DrinkView = () => {
     strAlcoholic: alcoholic,
     strGlass: glass,
     strInstructions: directions, 
-  } = drink;
+  } = aDrink;
 
   return (
     <div className="container">

@@ -7,9 +7,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import App from './components/App';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {BoozeContextProvider} from './boozeContext'
+
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <BoozeContextProvider>
+    <Router>
+      <App />
+    </Router>
+  </BoozeContextProvider>,
   document.getElementById('app'));
