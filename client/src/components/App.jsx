@@ -31,7 +31,6 @@ const App = () => {
         <Route exact path="/create">
           <Create />
         </Route>
-        </Route>
         <Route exact path="/search">
           <Search />
         </Route>
