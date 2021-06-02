@@ -38,6 +38,6 @@ module.exports = {
         template: "./client/dist/index.html",
         filename: "./index.html"
       })
-    ]
+    ],
   };
 
