@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 
-import {BoozeContext} from '../boozeContext'
+import { BoozeContext } from '../boozeContext'
 
 
 import ingredientParser from '../../utils/parseIng'
