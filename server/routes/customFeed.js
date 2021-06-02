@@ -1,9 +1,8 @@
 const { Router } = require("express");
 const dotenv = require('dotenv')
 dotenv.config()
-const { addDrink } = require('../database/Models.js')
+const { addDrink, getDrinks } = require('../database/Models.js')
 
-const axios = require('axios');
 
 const customRouter = Router();
 
@@ -21,7 +20,19 @@ customRouter.post('/', (req, res) => {
     console.log('ERROR', err)
     res.sendStatus(500)
   }) 
+})
 
+//GET ALL 
+customRouter.get('/', (req, res) => {
+getDrinks()
+.then((results) => {
+  console.log('HERE YE DATA', results)
+  res.status(200).send(results)
+})
+.catch((err) => { 
+  console.error(err)
+  res.sendStatus(500)
+  })
 })
 
 
