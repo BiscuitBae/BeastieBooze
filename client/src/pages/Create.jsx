@@ -27,7 +27,9 @@ const Create = () => {
           <option value={true}>Why, yes it is</option>
           <option value={false}>It's a virgin drank</option>
         </select>
-        <button className="btn btn-info create-button" type="submit"> Submit </button>
+        <div className='create-button'>
+        <button className="btn btn-info" type="submit"> Submit </button>
+        </div>
       </form>
     </div>
     
