@@ -12,6 +12,7 @@ import DrinkView from '../pages/DrinkView'
 import Login from '../pages/Login'
 import Search from '../pages/Search'
 import CustomFeed from '../pages/CustomFeed'
+import CustomDrinkView from '../pages/CustomDrinkView'
 
 const App = () => {
 
@@ -36,8 +37,11 @@ const App = () => {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/custom">
+        <Route exact path="/custom">
           <CustomFeed />
+        </Route>
+        <Route path="/custom/drink">
+          <CustomDrinkView />
         </Route>
       </Switch>
     </div>
