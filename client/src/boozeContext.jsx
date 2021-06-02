@@ -55,8 +55,11 @@ function BoozeContextProvider({children}) {
  
     axios.get('/routes/search', {params: {searchParam, tag, query}})
     .then(({ data }) => {
-      console.log(data)
+      if(!data.length){
+        setSearchResults("404")
+      } else {
       setSearchResults(data)
+      }
     })
     .catch(err => console.log('error fetching data from api in Context: ', err));
 

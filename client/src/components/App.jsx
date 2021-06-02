@@ -3,7 +3,7 @@
 // view switcher - main, single drink, create, profile, login/signup buttons, search bar
 
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Navbar from './Navbar'
 import Create from '../pages/Create'

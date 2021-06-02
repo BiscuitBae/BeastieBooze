@@ -7,10 +7,22 @@ const SearchFeed = () => {
 
   const { searchDrinks, searchResults } = useContext(BoozeContext);
 
-  const drinkResults = searchResults.map(drink => {
+
+  console.log(searchResults)
+
+  let drinkResults;
+
+  if(searchResults !== "404"){
+    console.log(true)
+    drinkResults = searchResults.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
-  console.log(drinkResults)
+  } else {
+    console.log(true)
+     return (
+      <h2 className="sub-heading"> Sorry We Found No Results </h2>
+    ) 
+  } 
 
   return (
   <div className="container">
