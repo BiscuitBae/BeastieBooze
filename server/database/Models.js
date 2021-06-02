@@ -27,7 +27,20 @@ const DrinkSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 const Drink = mongoose.model('Drink', DrinkSchema);
 
+const addDrink = async (drink) => {
+
+  const { drinkName: name, instructions, ingredients, alcoholic } = drink
+
+  const newDrink = new Drink({
+    name, instructions, ingredients, alcoholic
+  })
+
+  await newDrink.save();
+
+}
+
 module.exports = {
   User,
-  Drink
+  Drink,
+  addDrink
 };
