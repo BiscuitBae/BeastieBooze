@@ -42,7 +42,6 @@ function BoozeContextProvider({children}) {
   //Functions to handle state for Search component
 
   const searchDrinks = ({search, query}) => {
-    
     // get params to pass on to server 
     query = query.split(' ').join('_');
     let searchParam = 'search';
