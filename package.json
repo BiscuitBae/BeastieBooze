@@ -9,7 +9,7 @@
     "build:prod": "webpack --config webpack.config.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "restart": "pm2 startOrRestart ecosystem.config.js",
-    "deploy": "npm run build:prod && pm2 deploy ecosystem.config.js production"
+    "deploy": "pm2 deploy ecosystem.config.js production"
   },
   "repository": {
     "type": "git",
