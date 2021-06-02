@@ -46,7 +46,11 @@ function BoozeContextProvider({children}) {
       return output;
     }, {})
 
-    console.log(userInput)
+
+    axios.post('/routes/custom', userInput)
+    .then(() => {
+      console.log('USER INPUT POSTED')
+    }).catch((err) => console.error(err))
 
   }
 
