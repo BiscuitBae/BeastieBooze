@@ -17,7 +17,8 @@ module.exports = {
        // Environment variables that must be injected in all applications on this env
       env: {
         // add env variables before next deployment
-        NODE_ENV: 'production'
+        NODE_ENV: 'production',
+        API_KEY: process.env.API_KEY
       }
     }
   }
