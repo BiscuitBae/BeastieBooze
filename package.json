@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
-    "build:dev": "webpack --config webpack.config.js --mode development --watch",
+    "build:dev": "webpack --config=webpack.config.js --mode development --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "deploy": "pm2 deploy ecosystem.config.js production"

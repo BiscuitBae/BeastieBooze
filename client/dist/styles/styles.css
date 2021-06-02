@@ -97,3 +97,9 @@ padding: 10px 10px;
   text-align: center;
   margin: 75px;
 }
+
+/* Create Styles */
+.create-button {
+  padding-top: 20px;
+  text-align: center
+}
