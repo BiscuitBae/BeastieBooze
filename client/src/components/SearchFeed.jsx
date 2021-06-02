@@ -4,8 +4,20 @@ import DrinkTile from '../components/DrinkTile'
 import {BoozeContext} from '../boozeContext'
 
 const SearchFeed = () => { 
+
+  const { searchDrinks, searchResults } = useContext(BoozeContext);
+
+  const drinkResults = searchResults.map(drink => {
+    return <DrinkTile key={drink.idDrink} drink={drink} />
+  })
+  console.log(drinkResults)
+
   return (
-  <h1> Here Be SearchFeed </h1>
+  <div className="container">
+    <div className="row">
+    {drinkResults}
+    </div>
+  </div>
 )
 }
 

@@ -12,7 +12,8 @@ body {
 }
 
 .sub-heading {
-  /* text-align: center; */
+  text-align: center;
+  padding: 0px 0px 20px 0px;
 }
 
 /* Drink Tile Styles */
@@ -84,4 +85,14 @@ padding: 10px 10px;
   left: 50%;
   margin-top: -50px;
   margin-left: -50px;
+}
+
+/* Search Styles */
+.search-body {
+  text-align: center;
+}
+
+.search-bar {
+  text-align: center;
+  margin: 75px;
 }
