@@ -35,7 +35,18 @@ function BoozeContextProvider({children}) {
   // This receives the user input from the Create component. This is where we'll parse that data and make a post request to
   // to add the new drink to the db
   const makeADrink = (userInput) => {
-    console.log("we gotta do something with this drank data: ", userInput);
+    // console.log("we gotta do something with this drank data: ", userInput);
+    // let { drinkName, instructions, alcoholic, ingredients } = userInput 
+
+    // ingredients = ingredients.split(`\n`)
+    userInput.ingredients = userInput.ingredients.split(`\n`).reduce((output, ingredient) => {
+      ingredient = ingredient.split(':');
+      ingredient[1] = ingredient[1].trim()
+      output[ingredient[1]] = ingredient[0]
+      return output;
+    }, {})
+
+    console.log(userInput)
 
   }
 
@@ -54,8 +65,11 @@ function BoozeContextProvider({children}) {
  
     axios.get('/routes/search', {params: {searchParam, tag, query}})
     .then(({ data }) => {
-      console.log(data)
+      if(!data.length){
+        setSearchResults("404")
+      } else {
       setSearchResults(data)
+      }
     })
     .catch(err => console.log('error fetching data from api in Context: ', err));
 

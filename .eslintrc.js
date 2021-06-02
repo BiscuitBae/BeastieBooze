@@ -27,6 +27,6 @@ module.exports = {
     'import/extensions': ['error', {
       jsx: 'always',
       json: 'always',
-    }]
+    }],
   },
 };

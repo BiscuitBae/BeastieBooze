@@ -20,4 +20,4 @@ feedRouter.get('/', (req, res) => {
 })
 
 
-module.exports = {feedRouter};
+module.exports = { feedRouter };
