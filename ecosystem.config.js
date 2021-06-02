@@ -13,8 +13,7 @@ module.exports = {
       path: '/home/ubuntu/BeastieBooze',
       // need to figure out how to run these commands without installing locally
       // it might be as simple as adding them after the pm2 command
-      // npm install && npm run build:prod
-      'post-deploy': 'pm2 startOrRestart ecosystem.config.js',
+      'post-deploy': 'pm2 startOrRestart ecosystem.config.js && npm install && npm run build:prod',
        // Environment variables that must be injected in all applications on this env
       env: {
         // add env variables before next deployment
