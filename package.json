@@ -4,8 +4,8 @@
   "description": "Drinks app",
   "main": "index.js",
   "scripts": {
-    "start": "react-dotenv && nodemon --exec babel-node server/app.js",
-    "build:dev": "react-dotenv && webpack --config webpack.config.js --mode development --watch",
+    "start": "nodemon --exec babel-node server/app.js",
+    "build:dev": "webpack --config webpack.config.js --mode development --watch",
     "build:prod": "webpack --config webpack.config.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "restart": "pm2 startOrRestart ecosystem.config.js",
@@ -38,7 +38,6 @@
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
-    "react-dotenv": "^0.1.3",
     "react-google-login": "^5.2.2",
     "react-hook-form": "^7.7.1",
     "react-router-bootstrap": "^0.25.0",
