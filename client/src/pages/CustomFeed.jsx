@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { BoozeContext } from '../boozeContext'
 import CustomDrinkTile from '../components/CustomDrinkTile'
-import { testUrls, imageUrlParser } from '../../utils/imageUrls'
+import { imageUrlParser } from '../../utils/imageUrls'
 
 
 const CustomFeed = () => {
@@ -17,6 +17,7 @@ return (
       <div className='row'>
         <div className='card-deck'>
         { customDrinks.map((drink, i) => {
+          //selects an image address for randomizing drink imagesS
           let imageSrc = imageUrlParser()
           return (
             <CustomDrinkTile drink={drink} key={i} imageSrc={imageSrc} />

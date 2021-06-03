@@ -8,13 +8,14 @@ body {
 
 .page-heading {
   text-align: center;
-  padding: 30px 50px 20px 50px;
+  padding: 55px
 }
 
 .sub-heading {
   text-align: center;
   padding: 0px 0px 20px 0px;
 }
+
 
 /* Drink Tile Styles */
 .drink-tile {
