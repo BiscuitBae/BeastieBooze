@@ -10,13 +10,16 @@ const Navbar = () => {
  
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <Link to="/" className="navbar-brand">Beastie Booze</Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNav">
+  </button> */}
+  <div className="navbar" id="navbarNav">
     <ul className="navbar-nav">
-      <li className="nav-item active">
+      {/* <li className="nav-item active">
         <Link to="/" className="nav-link">Feed</Link>
+      </li> */}
+      <li className="nav-item active">
+        <Link to="/custom" className="nav-link">Custom Drinks</Link>
       </li>
       <li className="nav-item">
         <Link to="/custom" className="nav-link">Custom Drinks</Link>
@@ -33,26 +36,6 @@ const Navbar = () => {
     </ul>
   </div>
 </nav>
-
-
-
-    //* this is a navbar template using bootstrap-react-router
-    // <Navbar bg="light" expand="lg">
-    //   <LinkContainer to="/">
-    //     <Navbar.Brand>React-Bootstrap</Navbar.Brand>
-    //   </LinkContainer>
-    //   <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    //   <Navbar.Collapse id="basic-navbar-nav">
-    //     <Nav className="mr-auto">
-    //       <LinkContainer to="/">
-    //         <Nav.Link>Home</Nav.Link>
-    //       </LinkContainer>
-    //       <LinkContainer to="/create">
-    //         <Nav.Link>Create A Drink</Nav.Link>
-    //       </LinkContainer>
-    //     </Nav>
-    //   </Navbar.Collapse>
-    // </Navbar>
 
   )
 }
