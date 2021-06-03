@@ -24,6 +24,14 @@ module.exports = {
       // taking out these 2 for now since they break the deploy:
       // npm install && npm run build:prod
       'post-deploy': 'npm run-script restart',
+      env: {
+        NODE_ENV: 'development',
+        API_KEY: process.env.API_KEY
+      },
+      env_production: {
+        NODE_ENV: 'production',
+        API_KEY: process.env.API_KEY
+      }
     }
   }
 }
