@@ -21,4 +21,16 @@ const ingredientParser = (drink) => {
   return ingredients;
 }
 
-export default ingredientParser;
+const ingredientMap = (prop) => {
+  let ingredientArr = [];
+  for(let ingredient in prop){
+    let measurement = prop[ingredient]
+    ingredientArr.push([measurement, ingredient])
+  }
+  return ingredientArr
+}
+
+module.exports = {
+  ingredientParser, 
+  ingredientMap
+};

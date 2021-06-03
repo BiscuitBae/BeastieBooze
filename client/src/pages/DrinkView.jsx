@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BoozeContext } from '../boozeContext'
 
 
-import ingredientParser from '../../utils/parseIng'
+import { ingredientParser } from '../../utils/parseIng'
 
 const DrinkView = () => {
   // useParams will grab the param passed in url. grabbing drinkId from params.
@@ -48,6 +48,7 @@ const DrinkView = () => {
     strInstructions: directions, 
   } = aDrink;
   
+  console.log(ingredients)
 
   return (
     <div className="container">

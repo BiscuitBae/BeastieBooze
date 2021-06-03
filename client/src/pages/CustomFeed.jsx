@@ -16,21 +16,23 @@ const CustomFeed = () => {
     <div className='page-heading'>Custom Libation Feed</div>
     { customDrinks.map((drink) => {
       return (
+        <div key={drink._id}>
         <Link to={{
           pathname: '/custom/drink',
           state:{ drink }
         }}>
           <h4>{drink.name}</h4>
           <ul>
-            {Object.keys(drink.ingredients).map(ingredient => {
+            {Object.keys(drink.ingredients).map((ingredient, i) => {
               return (
-                <li>{ingredient}</li>
+                <li key={i}>{ingredient}</li>
               )}
               )
               }
           </ul>
           <hr></hr>
         </Link>
+        </div>
   )
 }
     )}
