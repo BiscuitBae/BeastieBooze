@@ -11,8 +11,7 @@ const Feed = () => {
     random10()
   }, [])
 
-  //Nine results is better than Ten
-  drinksFeed = drinksFeed.slice(1)
+  drinksFeed = drinksFeed.slice(1);
 
   const drinkList = drinksFeed.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />

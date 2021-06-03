@@ -1,16 +1,23 @@
-const testUrls = [
-  'https://upload.wikimedia.org/wikipedia/commons/b/b4/Edmund_J_Sullivan_Illustrations_to_The_Rubaiyat_of_Omar_Khayyam_First_Version_Quatrain-056.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/d/d6/Edmund_J_Sullivan_Illustrations_to_The_Rubaiyat_of_Omar_Khayyam_First_Version_Quatrain-035.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/f/f7/Edmund_J_Sullivan_Illustrations_to_The_Rubaiyat_of_Omar_Khayyam_First_Version_Quatrain-062.jpg'
+const imgUrls = [
+  'images/1.png',
+  'images/4.png',
+  'images/5.png',
+  'images/7.png',
+  'images/11.png',
+  'images/12.png',
+  'images/14.png',
+  'images/17.png',
+  'images/20.png',
+  'images/22.png'
 ]
 
 const imageUrlParser = () => {
-  const index = Math.floor(Math.random() * testUrls.length)
-  return testUrls[index]
+  const index = Math.floor(Math.random() * imgUrls.length)
+  return imgUrls[index]
 }
 
 
 module.exports = {
-  testUrls, 
+  imgUrls,
   imageUrlParser
 }

@@ -44,13 +44,13 @@ const DrinkView = () => {
               return <li key={index}>{i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
             })}
           </ul>
-          <h4 className="sub-heading">Directions</h4>
+          <h5>Directions</h5>
           <p>{directions}</p>
-          <div className='drink-button'>
+          {/* <div className='drink-button'>
             <button type="button" className="btn btn-dark">Make Virgin</button>
-          </div>
+          </div> */}
           <div className="drink-button">
-            <button type="button" className="btn btn-info">Add To Favorites</button>
+            <button type="button" className="btn btn-dark">Add To Favorites</button>
           </div>
         </div>
       </div>
