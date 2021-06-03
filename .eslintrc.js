@@ -7,7 +7,6 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
-
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -27,7 +26,7 @@ module.exports = {
      /* Indentation */
      'no-mixed-spaces-and-tabs': 2,
      'indent': [2, 2],
-     /* Variable cames */
+     /* Variable camelCase */
      'camelcase': 2,
      /* Language constructs */
      'curly': 2,
