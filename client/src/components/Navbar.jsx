@@ -15,9 +15,6 @@ const Navbar = () => {
   </button> */}
   <div className="navbar" id="navbarNav">
     <ul className="navbar-nav">
-      {/* <li className="nav-item active">
-        <Link to="/" className="nav-link">Feed</Link>
-      </li> */}
       <li className="nav-item active">
         <Link to="/custom" className="nav-link">Custom Drinks</Link>
       </li>

@@ -11,7 +11,6 @@ function BoozeContextProvider({children}) {
   const [aDrink, setADrink] = useState({});
   const [customDrinks, setCustomDrinks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  
 
 // gets 10 random drinks from our api
   const random10 = () => {
@@ -56,20 +55,20 @@ function BoozeContextProvider({children}) {
 
   //Function To get all Custom Drinks and Populate them for CustomFeed component
 
-  // const getCustomDrinks = () => {
+  const getCustomDrinks = () => {
 
-  //   axios.get('/routes/custom')
-  //   .then(({ data }) => {
-  //     console.log(data)
-  //     setCustomDrinks(data)
-  //   }).catch((err) => console.error(err))
-  // }
+    axios.get('/routes/custom')
+    .then(({ data }) => {
+      console.log(data)
+      setCustomDrinks(data)
+    }).catch((err) => console.error(err))
+  }
 
 
   //Functions to handle state for Search component
 
   const searchDrinks = ({search, query}) => {
-    // get params to pass on to server 
+    // get params to pass on to server
     query = query.split(' ').join('_');
     let searchParam = 'search';
     let tag = 's';
@@ -78,7 +77,7 @@ function BoozeContextProvider({children}) {
       searchParam = 'filter'
       tag = 'i'
     }
- 
+
     axios.get('/routes/search', {params: {searchParam, tag, query}})
     .then(({ data }) => {
       if(!data.length){
@@ -90,20 +89,18 @@ function BoozeContextProvider({children}) {
     .catch(err => console.log('error fetching data from api in Context: ', err));
   };
 
-
- 
 // anything we want to pass on to other components must go in this value object
   return (
     <BoozeContext.Provider value={{
-      drinksFeed, 
-      random10, 
-      renderDrink, 
-      aDrink, 
-      makeADrink, 
-      searchDrinks, 
+      drinksFeed,
+      random10,
+      renderDrink,
+      aDrink,
+      makeADrink,
+      searchDrinks,
       searchResults,
-      // customDrinks,
-      // getCustomDrinks
+      customDrinks,
+      getCustomDrinks
       }}>
       {children}
     </BoozeContext.Provider>
