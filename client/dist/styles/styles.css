@@ -108,3 +108,8 @@ padding: 10px 10px;
 .create-view-button {
   padding-right: 8px;
 }
+
+/* Create-Feed Styles */
+.custom-card {
+  padding: 20px
+}

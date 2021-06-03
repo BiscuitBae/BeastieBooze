@@ -10,37 +10,46 @@ const CustomFeed = () => {
   useEffect(() => { getCustomDrinks() }, [])
   // console.log('HERE ARE CUSTOM DRINKS ', customDrinks);
 
+let text = 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'
 
-
-  return (<div>
-    <div className='page-heading'>Custom Libation Feed</div>
-    { customDrinks.map((drink) => {
-      return (
-        <div key={drink._id}>
-        <Link to={{
-          pathname: `/custom/${drink._id}`,
-          state:{ drink }
-        }}>
-          <h4>{drink.name}</h4>
-          <ul>
-            {Object.keys(drink.ingredients).map((ingredient, i) => {
-              return (
-                <li key={i}>{ingredient}</li>
-              )}
-              )
-              }
-          </ul>
-          <hr></hr>
-        </Link>
+return (
+  <div className='container'>
+    <h1 className='page-heading'>User Submitted Drinks</h1>
+      <div className='row'>
+        <div className="card-deck">
+        { customDrinks.map((drink) => {
+          return (
+            <div className="card bg-dark" style={{width: '18rem'}}key={drink._id}>
+                <div className='custom-tile'>
+                  <Link to={{
+                    pathname: `/custom/${drink._id}`,
+                    state:{ drink }
+                  }}>
+                    <div className="card-body text-white">
+                      <h5 className="card-title">{drink.name}</h5>
+                      <h6 className="card-subtitle mb-2 text-muted">{drink.alcoholic}</h6>
+                        {Object.keys(drink.ingredients).map((ingredient, i) => {
+                          return (
+                          <ul>
+                            <li className='card-text' key={i}>{ingredient}</li>
+                          </ul>
+                        )})
+                        }
+                    </div>
+                </Link>
+            </div>
         </div>
-  )
-}
-    )}
-    </div >
+        )})}
+        </div>
+      </div>
+  </div >
   )
 };
 
 export default CustomFeed
+
+
+// {{marginRight: spacing + 'em'}}
 
 /**
 
