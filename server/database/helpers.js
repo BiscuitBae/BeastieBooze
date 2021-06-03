@@ -16,7 +16,11 @@ const getUser = async (id) => {
 
 // createUser should take a user object ({ googleId, username }) which should make a new user entry in the db
 const createUser = async (userObj) => {
+  
+  console.log('helper function user data: ', userObj)
   const {googleId, givenName: username} = userObj;
+
+
   try {
     const newUser = await User.create({googleId, username});
     return newUser;

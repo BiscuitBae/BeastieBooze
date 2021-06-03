@@ -13,8 +13,8 @@ function UserContextProvider({children}) {
 
     axios.get('/routes/users', {params: userData}) 
     .then((response) => {
-      console.log(response)
-      setUserInfo(data)
+      console.log('===> userContext user response:', response)
+      // setUserInfo(data)
       setIsLoggedIn(true)
     })
     .catch(err => {

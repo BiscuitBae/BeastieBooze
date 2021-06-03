@@ -16,11 +16,16 @@ usersRouter.get('/', async (req, res) => {
   
 
   if(existingUser.length){
-    console.log(existingUser)
+    console.log('server: existing user ==> ', existingUser)
     res.status(201).send(existingUser);
   } else if (!existingUser.length) {
-    console.log('newUser: ' )
-    res.status(201).send(createUser(req.body));
+    // console.log('newUser: ', existingUser)
+    createUser(req.query)
+    .then(user => {
+      console.log(user)
+      res.status(201)
+      .send(user);
+    })
   } else {
     console.log('not found')
     res.sendStatus(404);
