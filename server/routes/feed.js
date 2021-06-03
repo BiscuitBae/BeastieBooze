@@ -9,6 +9,7 @@ const feedRouter = Router();
 
 
 feedRouter.get('/', (req, res) => {
+  console.log(`this is the api key coming through: ${process.env.API_KEY}`)
   axios.get(`http://www.thecocktaildb.com/api/json/v2/${process.env.API_KEY}/randomselection.php`)
     .then(( { data }) => {
       res.status(200).send(data.drinks);
