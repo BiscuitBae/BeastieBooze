@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 import { ingredientMap } from '../../utils/parseIng'
 
 const CustomDrinkView = () => {
-  // console.log('here is props', props)
   const location = useLocation();
   const { drink } = location.state;
   console.log(drink)
