@@ -32,7 +32,7 @@ const App = () => {
           <Search />
         </Route>
         <Route path='/drink/:drinkId'>  {/* // takes a param and dynamically renders a drinkView */}
-           <DrinkView />                {/* according to the drinkId passed in from the DrinkTile component */}
+          <DrinkView />                {/* according to the drinkId passed in from the DrinkTile component */}
         </Route>
         <Route path="/login">
           <Login />

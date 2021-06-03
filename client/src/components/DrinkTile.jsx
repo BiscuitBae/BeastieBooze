@@ -10,7 +10,7 @@ const DrinkTile = ({ drink }) => {
   const { idDrink: id, strDrink: name } = drink
 
   return (
-    <div className="col-md-3">
+    <div className="col-md-4">
       <div className="drink-tile">
         <Link to={`/drink/${id}`}>
         <ImgWrapper drink={ drink } />

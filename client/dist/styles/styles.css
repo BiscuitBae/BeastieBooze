@@ -1,29 +1,32 @@
+html {
+  background-image: linear-gradient(45deg, #f0f2f0, #97a1c7);
+}
+
 body {
   background: rgb(230, 235, 235);
+  font-family: 'Roboto';
 }
 
 .app-body {
-  background: rgb(230, 235, 235);
+  background-image: linear-gradient(45deg, #f0f2f0, #97a1c7);
 }
 
 .page-heading {
   text-align: center;
-  padding: 55px
+  padding: 55px;
+  font-family: 'Bebas Neue';
 }
 
 .sub-heading {
-  text-align: center;
   padding: 0px 0px 20px 0px;
 }
 
-
 /* Drink Tile Styles */
 .drink-tile {
-padding: 10px 10px;
+  padding: 10px 10px;
 }
 
 .img-wrap {
-  
   position: relative;
   text-align: center;
   color: white;
@@ -35,6 +38,7 @@ padding: 10px 10px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue';
 }
 
 .hidden {
@@ -111,3 +115,34 @@ padding: 10px 10px;
 }
 
 /* Create-Feed Styles */
+
+
+.form-control {
+  font-family: 'Roboto';
+}
+
+.required {
+  color: red;
+  padding-top: 8px;
+}
+
+.custom-img {
+  height: 60%;
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-title {
+  font-family: 'Bebas Neue';
+  text-align: center;
+}
+
+.card-text {
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: none;
+}

@@ -9,7 +9,7 @@
     "build:prod": "webpack --config webpack.config.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "restart": "pm2 startOrRestart ecosystem.config.js --env production",
-    "deploy": "pm2 deploy ecosystem.config.js"
+    "deploy": "pm2 deploy ecosystem.config.js production"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/BiscuitBae/BeastieBooze#readme",
   "dependencies": {
+    "@hookform/resolvers": "^2.5.2",
     "@popperjs/core": "^2.9.2",
     "acorn-jsx": "^5.3.1",
     "axios": "^0.21.1",
@@ -42,7 +43,8 @@
     "react-hook-form": "^7.7.1",
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.2.0",
-    "resolve-cwd": "^3.0.0"
+    "resolve-cwd": "^3.0.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",

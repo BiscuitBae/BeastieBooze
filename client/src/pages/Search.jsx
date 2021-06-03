@@ -8,11 +8,12 @@ const Search = () => {
 
   const { searchDrinks, searchResults } = useContext(BoozeContext);
   const {register, handleSubmit} = useForm();
-  
-  const onSubmit = data => {
+
+  const onSubmit = (data, e) => {
     searchDrinks(data)
+    e.target.reset();
   };
-  
+
   // getting search results, next step is rendering them below the form
 
   return (
@@ -26,8 +27,8 @@ const Search = () => {
               <option value={"name"}>Drink Name</option>
               <option value={"ingredient"}>Ingredient</option>
             </select>
-            <input type='text' className='form-control'  {...register("query")} />
-            <button className="btn btn-outline-info btn-sm" type="submit">Search</button>
+            &nbsp;<input type='text' className='form-control'  {...register("query")} />
+            &nbsp;<button className="btn btn-outline-dark btn-sm" type="submit">Search</button>
           </div>
         </form>
       </div>
