@@ -48,7 +48,6 @@ const DrinkView = () => {
     strInstructions: directions, 
   } = aDrink;
   
-  console.log(ingredients)
 
   return (
     <div className="container">
@@ -75,12 +74,6 @@ const DrinkView = () => {
           <div className="drink-button">
             <button type="button" className="btn btn-info">Add To Favorites</button>
           </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <hr></hr>
-          <h2 className="page-heading">Reviews</h2>
         </div>
       </div>
     </div>

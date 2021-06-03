@@ -15,11 +15,6 @@ const DrinkTile = ({ drink }) => {
         <Link to={`/drink/${id}`}>
         <ImgWrapper drink={ drink } />
         </Link>
-        {/* <h3 className="drink-name">
-          <Link to={`/drink/${id}`}>
-            {name}
-          </Link>
-        </h3> */}
       </div>
     </div>
   )

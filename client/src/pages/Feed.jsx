@@ -21,7 +21,6 @@ const Feed = () => {
       {drinkList}
       </div>
     </div>
-
   )
 }
 
