@@ -7,7 +7,7 @@ import React from 'react'
 
 const Profile = () => {
 
-  <h1 className='page-heading'> </h1>
+  <h1 className='page-heading'> Profile Page</h1>
 
 }
 
