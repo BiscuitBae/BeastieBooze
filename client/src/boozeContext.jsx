@@ -56,14 +56,14 @@ function BoozeContextProvider({children}) {
 
   //Function To get all Custom Drinks and Populate them for CustomFeed component
 
-  const getCustomDrinks = () => {
+  // const getCustomDrinks = () => {
 
-    axios.get('/routes/custom')
-    .then(({ data }) => {
-      console.log(data)
-      setCustomDrinks(data)
-    }).catch((err) => console.error(err))
-  }
+  //   axios.get('/routes/custom')
+  //   .then(({ data }) => {
+  //     console.log(data)
+  //     setCustomDrinks(data)
+  //   }).catch((err) => console.error(err))
+  // }
 
 
   //Functions to handle state for Search component
@@ -102,8 +102,9 @@ function BoozeContextProvider({children}) {
       makeADrink, 
       searchDrinks, 
       searchResults,
-      customDrinks,
-      getCustomDrinks}}>
+      // customDrinks,
+      // getCustomDrinks
+      }}>
       {children}
     </BoozeContext.Provider>
   )
