@@ -8,6 +8,7 @@ const Create = () => {
   const { makeADrink } = useContext(BoozeContext);
   const {userInfo} = useContext(UserContext);
   const {register, handleSubmit} = useForm();
+
   
   const onSubmit = data => {
     makeADrink(data);
@@ -15,7 +16,7 @@ const Create = () => {
  
   return (
     <div className='form-group'>
-      <h1 className="page-heading">{userInfo.name}, let's make a drink!</h1>
+      <h1 className="page-heading">{userInfo.username}, let's make a drink!</h1>
       <form className='input-form ' onSubmit={handleSubmit(onSubmit)}>
         <h3 className='create-form-heading'>Name Your Drink!</h3>
         <input className="form-control" {...register("drinkName")} />

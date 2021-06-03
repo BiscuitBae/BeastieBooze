@@ -17,13 +17,13 @@ usersRouter.get('/', async (req, res) => {
 
   if(existingUser.length){
     console.log('server: existing user ==> ', existingUser)
-    res.status(201).send(existingUser);
+    res.status(201).send(existingUser[0]);
   } else if (!existingUser.length) {
     // console.log('newUser: ', existingUser)
     createUser(req.query)
     .then(user => {
       console.log(user)
-      res.status(201)
+      res.status(200)
       .send(user);
     })
   } else {
