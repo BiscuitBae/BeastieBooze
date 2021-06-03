@@ -12,7 +12,7 @@ const DrinkView = () => {
   const { drinkId } = useParams()
 
   // const {renderDrink, aDrink} = useContext(BoozeContext)
- 
+
   // useEffect(() => {
   //   if (aDrink && aDrink.idDrink != drinkId) {
   //     renderDrink(drinkId)
