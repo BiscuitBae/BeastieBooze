@@ -24,7 +24,7 @@ return (
               } 
             src={thumbnail}
             alt={name} />
-            <div className= {hovering ? "wrap-text" : "wrap-text hidden"}>{ingredient}</div>
+            <div className= {hovering ? "wrap-text" : "wrap-text hidden"}>{name}</div>
         </div>
 )
 }
