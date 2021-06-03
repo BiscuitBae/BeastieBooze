@@ -35,14 +35,40 @@ function BoozeContextProvider({children}) {
   // This receives the user input from the Create component. This is where we'll parse that data and make a post request to
   // to add the new drink to the db
   const makeADrink = (userInput) => {
-    console.log("we gotta do something with this drank data: ", userInput);
+    // console.log("we gotta do something with this drank data: ", userInput);
+    // let { drinkName, instructions, alcoholic, ingredients } = userInput 
+
+    // ingredients = ingredients.split(`\n`)
+    userInput.ingredients = userInput.ingredients.split(`\n`).reduce((output, ingredient) => {
+      ingredient = ingredient.split(':');
+      ingredient[1] = ingredient[1].trim()
+      output[ingredient[1]] = ingredient[0]
+      return output;
+    }, {})
+
+
+    axios.post('/routes/custom', userInput)
+    .then(() => {
+      console.log('USER INPUT POSTED')
+    }).catch((err) => console.error(err))
 
   }
+
+  //Function To get all Custom Drinks and Populate them for CustomFeed component
+
+  const getCustomDrinks = () => {
+
+    axios.get('/routes/custom')
+    .then(({ data }) => {
+      console.log(data)
+      setCustomDrinks(data)
+    }).catch((err) => console.error(err))
+  }
+
 
   //Functions to handle state for Search component
 
   const searchDrinks = ({search, query}) => {
-    
     // get params to pass on to server 
     query = query.split(' ').join('_');
     let searchParam = 'search';
@@ -55,17 +81,29 @@ function BoozeContextProvider({children}) {
  
     axios.get('/routes/search', {params: {searchParam, tag, query}})
     .then(({ data }) => {
-      console.log(data)
+      if(!data.length){
+        setSearchResults("404")
+      } else {
       setSearchResults(data)
+      }
     })
     .catch(err => console.log('error fetching data from api in Context: ', err));
-
   };
+
 
  
 // anything we want to pass on to other components must go in this value object
   return (
-    <BoozeContext.Provider value={{drinksFeed, random10, renderDrink, aDrink, makeADrink, searchDrinks, searchResults}}>
+    <BoozeContext.Provider value={{
+      drinksFeed, 
+      random10, 
+      renderDrink, 
+      aDrink, 
+      makeADrink, 
+      searchDrinks, 
+      searchResults,
+      customDrinks,
+      getCustomDrinks}}>
       {children}
     </BoozeContext.Provider>
   )

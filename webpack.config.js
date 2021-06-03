@@ -28,15 +28,6 @@ module.exports = {
       publicPath: '/',
       path: `${DIST_DIR}`,
     },
-    devtool: "source-map",
-    // plugins: [
-    //   new HtmlWebPackPlugin({
-    //     template: "./client/dist/index.html",
-    //     filename: "./index.html"
-    //   })
-    // ],
-    stats: {
-      children: true
-    }
+    devtool: "source-map"
   };
 
