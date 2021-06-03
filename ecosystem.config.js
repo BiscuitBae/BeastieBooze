@@ -1,7 +1,15 @@
 module.exports = {
   apps: [{
     name: 'beastie-booze',
-    script: './server/app.js'
+    script: './server/app.js',
+    env: {
+      NODE_ENV: 'development',
+      API_KEY: process.env.API_KEY
+    },
+    env_production: {
+      NODE_ENV: 'production',
+      API_KEY: process.env.API_KEY
+    }
   }],
   deploy: {
     production: {
@@ -16,12 +24,6 @@ module.exports = {
       // taking out these 2 for now since they break the deploy:
       // npm install && npm run build:prod
       'post-deploy': 'npm run-script restart',
-       // Environment variables that must be injected in all applications on this env
-      env: {
-        // add env variables before next deployment
-        NODE_ENV: 'production',
-        API_KEY: process.env.API_KEY
-      }
     }
   }
 }

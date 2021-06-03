@@ -8,8 +8,8 @@
     "build:dev": "webpack --config webpack.config.js --mode development --watch",
     "build:prod": "webpack --config webpack.config.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "restart": "pm2 startOrRestart ecosystem.config.js",
-    "deploy": "pm2 deploy ecosystem.config.js production"
+    "restart": "pm2 startOrRestart ecosystem.config.js --env production",
+    "deploy": "pm2 deploy ecosystem.config.js --env production"
   },
   "repository": {
     "type": "git",
