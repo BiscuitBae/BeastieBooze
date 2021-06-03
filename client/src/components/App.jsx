@@ -40,7 +40,7 @@ const App = () => {
         <Route exact path="/custom" component={CustomFeed} />
           {/* <CustomFeed />
         </Route> */}
-        <Route path="/custom/drink" component={CustomDrinkView} />
+        <Route path="/custom/:drinkName" component={CustomDrinkView} />
           {/* <CustomDrinkView />
         </Route> */}
       </Switch>

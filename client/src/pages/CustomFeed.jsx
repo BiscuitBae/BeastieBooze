@@ -18,7 +18,7 @@ const CustomFeed = () => {
       return (
         <div key={drink._id}>
         <Link to={{
-          pathname: '/custom/drink',
+          pathname: `/custom/${drink.name}`,
           state:{ drink }
         }}>
           <h4>{drink.name}</h4>
