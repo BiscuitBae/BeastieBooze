@@ -10,13 +10,16 @@ import { HashRouter as Router } from 'react-router-dom'
 import App from './components/App';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {BoozeContextProvider} from './boozeContext'
+import { UserContextProvider } from './userContext'
+import { BoozeContextProvider } from './boozeContext'
 
 
 ReactDOM.render(
-  <BoozeContextProvider>
-    <Router>
-      <App />
-    </Router>
-  </BoozeContextProvider>,
+  <UserContextProvider>
+    <BoozeContextProvider>
+      <Router>
+        <App />
+      </Router>
+    </BoozeContextProvider>
+  </UserContextProvider>,
   document.getElementById('app'));

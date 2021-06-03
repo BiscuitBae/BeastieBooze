@@ -11,8 +11,8 @@ function BoozeContextProvider({children}) {
   const [aDrink, setADrink] = useState({});
   const [customDrinks, setCustomDrinks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  const [userInfo, setUserinfo] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [userInfo, setUserInfo] = useState([]);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   
 
 // gets 10 random drinks from our api
@@ -95,7 +95,7 @@ function BoozeContextProvider({children}) {
 
 
  
-const valueObj = {
+const drinksProps = {
   drinksFeed, 
   random10, 
   renderDrink, 
@@ -108,7 +108,7 @@ const valueObj = {
 
 // anything we want to pass on to other components must go in this value object
   return (
-    <BoozeContext.Provider value={valueObj}>
+    <BoozeContext.Provider value={drinksProps}>
       {children}
     </BoozeContext.Provider>
   )
