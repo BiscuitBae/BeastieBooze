@@ -4,15 +4,22 @@ import axios from 'axios'
 const UserContext = createContext();
 
 function UserContextProvider({children}) {
+
   const [userInfo, setUserInfo] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
   const loginUser = (userData) => {
 
-
-    axios.get('/')
-
+    axios.get('/routes/users', {params: userData}) 
+    .then((response) => {
+      console.log(response)
+      setUserInfo(data)
+      setIsLoggedIn(true)
+    })
+    .catch(err => {
+      console.log(err)
+    })
     
   }
 
