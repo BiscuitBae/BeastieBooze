@@ -12,14 +12,14 @@ const DrinkView = () => {
   const { drinkId } = useParams()
 
   // const {renderDrink, aDrink} = useContext(BoozeContext)
- 
+
   // useEffect(() => {
   //   if (aDrink && aDrink.idDrink != drinkId) {
   //     renderDrink(drinkId)
   //   }
   // }, [])
 
- 
+
 //? Here we want to discard the state and axios call in this component and pass that responsibility to 
 //? context, as with the above commented out code. The problem there is that data isn't persisting 
 //? after refreshing DrinkView page currently. When we figure that out we'll switch back to using context 
