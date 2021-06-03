@@ -14,7 +14,7 @@ console.log('HERE ARE CUSTOM DRINKS ', customDrinks);
     <div className='page-heading'>Custom Libation Feed</div>
     { customDrinks.map(( drink ) => {
       return (
-        <Link to={'/custom/drink'}>
+        <Link to={'/custom/drink'} drink={drink}>
           <h4>{drink.name}</h4>
           <ul>
             {Object.keys(drink.ingredients).map(ingredient => {
