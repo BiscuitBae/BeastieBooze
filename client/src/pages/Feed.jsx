@@ -14,7 +14,6 @@ const Feed = () => {
   const drinkList = drinksFeed.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
-o
   return (
     <div className="container">
       <h1 className="page-heading">Featured Drinks</h1>
