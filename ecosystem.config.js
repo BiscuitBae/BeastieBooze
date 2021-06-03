@@ -1,8 +1,7 @@
 module.exports = {
   apps: [{
     name: 'beastie-booze',
-    // maybe add build here or change this to npm start command but seems fine to me
-    script: './server/app.js &&  npm run build:prod'
+    script: './server/app.js'
   }],
   deploy: {
     production: {
@@ -12,13 +11,14 @@ module.exports = {
       ref: 'origin/main',
       repo: 'git@github.com:BiscuitBae/BeastieBooze.git',
       path: '/home/ubuntu/BeastieBooze',
-      // also maybe just not running the build after we deploy
-      // maybe this is where we can add a build for production environments if needed
-      'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js',
+      // need to figure out how to run these commands without installing locally
+      // it might be as simple as adding them after the pm2 command
+      'post-deploy': 'npm install && npm run build:prod && npm run-script restart',
        // Environment variables that must be injected in all applications on this env
       env: {
-        // im guessing the stuff from the env file
-        NODE_ENV: 'production'
+        // add env variables before next deployment
+        NODE_ENV: 'production',
+        API_KEY: process.env.API_KEY
       }
     }
   }
