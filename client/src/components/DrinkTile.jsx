@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import useHover from '../../utils/useHover'
-
 import ImgWrapper from './ImgWrapper'
 
 
@@ -19,7 +17,7 @@ const DrinkTile = ({ drink }) => {
         </Link>
         <h3 className="drink-name">
           <Link to={`/drink/${id}`}>
-          {name}
+            {name}
           </Link>
         </h3>
       </div>
