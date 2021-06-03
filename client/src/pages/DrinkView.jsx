@@ -69,10 +69,10 @@ const DrinkView = () => {
           </ul>
           <h4 className="sub-heading">Directions</h4>
           <p>{directions}</p>
-          <div className='virgin-button'>
+          <div className='drink-button'>
             <button type="button" className="btn btn-dark">Make Virgin</button>
           </div>
-          <div className="favorite-button">
+          <div className="drink-button">
             <button type="button" className="btn btn-info">Add To Favorites</button>
           </div>
         </div>

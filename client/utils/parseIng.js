@@ -23,8 +23,8 @@ const ingredientParser = (drink) => {
 
 const ingredientMap = (prop) => {
   let ingredientArr = [];
-  for(let ingredient in prop){
-    let measurement = prop[ingredient]
+  for(let measurement in prop){
+    let ingredient = prop[measurement]
     ingredientArr.push([measurement, ingredient])
   }
   return ingredientArr

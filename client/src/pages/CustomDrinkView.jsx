@@ -33,12 +33,12 @@ const CustomDrinkView = () => {
           </ul>
           <h4 className="sub-heading">Directions</h4>
           <p>{instructions}</p>
-          <div className='virgin-button'>
+          <span className='drink-button create-view-button'>
             <button type="button" className="btn btn-dark">Make Virgin</button>
-          </div>
-          <div className="favorite-button">
+          </span>
+          <span className="drink-button">
             <button type="button" className="btn btn-info">Add To Favorites</button>
-          </div>
+          </span>
         </div>
       </div>
       <div className="row">
