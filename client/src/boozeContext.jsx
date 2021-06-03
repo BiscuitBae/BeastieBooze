@@ -11,9 +11,6 @@ function BoozeContextProvider({children}) {
   const [aDrink, setADrink] = useState({});
   const [customDrinks, setCustomDrinks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  // const [userInfo, setUserInfo] = useState([]);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
 
 // gets 10 random drinks from our api
   const random10 = () => {
@@ -71,7 +68,7 @@ function BoozeContextProvider({children}) {
   //Functions to handle state for Search component
 
   const searchDrinks = ({search, query}) => {
-    // get params to pass on to server 
+    // get params to pass on to server
     query = query.split(' ').join('_');
     let searchParam = 'search';
     let tag = 's';
@@ -80,7 +77,7 @@ function BoozeContextProvider({children}) {
       searchParam = 'filter'
       tag = 'i'
     }
- 
+
     axios.get('/routes/search', {params: {searchParam, tag, query}})
     .then(({ data }) => {
       if(!data.length){

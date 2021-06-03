@@ -5,7 +5,6 @@ dotenv.config()
 const axios = require('axios');
 
 const feedRouter = Router();
-// const { API_KEY } = require('../config.js')
 
 
 feedRouter.get('/', (req, res) => {

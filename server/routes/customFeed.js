@@ -19,16 +19,16 @@ customRouter.post('/', (req, res) => {
   .catch((err) => {
     console.log('ERROR', err)
     res.sendStatus(500)
-  }) 
+  })
 })
 
-//GET ALL 
+//GET ALL
 customRouter.get('/', (req, res) => {
 getDrinks()
 .then((results) => {
   res.status(200).send(results)
 })
-.catch((err) => { 
+.catch((err) => {
   console.error(err)
   res.sendStatus(500)
   })
