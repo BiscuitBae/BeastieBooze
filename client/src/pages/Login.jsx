@@ -23,7 +23,7 @@ const refreshTokenSetup = (res) => {
 
 const Login = () => {
 
-  const { loginUser } = useContext(UserContext);
+  const { loginUser, logoutUser } = useContext(UserContext);
   const [showLoginButton, setShowLoginButton] = useState(true);
   const [showLogoutButton, setShowLogoutButton] = useState(false);
 
@@ -45,6 +45,7 @@ const Login = () => {
     console.clear();
     setShowLoginButton(true);
     setShowLogoutButton(false);
+    logoutUser();
   }
 
   return (

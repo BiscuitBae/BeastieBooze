@@ -5,7 +5,7 @@ const UserContext = createContext();
 
 function UserContextProvider({children}) {
 
-  const [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
@@ -13,8 +13,7 @@ function UserContextProvider({children}) {
 
     axios.get('/routes/users', {params: userData}) 
     .then(({data}) => {
-      console.log('===> userContext user response:', data)
-    
+      // console.log('===> userContext user response:', data)
       const { googleId, username, favorites } = data;
       setUserInfo({ googleId, username, favorites })
       setIsLoggedIn(true)
@@ -25,9 +24,15 @@ function UserContextProvider({children}) {
     
   }
 
+  const logoutUser = () => {
+    setUserInfo({})
+    setIsLoggedIn(false)
+  }
+
   const userProps = {
     userInfo,
     loginUser,
+    logoutUser,
     isLoggedIn,
   }
 
