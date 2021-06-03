@@ -23,7 +23,7 @@ return (
                 <div className='custom-tile'>
                   <Link to={{
                     pathname: `/custom/${drink._id}`,
-                    state:{ drink }
+                    state: { drink }
                   }}>
                     <div className="card-body text-white">
                       <h5 className="card-title">{drink.name}</h5>
@@ -31,7 +31,7 @@ return (
                         {Object.keys(drink.ingredients).map((ingredient, i) => {
                           return (
                           <ul>
-                            <li className='card-text' key={i}>{ingredient}</li>
+                            <li className='card-text' key={drink._id + i}>{ingredient}</li>
                           </ul>
                         )})
                         }
