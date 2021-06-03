@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { UserContext } from '../UserContext'
 
 const clientId = '862811879315-ur20fqc030th5oure5vsmkdg8ll94o8r.apps.googleusercontent.com';
 
 const refreshTokenSetup = (res) => {
   let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
+
+  const { loginUser } = useContext(UserContext);
 
   const refreshToken = () => {
     res.reloadAuthResponse()
@@ -28,6 +31,7 @@ const Login = () => {
     setShowLoginButton(false);
     setShowLogoutButton(true);
 
+    loginUser(res.profileObj);
     // refreshTokenSetup(res);
   };
 

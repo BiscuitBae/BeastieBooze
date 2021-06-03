@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
 
-const UserContext = React.createContext();
+const UserContext = createContext();
 
 function UserContextProvider({children}) {
   const [userInfo, setUserInfo] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
-  const LoginUser = (userData) => {
+  const loginUser = (userData) => {
 
-    // await axios.get()
 
-    setIsLoggedIn(true);
+    axios.get('/')
+
+    
   }
 
   const userProps = {
     userInfo,
-    LoginUser,
+    loginUser,
     isLoggedIn,
   }
 

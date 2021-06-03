@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, createContext} from 'react'
 import axios from 'axios'
 
-const BoozeContext = React.createContext();
+const BoozeContext = createContext();
 
 function BoozeContextProvider({children}) {
 
