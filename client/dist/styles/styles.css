@@ -8,7 +8,7 @@ body {
 
 .page-heading {
   text-align: center;
-  padding: 25px 50px;
+  padding: 30px 50px 20px 50px;
 }
 
 .sub-heading {
@@ -73,7 +73,7 @@ padding: 10px 10px;
 /* Register / Login Styles */
 
 .input-form {
-  margin: 75px;
+  margin: 40px;
 }
 
 .submit {
@@ -102,4 +102,9 @@ padding: 10px 10px;
 .create-button {
   padding-top: 20px;
   text-align: center
+}
+
+.create-form-heading {
+  padding: 20px 0px;
+
 }

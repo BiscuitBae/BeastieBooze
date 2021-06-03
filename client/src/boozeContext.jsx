@@ -46,9 +46,25 @@ function BoozeContextProvider({children}) {
       return output;
     }, {})
 
-    console.log(userInput)
+
+    axios.post('/routes/custom', userInput)
+    .then(() => {
+      console.log('USER INPUT POSTED')
+    }).catch((err) => console.error(err))
 
   }
+
+  //Function To get all Custom Drinks and Populate them for CustomFeed component
+
+  const getCustomDrinks = () => {
+
+    axios.get('/routes/custom')
+    .then(({ data }) => {
+      console.log(data)
+      setCustomDrinks(data)
+    }).catch((err) => console.error(err))
+  }
+
 
   //Functions to handle state for Search component
 
@@ -72,13 +88,22 @@ function BoozeContextProvider({children}) {
       }
     })
     .catch(err => console.log('error fetching data from api in Context: ', err));
-
   };
+
 
  
 // anything we want to pass on to other components must go in this value object
   return (
-    <BoozeContext.Provider value={{drinksFeed, random10, renderDrink, aDrink, makeADrink, searchDrinks, searchResults}}>
+    <BoozeContext.Provider value={{
+      drinksFeed, 
+      random10, 
+      renderDrink, 
+      aDrink, 
+      makeADrink, 
+      searchDrinks, 
+      searchResults,
+      customDrinks,
+      getCustomDrinks}}>
       {children}
     </BoozeContext.Provider>
   )
