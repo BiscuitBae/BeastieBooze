@@ -1,20 +1,25 @@
 import React, { useContext, useEffect } from 'react';
-import { BoozeContext } from'../boozeContext'
+import { BoozeContext } from '../boozeContext'
 // import CustomDrinkView from './CustomDrinkView'
 import { Link } from 'react-router-dom'
 
 const CustomFeed = () => {
 
-const { customDrinks, getCustomDrinks } = useContext(BoozeContext)
+  const { customDrinks, getCustomDrinks } = useContext(BoozeContext)
 
-useEffect(() => { getCustomDrinks() }, [])
-console.log('HERE ARE CUSTOM DRINKS ', customDrinks);
+  useEffect(() => { getCustomDrinks() }, [])
+  // console.log('HERE ARE CUSTOM DRINKS ', customDrinks);
+
+
 
   return (<div>
     <div className='page-heading'>Custom Libation Feed</div>
-    { customDrinks.map(( drink ) => {
+    { customDrinks.map((drink) => {
       return (
-        <Link to={'/custom/drink'} drink={drink}>
+        <Link to={{
+          pathname: '/custom/drink',
+          state:{ drink }
+        }}>
           <h4>{drink.name}</h4>
           <ul>
             {Object.keys(drink.ingredients).map(ingredient => {
@@ -26,10 +31,10 @@ console.log('HERE ARE CUSTOM DRINKS ', customDrinks);
           </ul>
           <hr></hr>
         </Link>
-      )
-    }
+  )
+}
     )}
-    </div>
+    </div >
   )
 };
 

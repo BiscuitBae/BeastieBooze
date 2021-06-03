@@ -37,12 +37,12 @@ const App = () => {
         <Route path="/login">
           <Login />
         </Route>
-        <Route exact path="/custom">
-          <CustomFeed />
-        </Route>
-        <Route path="/custom/drink">
-          <CustomDrinkView />
-        </Route>
+        <Route exact path="/custom" component={CustomFeed} />
+          {/* <CustomFeed />
+        </Route> */}
+        <Route path="/custom/drink" component={CustomDrinkView} />
+          {/* <CustomDrinkView />
+        </Route> */}
       </Switch>
     </div>
   )
