@@ -8,18 +8,24 @@ const DrinkTile = ({ drink }) => {
 
   // grabbing properties from drink object and reassigning them to less dumb variable names
   const { idDrink: id, strDrink: name } = drink
-
+  console.log('THIS IS DRINKTILE DRINK', drink)
   return (
-    <div className="col-md-3">
+    <div className="col-md-4">
       <div className="drink-tile">
-        <Link to={`/drink/${id}`}>
+        <Link to={{
+          pathname: `/drink/${id}`,
+          state: { drink }
+          }}>
         <ImgWrapper drink={ drink } />
         </Link>
       </div>
     </div>
   )
-
-
 }
 
 export default DrinkTile
+
+{/* <Link to={{
+        pathname: `/custom/${drink._id}`,
+        state:{ drink }
+      }}> */}

@@ -32,7 +32,6 @@ const Create = () => {
         </div>
       </form>
     </div>
-    
   )
 }
 
