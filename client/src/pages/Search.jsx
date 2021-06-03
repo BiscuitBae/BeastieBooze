@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import {BoozeContext} from '../boozeContext'
 import SearchFeed from '../components/SearchFeed'
 
+
 const Search = () => {
 
   const { searchDrinks, searchResults } = useContext(BoozeContext);

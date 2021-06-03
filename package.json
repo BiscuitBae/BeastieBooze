@@ -2,7 +2,7 @@
   "name": "beastiebooze",
   "version": "1.0.0",
   "description": "Drinks app",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
     "build:dev": "webpack --config webpack.config.js --mode development --watch",
