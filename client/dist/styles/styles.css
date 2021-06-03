@@ -61,14 +61,10 @@ padding: 10px 10px;
   padding-bottom: 50px;
 }
 
-.virgin-button {
+.drink-button {
   padding-top: 20px;
-  /* text-align: center; */
 }
 
-.favorite-button {
-  padding-top: 20px;
-}
 
 /* Register / Login Styles */
 
@@ -106,5 +102,14 @@ padding: 10px 10px;
 
 .create-form-heading {
   padding: 20px 0px;
+}
 
+/* Create-View Styles */
+.create-view-button {
+  padding-right: 8px;
+}
+
+/* Create-Feed Styles */
+.custom-card {
+  padding: 20px
 }

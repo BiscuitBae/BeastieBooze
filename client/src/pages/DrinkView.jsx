@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BoozeContext } from '../boozeContext'
 
 
-import ingredientParser from '../../utils/parseIng'
+import { ingredientParser } from '../../utils/parseIng'
 
 const DrinkView = () => {
   // useParams will grab the param passed in url. grabbing drinkId from params.
@@ -19,7 +19,7 @@ const DrinkView = () => {
   //   }
   // }, [])
 
-
+ 
 //? Here we want to discard the state and axios call in this component and pass that responsibility to 
 //? context, as with the above commented out code. The problem there is that data isn't persisting 
 //? after refreshing DrinkView page currently. When we figure that out we'll switch back to using context 
@@ -48,6 +48,7 @@ const DrinkView = () => {
     strInstructions: directions, 
   } = aDrink;
   
+  console.log(ingredients)
 
   return (
     <div className="container">
@@ -68,10 +69,10 @@ const DrinkView = () => {
           </ul>
           <h4 className="sub-heading">Directions</h4>
           <p>{directions}</p>
-          <div className='virgin-button'>
+          <div className='drink-button'>
             <button type="button" className="btn btn-dark">Make Virgin</button>
           </div>
-          <div className="favorite-button">
+          <div className="drink-button">
             <button type="button" className="btn btn-info">Add To Favorites</button>
           </div>
         </div>
