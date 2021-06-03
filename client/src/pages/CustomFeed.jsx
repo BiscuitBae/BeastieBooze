@@ -17,9 +17,9 @@ return (
     <h1 className='page-heading'>User Submitted Drinks</h1>
       <div className='row'>
         <div className="card-deck">
-        { customDrinks.map((drink) => {
+        { customDrinks.map((drink, i) => {
           return (
-            <div className="card bg-dark" style={{width: '18rem'}}key={drink._id}>
+            <div className="card bg-dark" style={{width: '18rem'}}key={i}>
                 <div className='custom-tile'>
                   <Link to={{
                     pathname: `/custom/${drink._id}`,
