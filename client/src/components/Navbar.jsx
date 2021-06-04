@@ -40,9 +40,18 @@ const Navbar = () => {
             <Link to="/create" className="nav-link">Submit</Link>
           </li>
         </ul>
+        {username ?
+              <li className="nav-item">
+                <Link to="/profile">
+                  <p className="nav-item grey">
+                    Welcome, {username}!&nbsp;&nbsp;&nbsp;&nbsp;
+                  </p>
+                </Link>
+              </li>
+              : null
+            }
         <li className="nav-item login-nav">
           <div className="nav-link btn-nav" style={{padding: '10px 0px 0px 0px'}}>
-            {username ? <Link to="/profile"><p className="nav-item grey">Welcome, {username}!</p></Link> : null}
             <Login />
           </div>
         </li>
