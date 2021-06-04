@@ -26,7 +26,7 @@ const Search = () => {
               <option value={"name"}>Drink Name</option>
               <option value={"ingredient"}>Ingredient</option>
             </select>
-            &nbsp;<input type='text' className='form-control'  {...register("query")} />
+            &nbsp;<input type='text' className='form-control' {...register("query")} />
             &nbsp;<button className="btn btn-outline-dark btn-sm" type="submit">Search</button>
           </div>
         </form>
