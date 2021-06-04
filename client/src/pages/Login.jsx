@@ -4,22 +4,21 @@ import { UserContext } from '../userContext'
 
 const clientId = '862811879315-ur20fqc030th5oure5vsmkdg8ll94o8r.apps.googleusercontent.com';
 
-const refreshTokenSetup = (res) => {
-  let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
+// const refreshTokenSetup = (res) => {
+//   let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
 
-  
 
-  const refreshToken = () => {
-    res.reloadAuthResponse()
-      .then(newAuthRes => {
-        refreshTiming = (newAuthRes.expires_in || 3600 - 5 * 60) * 1000;
-        console.log('newAuthRes:', newAuthRes);
-        console.log('new auth Token', newAuthRes.id_token);
-        setTimeout(refreshToken, refreshTiming);
-      })
-  }
-  setTimeout(refreshToken, refreshTiming);
-}
+//   const refreshToken = () => {
+//     res.reloadAuthResponse()
+//       .then(newAuthRes => {
+//         refreshTiming = (newAuthRes.expires_in || 3600 - 5 * 60) * 1000;
+//         console.log('newAuthRes:', newAuthRes);
+//         console.log('new auth Token', newAuthRes.id_token);
+//         setTimeout(refreshToken, refreshTiming);
+//       })
+//   }
+//   setTimeout(refreshToken, refreshTiming);
+// }
 
 const Login = () => {
 
@@ -28,10 +27,10 @@ const Login = () => {
   const [showLogoutButton, setShowLogoutButton] = useState(false);
 
   const onLoginSuccess = (res) => {
-    // console.log('[Login Success] currentUser:', res.profileObj);
+    console.log('[Login Success] currentUser:', res.profileObj);
     setShowLoginButton(false);
     setShowLogoutButton(true);
-    
+
     loginUser(res.profileObj);
     // refreshTokenSetup(res);
   };
@@ -53,12 +52,12 @@ const Login = () => {
       {showLoginButton ?
         <GoogleLogin
           clientId={clientId}
+          // scope='https://www.googleapis.com/auth/user.birthday.read'
           buttonText='Login'
           onSuccess={onLoginSuccess}
           onFailure={onLoginFailure}
           cookiePolicy={'single_host_origin'}
           isSignedIn={true}
-          className='googleBtn'
       /> : null}
 
       {showLogoutButton ?
@@ -66,7 +65,6 @@ const Login = () => {
           clientId={clientId}
           buttonText='Sign Out'
           onLogoutSuccess={onSignoutSuccess}
-          className='googleBtn'
         >
         </GoogleLogout> : null
       }
