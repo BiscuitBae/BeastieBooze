@@ -13,7 +13,6 @@ const usersRouter = Router();
 usersRouter.get('/', async (req, res) => {
   const { googleId, username } = req.query
   const existingUser = await getUser(googleId);
-  
 
   if(existingUser.length){
     // console.log('server: existing user ==> ', existingUser)
@@ -25,6 +24,10 @@ usersRouter.get('/', async (req, res) => {
       console.log(user)
       res.status(200)
       .send(user);
+    })
+    .catch(err => {
+      console.log('error creating user', err)
+      res.sendStatus(500)
     })
   } else {
     console.log('not found')
