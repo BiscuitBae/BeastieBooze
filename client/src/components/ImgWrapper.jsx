@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import useHover from '../../utils/useHover'
 
 const ImgWrapper = ({drink}) => {
@@ -9,6 +9,10 @@ const ImgWrapper = ({drink}) => {
     strDrinkThumb: thumbnail, 
     strIngredient1: ingredient 
     } = drink
+
+  //is thumbnail loaded?
+  const [source, setSource] = useState('/images/martini.gif')
+  useEffect(() => { setSource(thumbnail) }, [])
 
   //create hover state
   const [hoverRef, hovering] = useHover();
@@ -22,7 +26,7 @@ return (
                 "img-fluid drink-thumb border border-secondary tint" :
                 "img-fluid drink-thumb border border-secondary" 
               } 
-            src={thumbnail}
+            src={source}
             alt={name} />
             <div className= {hovering ? "wrap-text" : "wrap-text hidden"}>{name}</div>
         </div>
