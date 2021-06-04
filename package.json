@@ -44,7 +44,6 @@
     "react-router-dom": "^5.2.0",
     "resolve-cwd": "^3.0.0",
     "sweetalert2": "^11.0.16",
-    "sweetalert2-react-content": "^4.0.1",
     "yup": "^0.32.9"
   },
   "devDependencies": {

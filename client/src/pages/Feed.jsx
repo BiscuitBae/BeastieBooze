@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from 'react'
-import DrinkTile from '../components/DrinkTile'
-import {BoozeContext} from '../boozeContext'
-import {UserContext} from '../userContext'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import React, { useEffect, useContext } from 'react';
+import DrinkTile from '../components/DrinkTile';
+import {BoozeContext} from '../boozeContext';
+import {UserContext} from '../userContext';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const Feed = () => {
 // pull drinksFeed (current assortment of drinks) and random10 function from BoozeContext
