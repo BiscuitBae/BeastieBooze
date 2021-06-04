@@ -6,7 +6,7 @@ import {UserContext} from '../userContext'
 const Feed = () => {
 // pull drinksFeed (current assortment of drinks) and random10 function from BoozeContext
 const {isLoggedIn, userInfo} = useContext(UserContext) 
-const {drinksFeed, random10} = useContext(BoozeContext)
+const {drinksFeed, random10, mocktail10} = useContext(BoozeContext)
 
   // when component loads, call random10 to populate drinksFeed with 10 new, random drinks from api
   useEffect(() => {
