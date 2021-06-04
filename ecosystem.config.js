@@ -1,5 +1,5 @@
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
   apps: [{
@@ -7,24 +7,18 @@ module.exports = {
     script: './server/app.js',
     env: {
       NODE_ENV: 'development',
-      API_KEY: process.env.API_KEY,
-      ATLAS_URL: process.env.ATLAS_URL,
-      HOST: process.env.HOST,
-      KEY: process.env.KEY
+      API_KEY: process.env.API_KEY
     },
     env_production: {
       NODE_ENV: 'production',
-      API_KEY: process.env.API_KEY,
-      ATLAS_URL: process.env.ATLAS_URL,
-      HOST: process.env.HOST,
-      KEY: process.env.KEY
+      API_KEY: process.env.API_KEY
     }
   }],
   deploy: {
     production: {
       user: 'ubuntu',
-      host: process.env.HOST,
-      key: process.env.KEY,
+      host: 'ec2-18-117-160-178.us-east-2.compute.amazonaws.com',
+      key: '~/.ssh/beastie-booze-key.pem',
       ref: 'origin/main',
       repo: 'git@github.com:BiscuitBae/BeastieBooze.git',
       path: '/home/ubuntu/BeastieBooze',
@@ -35,13 +29,11 @@ module.exports = {
       'post-deploy': 'npm run-script restart',
       env: {
         NODE_ENV: 'development',
-        API_KEY: process.env.API_KEY,
-        ATLAS_URL: process.env.ATLAS_URL
+        API_KEY: process.env.API_KEY
       },
       env_production: {
         NODE_ENV: 'production',
-        API_KEY: process.env.API_KEY,
-        ATLAS_URL: process.env.ATLAS_URL
+        API_KEY: process.env.API_KEY
       }
     }
   }
