@@ -4,9 +4,9 @@ const UserCreations = ({ creations }) => {
 
   return (
     <ul>
-      {creations.map((e, i) => {
+      {creations.map(e => {
         return (
-          <li>{e.name}</li>
+          <li key={e.id}>{e.name}</li>
         )
       })}
     </ul>

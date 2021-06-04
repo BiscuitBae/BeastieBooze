@@ -21,7 +21,7 @@ const Profile = () => {
   let userCreations = [
     {id: 4, name: 'tequila'},
     {id: 5, name: 'whiskey'},
-    {id: 6, name: 'jagerbomb'}
+    {id: 6, name: 'jaegerbomb'}
   ]
   let userFavorites = [
     {id: 1, name: 'hamburger'},

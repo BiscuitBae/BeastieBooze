@@ -4,9 +4,9 @@ const UserFavorites = ({ favorites }) => {
 
   return (
     <ul>
-      {favorites.map((e, i) => {
+      {favorites.map(e => {
         return (
-          <li>{e.name}</li>
+          <li key={e.id}>{e.name}</li>
         )
       })}
     </ul>
