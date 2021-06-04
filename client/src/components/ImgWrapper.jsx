@@ -3,12 +3,12 @@ import useHover from '../../utils/useHover'
 
 const ImgWrapper = ({drink}) => {
 
-   //* grabbing properties from drink object and reassigning them to less dumb variable names 
-  const { 
-    strDrink: name, 
-    strDrinkThumb: thumbnail, 
-    strIngredient1: ingredient 
-    } = drink
+  //* grabbing properties from drink object and reassigning them to less dumb variable names 
+  const {
+    strDrink: name,
+    strDrinkThumb: thumbnail,
+    strIngredient1: ingredient
+  } = drink;
 
   //is thumbnail loaded? Use a placehholder until image fetches from API
   const [source, setSource] = useState('/images/martini.gif')
@@ -33,4 +33,4 @@ return (
 )
 }
 
-export default ImgWrapper
+export default ImgWrapper;

@@ -5,25 +5,20 @@ import { BoozeContext } from '../boozeContext'
 import { UserContext } from '../userContext'
 import { Link } from 'react-router-dom'
 
-const SearchFeed = () => { 
+const SearchFeed = () => {
 
   const { searchDrinks, searchResults } = useContext(BoozeContext);
   const { isLoggedIn } = useContext(UserContext)
 
-
-  // console.log(searchResults)
-
   let drinkResults;
-
   //Rendering results or No Results depending on results of query
-  
-  if(searchResults !== "404"){
+  if (searchResults !== "404") {
     drinkResults = searchResults.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
   } else if(isLoggedIn) {
      return (
-       <div>
+      <div>
         <h4 className="sub-heading"> Sorry We Found No Results </h4>
         <Link to={`/create`}>
           <button className="btn btn-dark" type="submit">Create One?</button>
@@ -41,10 +36,10 @@ const SearchFeed = () => {
   return (
   <div className="container">
     <div className="row">
-    {drinkResults}
+      {drinkResults}
     </div>
   </div>
-)
-}
+  );
+};
 
-export default SearchFeed
+export default SearchFeed;

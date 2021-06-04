@@ -1,5 +1,5 @@
-import React, {useState, useEffect, createContext} from 'react'
-import axios from 'axios'
+import React, {useState, useEffect, createContext} from 'react';
+import axios from 'axios';
 
 const BoozeContext = createContext();
 
@@ -96,19 +96,18 @@ function BoozeContextProvider({children}) {
     .catch(err => console.log('error fetching data from api in Context: ', err));
   };
 
-
-
- 
 const drinksProps = {
-  drinksFeed, 
-  random10, 
-  renderDrink, 
-  aDrink, 
-  makeADrink, 
-  searchDrinks, 
+  drinksFeed,
+  random10,
+  renderDrink,
+  aDrink,
+  makeADrink,
+  searchDrinks,
   searchResults,
   customDrinks,
-  getCustomDrinks};
+  getCustomDrinks,
+  mocktail10
+};
 
 // anything we want to pass on to other components must go in this value object
   return (
@@ -116,7 +115,6 @@ const drinksProps = {
       {children}
     </BoozeContext.Provider>
   )
-
 }
 
-export {BoozeContextProvider, BoozeContext}
+export {BoozeContextProvider, BoozeContext};

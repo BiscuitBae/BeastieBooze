@@ -2,9 +2,7 @@ const { feedRouter } = require('./feed.js');
 const { drinkRouter } = require('./drinkView.js');
 const { searchRouter } = require('./search.js');
 const { customRouter } = require('./customFeed.js');
-const { usersRouter } = require('./users.js')
-
-
+const { usersRouter } = require('./users.js');
 
 module.exports = (app) => {
   app.use(`/routes/feed/`, feedRouter),
@@ -12,4 +10,4 @@ module.exports = (app) => {
   app.use('/routes/drink/', drinkRouter),
   app.use('/routes/custom/', customRouter),
   app.use('/routes/users/', usersRouter)
-}
+};

@@ -1,22 +1,20 @@
 // table of contents
-// render all of our different views
+// renders all of our different views
 // view switcher - main, single drink, create, profile, login/signup buttons, search bar
 
-
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import Navbar from './Navbar'
-import Create from '../pages/Create'
-import Feed from '../pages/Feed'
-import DrinkView from '../pages/DrinkView'
-import Login from '../pages/Login'
-import Search from '../pages/Search'
-import CustomFeed from '../pages/CustomFeed'
-import CustomDrinkView from '../pages/CustomDrinkView'
-import Profile from '../pages/Profile'
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Navbar from './Navbar';
+import Create from '../pages/Create';
+import Feed from '../pages/Feed';
+import DrinkView from '../pages/DrinkView';
+import Login from '../pages/Login';
+import Search from '../pages/Search';
+import CustomFeed from '../pages/CustomFeed';
+import CustomDrinkView from '../pages/CustomDrinkView';
+import Profile from '../pages/Profile';
 
 const App = () => {
-
 
   //* using react router to conditionally render views. We'll add more as we go
 
@@ -36,6 +34,6 @@ const App = () => {
     </div>
   )
 
-}
+};
 
 export default App

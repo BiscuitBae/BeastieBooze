@@ -1,18 +1,17 @@
 const { Router } = require("express");
-const dotenv = require('dotenv')
-dotenv.config()
-
+const dotenv = require('dotenv');
 const axios = require('axios');
 
-const drinkRouter = Router();
-//Premium API key doesn't work for certain requests. 
-const { API_KEY } = require('../config.js')
+dotenv.config();
 
+const drinkRouter = Router();
+// Premium API key doesn't work for certain requests.
+const { API_KEY } = require('../config.js');
 
 drinkRouter.get('/:drinkId', (req, res) => {
-  const drinkId = req.params.drinkId
+  const drinkId = req.params.drinkId;
   axios.get(`http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
-  .then(( { data }) => {
+    .then(({ data }) => {
       res.status(200).send(data);
     })
     .catch((err) => {
@@ -20,6 +19,5 @@ drinkRouter.get('/:drinkId', (req, res) => {
       res.sendStatus(500);
     });
 })
-
 
 module.exports = {drinkRouter};

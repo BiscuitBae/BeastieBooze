@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const DATABASE = 'BeastieBooze'
+const DATABASE = 'BeastieBooze';
 const dbLocation = `mongodb://localhost:27017/${DATABASE}`;
 
 mongoose.connect(dbLocation, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -10,7 +10,6 @@ mongoose.connect(dbLocation, {useNewUrlParser: true, useUnifiedTopology: true})
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-
 
 const UserSchema = new mongoose.Schema({
   googleId: String, // not sure if this will a string or a number, need to check once we can get data from google
@@ -26,31 +25,29 @@ const DrinkSchema = new mongoose.Schema({
   alcoholic: Boolean,
   createdBy: String
   //add a createdBy to the drinkSchema to link to Users once created
-})
+});
 
 const User = mongoose.model('User', UserSchema);
 const Drink = mongoose.model('Drink', DrinkSchema);
 
 const addDrink = async (drink) => {
-
   const { drinkName: name, instructions, ingredients, alcoholic } = drink
-
   const newDrink = new Drink({
-    name, instructions, ingredients, alcoholic
+    name,
+    instructions,
+    ingredients,
+    alcoholic
   })
-
   await newDrink.save();
-
-}
+};
 
 const getDrinks = async () => {
-  return await Drink.find({}).exec()
-
-}
+  return await Drink.find({}).exec();
+};
 
 module.exports = {
   User,
   Drink,
-  addDrink, 
+  addDrink,
   getDrinks,
 };

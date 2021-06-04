@@ -1,8 +1,5 @@
-const { CLIENT_ID, CLIENT_SECRET, API_KEY, COOKIEKEY } = process.env;
+const { API_KEY } = process.env;
 
 module.exports = {
-  CLIENT_ID,
-  CLIENT_SECRET,
-  API_KEY,
-  COOKIEKEY
+  API_KEY
 };
