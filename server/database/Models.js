@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
   googleId: String, // not sure if this will a string or a number, need to check once we can get data from google
   username: String,
   favorites: [],
-  // creations: []
+  creations: []
 });
 
 const DrinkSchema = new mongoose.Schema({

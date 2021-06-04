@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 const CustomDrinkTile = ( { drink, imageSrc }) => {
 
 const alcohol = drink.alcoholic ? 'alcoholic' : 'non-alcoholic'
-const sampleImage = 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Eucalyp-Deus_Cocktail.png'
 
 
 return (

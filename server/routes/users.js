@@ -35,5 +35,7 @@ usersRouter.get('/', async (req, res) => {
   }
 });
 
+//Create a User Patch and a User Destroy route//
+
 
 module.exports = { usersRouter };
