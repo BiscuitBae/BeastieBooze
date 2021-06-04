@@ -1,13 +1,12 @@
-import React, {useContext} from 'react'
-import { useForm } from 'react-hook-form'
-import {BoozeContext} from '../boozeContext'
-import SearchFeed from '../components/SearchFeed'
-
+import React, {useContext} from 'react';
+import { useForm } from 'react-hook-form';
+import {BoozeContext} from '../boozeContext';
+import SearchFeed from '../components/SearchFeed';
 
 const Search = () => {
 
   const { searchDrinks, searchResults } = useContext(BoozeContext);
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data, e) => {
     searchDrinks(data)

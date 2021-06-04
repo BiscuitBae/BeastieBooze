@@ -10,7 +10,9 @@ const {drinksFeed, random10, mocktail10} = useContext(BoozeContext);
 
   // when component loads, call random10 to populate drinksFeed with 10 new, random drinks from api
   useEffect(() => {
-    verifyAge()
+    if (isLegal === null) {
+      verifyAge();
+    }
   }, [])
 
   useEffect(() => {
