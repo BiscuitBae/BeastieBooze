@@ -26,7 +26,6 @@ customRouter.post('/', (req, res) => {
 customRouter.get('/', (req, res) => {
 getDrinks()
 .then((results) => {
-  console.log('HERE YE DATA', results)
   res.status(200).send(results)
 })
 .catch((err) => {
