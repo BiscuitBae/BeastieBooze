@@ -16,18 +16,17 @@ const schema = yup.object().shape({
 const Create = () => {
 
   const { makeADrink } = useContext(BoozeContext);
-  const { userInfo, setUserCreation } = useContext(UserContext);
+  const { userInfo, addCreation } = useContext(UserContext);
 
   const {register, handleSubmit, formState:{ errors }} = useForm({
     resolver: yupResolver(schema)
   });
 
   const onSubmit = (data, e) => {
-    console.log(data);
-    makeADrink(data);
     
     //for updating user 
-    setUserCreation(data)
+    addCreation(data)
+    makeADrink(data);
     e.target.reset();
   };
 

@@ -36,6 +36,9 @@ usersRouter.get('/', async (req, res) => {
 });
 
 //Create a User Patch and a User Destroy route//
+usersRouter.put('/', async(req, res) => {
+console.log(req.params)
+})
 
 
 module.exports = { usersRouter };
