@@ -2,14 +2,16 @@
 import React, { useEffect, useContext } from 'react'
 import DrinkTile from '../components/DrinkTile'
 import { BoozeContext } from '../boozeContext'
+import { UserContext } from '../userContext'
 import { Link } from 'react-router-dom'
 
 const SearchFeed = () => { 
 
   const { searchDrinks, searchResults } = useContext(BoozeContext);
+  const { isLoggedIn } = useContext(UserContext)
 
 
-  console.log(searchResults)
+  // console.log(searchResults)
 
   let drinkResults;
 
@@ -19,7 +21,7 @@ const SearchFeed = () => {
     drinkResults = searchResults.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
-  } else {
+  } else if(isLoggedIn) {
      return (
        <div>
         <h4 className="sub-heading"> Sorry We Found No Results </h4>
@@ -27,6 +29,12 @@ const SearchFeed = () => {
           <button className="btn btn-dark" type="submit">Create One?</button>
         </Link>
       </div>
+    )
+  } else {
+    return ( 
+    <div>
+        <h4 className="sub-heading"> Sorry We Found No Results </h4>
+    </div>
     )
   }
 

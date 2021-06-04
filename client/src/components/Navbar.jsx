@@ -1,10 +1,15 @@
 // navbar will contain logo on the far left, signup/login or logout/username(profile view) buttons on the far right
 // buttons to switch to either custom drinks page or the main feed
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { UserContext } from '../userContext'
+
 const Navbar = () => {
+
+  const { userInfo } = useContext(UserContext)
+
   //* links to endpoints that will be handled by Routes in App component
 
 //state to hold collapsing navbar
@@ -31,6 +36,9 @@ const Navbar = () => {
         </li>
         <li className="nav-item">
           <Link to="/create" className="nav-link">Submit</Link>
+        </li>
+        <li className="nav-item">
+          <Link to={`/profile/${userInfo.googleId}`} className="nav-link">Profile</Link>
         </li>
         <li className="nav-item">
           <Link to="/login" className="nav-link">Login</Link>

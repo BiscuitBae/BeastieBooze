@@ -10,7 +10,7 @@ const ImgWrapper = ({drink}) => {
     strIngredient1: ingredient 
     } = drink
 
-  //is thumbnail loaded?
+  //is thumbnail loaded? Use a placehholder until image fetches from API
   const [source, setSource] = useState('/images/martini.gif')
   useEffect(() => { setSource(thumbnail) }, [])
 
