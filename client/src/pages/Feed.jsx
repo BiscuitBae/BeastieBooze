@@ -16,13 +16,14 @@ const {drinksFeed, random10, mocktail10} = useContext(BoozeContext)
   }, [])
 
   useEffect(() => {
-    if(!isLegal){
-      mocktail10();
-    } else {
-      random10();
-    }
+      if(!isLegal){
+        mocktail10();
+      } else {
+        random10();
+      }
   }, [isLegal])
-
+  
+  
   let dranks = drinksFeed.slice(1);
   
   const drinkList = dranks.map(drink => { 
