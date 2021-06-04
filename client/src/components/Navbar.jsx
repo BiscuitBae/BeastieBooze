@@ -4,13 +4,11 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Login from '../pages/Login.jsx';
-import { UserContext } from '../userContext.jsx';
+// import { UserContext } from '../userContext.jsx';
 
 import { UserContext } from '../userContext'
 
 const Navbar = () => {
-
-  const { userInfo } = useContext(UserContext)
 
   //* links to endpoints that will be handled by Routes in App component
   const { userInfo, isLoggedIn } = useContext(UserContext);
@@ -47,7 +45,7 @@ const Navbar = () => {
         </ul>
         <li className="nav-item login-nav">
           <div className="nav-link btn-nav" style={{padding: '10px 0px 0px 0px'}}>
-            {username ? <Link to="/profile"><p className="nav-item grey">Welcome, {username}!</p></Link> : null}
+            {username ? <Link to={`/profile/${userInfo.googleId}`}><p className="nav-item grey">Welcome, {username}!</p></Link> : null}
             <Login />
           </div>
         </li>
@@ -55,9 +53,5 @@ const Navbar = () => {
     </nav>
   )
 }
-
-{/* <li className="nav-item">
-<Link to={`/profile/${userInfo.googleId}`} className="nav-link">Profile</Link>
-</li> */}
 
 export default Navbar
