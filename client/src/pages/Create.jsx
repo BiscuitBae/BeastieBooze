@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { useForm } from 'react-hook-form'
-import {BoozeContext} from '../boozeContext'
+import { BoozeContext } from '../boozeContext'
+import { UserContext } from '../userContext'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Link } from 'react-router-dom'
@@ -15,6 +16,8 @@ const schema = yup.object().shape({
 const Create = () => {
 
   const { makeADrink } = useContext(BoozeContext);
+  const { userInfo, setUserCreation } = useContext(UserContext);
+
   const {register, handleSubmit, formState:{ errors }} = useForm({
     resolver: yupResolver(schema)
   });
@@ -22,6 +25,9 @@ const Create = () => {
   const onSubmit = (data, e) => {
     console.log(data);
     makeADrink(data);
+    
+    //for updating user 
+    setUserCreation(data)
     e.target.reset();
   };
 
