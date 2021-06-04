@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-
 const dotenv = require('dotenv');
 dotenv.config();
+
+const mongoose = require('mongoose');
 
 const DATABASE = 'BeastieBooze';
 // for dev - uncomment the next line and comment out line 10
@@ -48,6 +48,7 @@ const addDrink = async (drink) => {
 };
 
 const getDrinks = async () => {
+  console.log('atlas url:', process.env.ATLAS_URL);
   return await Drink.find({}).exec();
 };
 

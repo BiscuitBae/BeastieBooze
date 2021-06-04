@@ -19,6 +19,7 @@ function UserContextProvider({children}) {
       setUserInfo({ googleId, username, favorites });
       setIsLoggedIn(true);
       setFavoriteDrinks(favorites);
+      console.log('in loginUser userContext, userInfo is: ', userInfo);
     })
     .catch(err => console.log(err));
   };
