@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const DATABASE = 'BeastieBooze';
-const dbLocation = `mongodb://localhost:27017/${DATABASE}`;
+// for dev - uncomment the next line and comment out line 10
+// const dbLocation = `mongodb://localhost:27017/${DATABASE}`;
+// for prod
+const dbLocation = process.env.ATLAS_URL;
 
 mongoose.connect(dbLocation, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => {

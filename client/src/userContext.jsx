@@ -49,10 +49,10 @@ function UserContextProvider({children}) {
       denyButtonText: `No, I am underage`,
     }).then(({ isConfirmed }) => {
       if (isConfirmed) {
-        Swal.fire('Saved!', '', 'success');
+        Swal.fire('You have access to alcoholic and non-alcoholic beverages.', '', 'success');
         setIsLegal(true);
       } else {
-        Swal.fire('Changes are not saved', '', 'info');
+        Swal.fire('You have access to non-alcoholic beverages.', '', 'info');
         setIsLegal(false);
       }
     });
