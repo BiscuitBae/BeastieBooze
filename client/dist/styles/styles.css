@@ -81,12 +81,8 @@ body {
   padding-top: 20px;
 }
 
-.googleBtn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
+.login-nav {
+  display: inline;
 }
 
 /* Search Styles */
