@@ -20,7 +20,14 @@ function BoozeContextProvider({children}) {
       })
       .catch(err => console.log('couldnt get drinks from server: ', err))
   }
-
+  // gets 10 mocktails from our api
+  const mocktail10 = () => {
+    axios.get('/routes/feed/mocktails')
+      .then(({data}) => {
+        setDrinksFeed(data)
+      })
+      .catch(err => console.log('couldnt get drinks from server: ', err))
+  }
 // this function gets passed down to DrinkView. DrinkView uses useParams() to get the drink id passed to it
 // and passes said id through this function to grab the corresponding drink object from our drinksFeed
 // Will update to this as we have drinks coming from other sources, like our custom drink database
