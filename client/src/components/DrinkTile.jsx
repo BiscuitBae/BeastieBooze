@@ -1,14 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-import ImgWrapper from './ImgWrapper'
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import ImgWrapper from './ImgWrapper';
 
 const DrinkTile = ({ drink }) => {
 
-  // grabbing properties from drink object and reassigning them to less dumb variable names
-  const { idDrink: id, strDrink: name } = drink
-  // console.log('THIS IS DRINKTILE DRINK', drink)
+  // grabbing properties from drink object and reassigning them to better variable names
+  const { idDrink: id, strDrink: name } = drink;
+
   return (
     <div className="col-md-4">
       <div className="drink-tile">
@@ -21,11 +19,6 @@ const DrinkTile = ({ drink }) => {
       </div>
     </div>
   )
-}
+};
 
-export default DrinkTile
-
-{/* <Link to={{
-        pathname: `/custom/${drink._id}`,
-        state:{ drink }
-      }}> */}
+export default DrinkTile;

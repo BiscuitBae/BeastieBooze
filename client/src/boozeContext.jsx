@@ -1,5 +1,5 @@
-import React, {useState, useEffect, createContext} from 'react'
-import axios from 'axios'
+import React, {useState, useEffect, createContext} from 'react';
+import axios from 'axios';
 
 const BoozeContext = createContext();
 
@@ -96,16 +96,13 @@ function BoozeContextProvider({children}) {
     .catch(err => console.log('error fetching data from api in Context: ', err));
   };
 
-
-
- 
 const drinksProps = {
-  drinksFeed, 
-  random10, 
-  renderDrink, 
-  aDrink, 
-  makeADrink, 
-  searchDrinks, 
+  drinksFeed,
+  random10,
+  renderDrink,
+  aDrink,
+  makeADrink,
+  searchDrinks,
   searchResults,
   customDrinks,
   getCustomDrinks,
@@ -118,7 +115,6 @@ const drinksProps = {
       {children}
     </BoozeContext.Provider>
   )
-
 }
 
-export {BoozeContextProvider, BoozeContext}
+export {BoozeContextProvider, BoozeContext};
