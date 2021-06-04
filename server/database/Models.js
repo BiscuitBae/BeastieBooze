@@ -24,7 +24,7 @@ const DrinkSchema = new mongoose.Schema({
   instructions: String,
   ingredients: {},
   alcoholic: Boolean,
-  // createdBy: String
+  createdBy: String
   //add a createdBy to the drinkSchema to link to Users once created
 })
 

@@ -16,7 +16,6 @@ const Navbar = () => {
   //state to hold collapsing navbar
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => {
-  console.log('collapse')
   return setIsNavCollapsed(!isNavCollapsed)
 }
 
@@ -39,9 +38,12 @@ const Navbar = () => {
           <li className="nav-item">
             <Link to="/custom" className="nav-link">Custom</Link>
           </li>
-          <li className="nav-item">
-            <Link to="/create" className="nav-link">Submit</Link>
-          </li>
+          {isLoggedIn ?
+            <li className="nav-item">
+              <Link to="/create" className="nav-link">Submit</Link>
+            </li>
+            : null
+          }
         </ul>
         {username ?
               <li className="nav-item">
