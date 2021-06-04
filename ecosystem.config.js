@@ -17,8 +17,8 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: 'ec2-18-117-160-178.us-east-2.compute.amazonaws.com',
-      key: '~/.ssh/beastie-booze-key.pem',
+      host: process.env.HOST,
+      key: process.env.KEY,
       ref: 'origin/main',
       repo: 'git@github.com:BiscuitBae/BeastieBooze.git',
       path: '/home/ubuntu/BeastieBooze',

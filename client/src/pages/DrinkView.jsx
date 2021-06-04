@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import axios from 'axios';
 
 import { BoozeContext } from '../boozeContext'
@@ -8,35 +8,13 @@ import { BoozeContext } from '../boozeContext'
 import { ingredientParser } from '../../utils/parseIng'
 
 const DrinkView = () => {
-  // useParams will grab the param passed in url. grabbing drinkId from params.
-  const { drinkId } = useParams()
-
-  // const {renderDrink, aDrink} = useContext(BoozeContext)
-
-  // useEffect(() => {
-  //   if (aDrink && aDrink.idDrink != drinkId) {
-  //     renderDrink(drinkId)
-  //   }
-  // }, [])
-
- 
-//? Here we want to discard the state and axios call in this component and pass that responsibility to 
-//? context, as with the above commented out code. The problem there is that data isn't persisting 
-//? after refreshing DrinkView page currently. When we figure that out we'll switch back to using context 
-
-  const [aDrink, setADrink] = useState({})
-
-   useEffect(() => {
-    axios.get(`/routes/drink/${drinkId}`)
-    .then(( { data }) => {
-    setADrink(data.drinks[0])
-    })
-    .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
-  }, [])
 
   // the ingredients and measurements come in a pretty weird format, so we wrote a helper function
   // to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
-  const ingredients = ingredientParser(aDrink);
+  
+  const location = useLocation();
+  const { drink } = location.state;
+  const ingredients = ingredientParser(drink);
 
   // grab what we need from drink object, reassign names for clarity and brevity 
   const { 
@@ -46,9 +24,8 @@ const DrinkView = () => {
     strAlcoholic: alcoholic,
     strGlass: glass,
     strInstructions: directions, 
-  } = aDrink;
+  } = drink;
   
-  console.log(ingredients)
 
   return (
     <div className="container">
@@ -67,20 +44,14 @@ const DrinkView = () => {
               return <li key={index}>{i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
             })}
           </ul>
-          <h4 className="sub-heading">Directions</h4>
+          <h5>Directions</h5>
           <p>{directions}</p>
-          <div className='drink-button'>
+          {/* <div className='drink-button'>
             <button type="button" className="btn btn-dark">Make Virgin</button>
-          </div>
+          </div> */}
           <div className="drink-button">
-            <button type="button" className="btn btn-info">Add To Favorites</button>
+            <button type="button" className="btn btn-dark">Add To Favorites</button>
           </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <hr></hr>
-          <h2 className="page-heading">Reviews</h2>
         </div>
       </div>
     </div>
@@ -89,3 +60,32 @@ const DrinkView = () => {
 }
 
 export default DrinkView
+
+////The Below Comments pertain to making an axios call to the url parameters to get individual drinks
+//Originally implemented at the beginning of the component function.
+
+//{   useParams will grab the param passed in url. grabbing drinkId from params.
+//   const { drinkId } = useParams()
+
+//   const {renderDrink, aDrink} = useContext(BoozeContext)
+
+//   useEffect(() => {
+//     if (aDrink && aDrink.idDrink != drinkId) {
+//       renderDrink(drinkId)
+//     }
+//   }, [])
+
+ 
+// ? Here we want to discard the state and axios call in this component and pass that responsibility to 
+// ? context, as with the above commented out code. The problem there is that data isn't persisting 
+// ? after refreshing DrinkView page currently. When we figure that out we'll switch back to using context 
+
+//   const [aDrink, setADrink] = useState({})
+
+//    useEffect(() => {
+//     axios.get(`/routes/drink/${drinkId}`)
+//     .then(( { data }) => {
+//     setADrink(data.drinks[0])
+//     })
+//     .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
+//   }, []) }

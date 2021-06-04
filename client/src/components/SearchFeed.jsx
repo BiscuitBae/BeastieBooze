@@ -24,7 +24,7 @@ const SearchFeed = () => {
        <div>
         <h4 className="sub-heading"> Sorry We Found No Results </h4>
         <Link to={`/create`}>
-          <button className="btn btn-info" type="submit">Create One?</button>
+          <button className="btn btn-dark" type="submit">Create One?</button>
         </Link>
       </div>
     )
