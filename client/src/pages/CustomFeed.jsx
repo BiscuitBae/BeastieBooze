@@ -17,7 +17,7 @@ return (
       <div className='row'>
         <div className='card-deck'>
         { customDrinks.map((drink, i) => {
-          //selects an image address for randomizing drink imagesS
+          //selects an image address for randomizing drink images
           let imageSrc = imageUrlParser()
           return (
             <CustomDrinkTile drink={drink} key={i} imageSrc={imageSrc} />
