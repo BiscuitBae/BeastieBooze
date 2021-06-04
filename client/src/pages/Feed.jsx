@@ -11,11 +11,12 @@ const {drinksFeed, random10} = useContext(BoozeContext)
   // when component loads, call random10 to populate drinksFeed with 10 new, random drinks from api
   useEffect(() => {
     random10()
+    console.log('userInfo: ', userInfo, 'Logged In: ', isLoggedIn)
   }, [])
 
-  drinksFeed = drinksFeed.slice(1);
+  let dranks = drinksFeed.slice(1);
 
-  const drinkList = drinksFeed.map(drink => {
+  const drinkList = dranks.map(drink => {
     return <DrinkTile key={drink.idDrink} drink={drink} />
   })
   return (
