@@ -89,6 +89,10 @@ body {
   color: rgba(255,255,255,.5);
 }
 
+.grey:hover {
+  color: rgba(255,255,255,.75);
+}
+
 /* Search Styles */
 .search-body {
   text-align: center;
