@@ -3,7 +3,9 @@ const mongoUri = 'mongodb://localhost/beastie-booze';
 
 const db = mongoose.connect(mongoUri, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: true
+
 });
 
 module.exports = {

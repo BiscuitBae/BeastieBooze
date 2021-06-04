@@ -20,17 +20,6 @@ const Profile = () => {
   //dummy variables to start of with
 
 
-  let userCreations = [
-    {id: 4, name: 'tequila'},
-    {id: 5, name: 'whiskey'},
-    {id: 6, name: 'jaegerbomb'}
-  ]
-  let userFavorites = [
-    {id: 1, name: 'hamburger'},
-    {id: 2, name: 'cheese'},
-    {id: 3, name: 'lettuce'}]
- 
-
   return (
   <>
     <h1 className='page-heading'>{`Welcome Back ${username}`}</h1>
@@ -40,7 +29,7 @@ const Profile = () => {
     </div>
     <div>
       <h5 className='sub-heading'> Favorites </h5>
-      <UserFavorites favorites={userFavorites} />
+      <UserFavorites favorites={favorites} />
     </div>
   </>
   )

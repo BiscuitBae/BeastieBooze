@@ -38,17 +38,16 @@ function UserContextProvider({children}) {
     //we have a creation object and we want to send a request 
     //to the database and add the creation to the database on 
     //submit.
-    console.log(userInfo)
-    console.log('HELLO FROM USER CREATION')
-    console.log('THIS IS CREATION OBJ', creationObj)
 
     const { googleId } = userInfo 
 
     // we need to patch this into user db
-    axios.patch(`/routes/users/:id`, { id: googleId, creations: creationObj })  
-    .then(() => {
+    axios.patch(`/routes/users/custom/:id`, { id: googleId, creations: creationObj })  
+    .then(({ data }) => {
       console.log('USER INFORMATION UPDATED')
+      setUserInfo(data)
     }).catch((err) => console.error(err))
+
   }
 
 
@@ -57,12 +56,27 @@ function UserContextProvider({children}) {
   };
 
   const toggleFavorite = (drink) => {
-    const isFav = favoriteDrinks.includes(drink);
+    // const isFav = favoriteDrinks.includes(drink);
+    // console.log('These Are Favorite Drinks ', favoriteDrinks, 'THis is this Drink', drink)
+    // console.log(userInfo)
 
-    isFav ?
-      setFavoriteDrinks(prevFavs => prevFavs.filter(item => item.idDrink != drink.idDrink)) :
-      setFavoriteDrinks(prevFavs => [...prevFavs, drink]);
+    // isFav ?
+    //   setFavoriteDrinks(prevFavs => prevFavs.filter(item => item.idDrink != drink.idDrink)) :
+    //   setFavoriteDrinks(prevFavs => [...prevFavs, drink]);
+
+    console.log(drink)
+
+    const { googleId } = userInfo 
+
+    axios.patch(`/routes/users/favorites/:id`, { id: googleId, favorites: drink })  
+    .then(({ data }) => {
+      console.log('USER INFORMATION UPDATED')
+      setUserInfo(data)
+    }).catch((err) => console.error(err))
   }
+
+ 
+
 
   const verifyAge = () => {
     Swal.fire({

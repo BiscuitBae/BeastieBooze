@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getUser, createUser, findAndUpdate } = require('../database/helpers');
+const { getUser, createUser, findAndUpdate, findAndUpdateFavorites } = require('../database/helpers');
 const axios = require('axios');
 
 const usersRouter = Router();
@@ -29,12 +29,14 @@ usersRouter.get('/', async (req, res) => {
 });
 
 //Create a User Patch and a User Destroy route//
-usersRouter.patch('/:id', (req, res) => {
-  const { id, creations } = req.body
-  findAndUpdate(id, creations)
+
+usersRouter.patch('/favorites/:id', (req, res) => {
+  const { id, favorites } = req.body
+  console.log(req.body)
+  findAndUpdateFavorites(id, favorites)
   .then((user) => {
-    console.log('PATCHED SUCCESSFULLY', user)
-    res.sendStatus(201)
+    console.log('PATCHED SUCCESSFULLY FAVORITES', user)
+    res.status(201).send(user)
   })
   .catch(err => {
     console.error(err)
@@ -42,5 +44,17 @@ usersRouter.patch('/:id', (req, res) => {
   })
 })
 
+usersRouter.patch('/custom/:id', (req, res) => {
+  const { id, creations } = req.body
+  findAndUpdate(id, creations)
+  .then((user) => {
+    console.log('PATCHED SUCCESSFULLY', user)
+    res.status(201).send(user)
+  })
+  .catch(err => {
+    console.error(err)
+    res.sendStatus(500)
+  })
+})
 
 module.exports = { usersRouter };
