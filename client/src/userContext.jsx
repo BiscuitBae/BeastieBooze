@@ -42,12 +42,13 @@ function UserContextProvider({children}) {
     console.log('HELLO FROM USER CREATION')
     console.log('THIS IS CREATION OBJ', creationObj)
 
+    const { googleId } = userInfo 
+
     // we need to patch this into user db
-    axios.put('/routes/users', {params: { userInfo, creationObj }})  
+    axios.patch(`/routes/users/:id`, { id: googleId, creations: creationObj })  
     .then(() => {
       console.log('USER INFORMATION UPDATED')
     }).catch((err) => console.error(err))
-
   }
 
 

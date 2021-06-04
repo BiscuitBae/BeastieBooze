@@ -15,9 +15,11 @@ import { UserContext } from '../userContext'
 const Profile = () => {
   
   const { userInfo, isLoggedIn } = useContext(UserContext)
-  const { username, favorites } = userInfo
+  const { username, favorites, creations } = userInfo
 
   //dummy variables to start of with
+
+
   let userCreations = [
     {id: 4, name: 'tequila'},
     {id: 5, name: 'whiskey'},
@@ -34,7 +36,7 @@ const Profile = () => {
     <h1 className='page-heading'>{`Welcome Back ${username}`}</h1>
     <div>
       <h5 className='sub-heading'> Creations </h5>
-      <UserCreations creations={userCreations} />
+      <UserCreations creations={creations} />
     </div>
     <div>
       <h5 className='sub-heading'> Favorites </h5>

@@ -22,7 +22,14 @@ const createUser = async (userObj) => {
   }
 }
 
+const findAndUpdate = async (id, data) => {
+  const updatedUser = await User.findOneAndUpdate({ googleId: id }, { $push:{creations: data} }, { new: true})
+  return updatedUser
+
+} 
+
 module.exports = {
   getUser,
-  createUser
+  createUser,
+  findAndUpdate
 }
