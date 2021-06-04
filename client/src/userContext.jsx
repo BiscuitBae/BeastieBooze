@@ -7,6 +7,7 @@ function UserContextProvider({children}) {
 
   const [userInfo, setUserInfo] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [favoriteDrinks, setFavoriteDrinks] = useState([])
 
 
   const loginUser = (userData) => {
@@ -17,6 +18,7 @@ function UserContextProvider({children}) {
       const { googleId, username, favorites } = data;
       setUserInfo({ googleId, username, favorites })
       setIsLoggedIn(true)
+      setFavoriteDrinks(favorites);
     })
     .catch(err => {
       console.log(err)
@@ -29,11 +31,31 @@ function UserContextProvider({children}) {
     setIsLoggedIn(false)
   }
 
+  const checkFavorite = (drink) => {
+    return userInfo.favorites.includes(drink);
+    
+  }
+
+
+  const toggleFavorite = (drink) => {
+ 
+    const isFav = favoriteDrinks.includes(drink);
+    
+    isFav ? 
+    setFavoriteDrinks(prevFavs => prevFavs.filter(item => item.idDrink != drink.idDrink)) :
+    setFavoriteDrinks(prevFavs => [...prevFavs, drink]);
+
+    // console.log(favoriteDrinks);
+  }
+
   const userProps = {
     userInfo,
     loginUser,
     logoutUser,
     isLoggedIn,
+    checkFavorite,
+    toggleFavorite,
+    favoriteDrinks
   }
 
   return (

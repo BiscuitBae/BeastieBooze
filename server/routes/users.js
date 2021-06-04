@@ -16,7 +16,7 @@ usersRouter.get('/', async (req, res) => {
   
 
   if(existingUser.length){
-    console.log('server: existing user ==> ', existingUser)
+    // console.log('server: existing user ==> ', existingUser)
     res.status(201).send(existingUser[0]);
   } else if (!existingUser.length) {
     // console.log('newUser: ', existingUser)

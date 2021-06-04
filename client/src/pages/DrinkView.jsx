@@ -3,6 +3,7 @@ import { useParams, useLocation } from 'react-router-dom'
 import axios from 'axios';
 
 import { BoozeContext } from '../boozeContext'
+import { UserContext } from '../userContext'
 
 
 import { ingredientParser } from '../../utils/parseIng'
@@ -16,7 +17,14 @@ const DrinkView = () => {
   const { drink } = location.state;
   const ingredients = ingredientParser(drink);
 
-  // grab what we need from drink object, reassign names for clarity and brevity 
+  const { checkFavorite, toggleFavorite } = useContext(UserContext);
+  const [isFavorite, setFavorite] = useState(false);
+
+  // useEffect(() => {
+  //   setFavorite(checkFavorite(drink))
+  // }, [])
+
+  // grab what we need from drink object, reassign names
   const { 
     idDrink: id, 
     strDrink: name, 
@@ -50,7 +58,7 @@ const DrinkView = () => {
             <button type="button" className="btn btn-dark">Make Virgin</button>
           </div> */}
           <div className="drink-button">
-            <button type="button" className="btn btn-dark">Add To Favorites</button>
+            <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>
           </div>
         </div>
       </div>

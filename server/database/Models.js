@@ -15,14 +15,16 @@ db.on('error', console.error.bind(console, 'connection error:'));
 const UserSchema = new mongoose.Schema({
   googleId: String, // not sure if this will a string or a number, need to check once we can get data from google
   username: String,
-  favorites: []
+  favorites: [],
+  concoctions: []   //? for storing a users submitted custom drinks
 });
 
 const DrinkSchema = new mongoose.Schema({
   name: String,
   instructions: String,
   ingredients: {},
-  alcoholic: Boolean
+  alcoholic: Boolean,
+  concoctedBy: String   //? may want to link this to the user object
   //add a createdBy to the drinkSchema to link to Users once created
 })
 
