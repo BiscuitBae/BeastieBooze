@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const dotenv = require('dotenv')
-dotenv.config()
-
+const dotenv = require('dotenv');
 const axios = require('axios');
+
+dotenv.config();
 
 const feedRouter = Router();
 
@@ -14,7 +14,7 @@ feedRouter.get('/mocktails', (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500)
+      res.sendStatus(500);
     });
 });
 
@@ -28,6 +28,5 @@ feedRouter.get('/', (req, res) => {
       res.sendStatus(500);
     });
 });
-
 
 module.exports = { feedRouter };

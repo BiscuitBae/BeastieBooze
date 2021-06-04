@@ -11,13 +11,13 @@ const Navbar = () => {
   const { userInfo, isLoggedIn } = useContext(UserContext);
   const { username } = userInfo;
   //state to hold collapsing navbar
-  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+  const [ isNavCollapsed, setIsNavCollapsed ] = useState(true);
   const handleNavCollapse = () => {
-  return setIsNavCollapsed(!isNavCollapsed)
-}
+    return setIsNavCollapsed(!isNavCollapsed);
+  }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 
       <Link to="/" className="navbar-brand">
         <img src="images/beastieBoozeLogo.png"></img>
@@ -60,6 +60,6 @@ const Navbar = () => {
       </div>
     </nav>
   )
-}
+};
 
-export default Navbar
+export default Navbar;

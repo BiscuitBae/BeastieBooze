@@ -1,5 +1,5 @@
-import React, {useState, useEffect, createContext} from 'react'
-import axios from 'axios'
+import React, {useState, useEffect, createContext} from 'react';
+import axios from 'axios';
 
 const BoozeContext = createContext();
 
