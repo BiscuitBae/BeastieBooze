@@ -108,7 +108,9 @@ const drinksProps = {
   searchDrinks, 
   searchResults,
   customDrinks,
-  getCustomDrinks};
+  getCustomDrinks,
+  mocktail10
+};
 
 // anything we want to pass on to other components must go in this value object
   return (
