@@ -1,14 +1,16 @@
 // navbar will contain logo on the far left, signup/login or logout/username(profile view) buttons on the far right
 // buttons to switch to either custom drinks page or the main feed
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Login from '../pages/Login.jsx';
+import { UserContext } from '../userContext.jsx';
 
 const Navbar = () => {
   //* links to endpoints that will be handled by Routes in App component
-
-//state to hold collapsing navbar
+  const { userInfo, isLoggedIn } = useContext(UserContext);
+  const { username } = userInfo;
+  //state to hold collapsing navbar
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const handleNavCollapse = () => {
   console.log('collapse')
@@ -16,18 +18,18 @@ const Navbar = () => {
 }
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 
       <Link to="/" className="navbar-brand">
         <img src="images/beastieBoozeLogo.png"></img>
       </Link>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarTogglerDemo02" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
-        <span class="navbar-toggler-icon"></span>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarTogglerDemo02" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
+        <span className="navbar-toggler-icon"></span>
       </button>
 
       <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarNav">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
             <Link to="/search" className="nav-link">Search</Link>
           </li>
@@ -40,6 +42,7 @@ const Navbar = () => {
         </ul>
         <li className="nav-item login-nav">
           <div className="nav-link btn-nav" style={{padding: '10px 0px 0px 0px'}}>
+            {username ? <Link to="/profile"><p className="nav-item grey">Welcome, {username}!</p></Link> : null}
             <Login />
           </div>
         </li>
