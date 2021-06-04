@@ -21,7 +21,6 @@ function UserContextProvider({children}) {
     .catch(err => {
       console.log(err)
     })
-    
   }
 
   const logoutUser = () => {
