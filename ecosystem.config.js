@@ -7,11 +7,13 @@ module.exports = {
     script: './server/app.js',
     env: {
       NODE_ENV: 'development',
-      API_KEY: process.env.API_KEY
+      API_KEY: process.env.API_KEY,
+      ATLAS_URL: process.env.ATLAS_URL
     },
     env_production: {
       NODE_ENV: 'production',
-      API_KEY: process.env.API_KEY
+      API_KEY: process.env.API_KEY,
+      ATLAS_URL: process.env.ATLAS_URL
     }
   }],
   deploy: {
@@ -29,11 +31,13 @@ module.exports = {
       'post-deploy': 'npm run-script restart',
       env: {
         NODE_ENV: 'development',
-        API_KEY: process.env.API_KEY
+        API_KEY: process.env.API_KEY,
+        ATLAS_URL: process.env.ATLAS_URL
       },
       env_production: {
         NODE_ENV: 'production',
-        API_KEY: process.env.API_KEY
+        API_KEY: process.env.API_KEY,
+        ATLAS_URL: process.env.ATLAS_URL
       }
     }
   }

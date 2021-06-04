@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-
 const dotenv = require('dotenv');
 dotenv.config();
+
+const mongoose = require('mongoose');
 
 const DATABASE = 'BeastieBooze';
 // for dev - uncomment the next line and comment out line 10
