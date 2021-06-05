@@ -13,9 +13,38 @@ const DrinkView = () => {
   // the ingredients and measurements come in a pretty weird format, so we wrote a helper function
   // to parse through it and return them in an array of arrays, formatted like dis:  [ingredient, measurement]
   
-  const location = useLocation();
-  const { drink } = location.state;
-  const ingredients = ingredientParser(drink);
+
+  //Originally implemented at the beginning of the component function.
+
+//{   useParams will grab the param passed in url. grabbing drinkId from params.
+  const { drinkId } = useParams()
+
+  // const {renderDrink, aDrink} = useContext(BoozeContext)
+
+  // useEffect(() => {
+  //   if (aDrink && aDrink.idDrink != drinkId) {
+  //     renderDrink(drinkId)
+  //   }
+  // }, [])
+
+ 
+// ? Here we want to discard the state and axios call in this component and pass that responsibility to 
+// ? context, as with the above commented out code. The problem there is that data isn't persisting 
+// ? after refreshing DrinkView page currently. When we figure that out we'll switch back to using context 
+
+  const [aDrink, setADrink] = useState({})
+
+   useEffect(() => {
+    axios.get(`/routes/drink/${drinkId}`)
+    .then(( { data }) => {
+    setADrink(data.drinks[0])
+    })
+    .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
+  }, []) 
+
+  // const location = useLocation();
+  // const { drink } = location.state;
+  const ingredients = ingredientParser(aDrink);
 
   const { checkFavorite, toggleFavorite } = useContext(UserContext);
   const [isFavorite, setFavorite] = useState(false);
@@ -32,7 +61,7 @@ const DrinkView = () => {
     strAlcoholic: alcoholic,
     strGlass: glass,
     strInstructions: directions, 
-  } = drink;
+  } = aDrink;
   
 
   return (
@@ -58,13 +87,12 @@ const DrinkView = () => {
             <button type="button" className="btn btn-dark">Make Virgin</button>
           </div> */}
           <div className="drink-button">
-            <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>
+            <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(aDrink)}}>Add To Favorites</button>
           </div>
         </div>
       </div>
     </div>
   )
-
 }
 
 export default DrinkView

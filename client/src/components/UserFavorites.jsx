@@ -5,21 +5,26 @@ const UserFavorites = ({ favorites }) => {
 
   console.log(favorites)
 
-//db changes related to favorites
-  const whichDb = (e) => {
-    let name = e.strDrink ? e.strDrink : e.drinkName
-    return name
-  }
 
   return (
     <ul>
       {favorites.map((drink, i) => {
-        return (
+       return drink.idDrink ? 
+         (
           <Link to={{
             pathname: `/drink/${drink.idDrink}`,
             state: { drink }
             }}>
-            <li key={i}>{whichDb(drink)}</li>
+            <li key={i}>{drink.strDrink}</li>
+          </Link>
+        )
+        :
+        (
+          <Link to={{
+            pathname: `/custom/${drink.drinkName}`,
+            state: { drink }
+            }}>
+            <li key={i}>{drink.drinkName}</li>
           </Link>
         )
       })}
