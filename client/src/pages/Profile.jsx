@@ -16,6 +16,7 @@ const Profile = () => {
   
   const { userInfo, isLoggedIn } = useContext(UserContext)
   const { username, favorites, creations } = userInfo
+  
 
   //dummy variables to start of with
 

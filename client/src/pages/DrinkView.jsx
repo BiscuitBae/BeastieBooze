@@ -46,12 +46,20 @@ const DrinkView = () => {
   // const { drink } = location.state;
   const ingredients = ingredientParser(aDrink);
 
-  const { checkFavorite, toggleFavorite } = useContext(UserContext);
+  const { favoriteDrinks, toggleFavorite } = useContext(UserContext);
   const [isFavorite, setFavorite] = useState(false);
 
-  // useEffect(() => {
-  //   setFavorite(checkFavorite(drink))
-  // }, [])
+  console.log('These Are My Favorite Drinks', favoriteDrinks)
+
+  const removeButton = () => {
+    if(favoriteDrinks.includes(name)){
+      return (
+        <div className="drink-button">
+            <button type="button" className="btn btn-danger" >Remove from Favorites</button>
+          </div>
+      )
+    }
+  }
 
   // grab what we need from drink object, reassign names
   const { 
@@ -89,6 +97,7 @@ const DrinkView = () => {
           <div className="drink-button">
             <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(aDrink)}}>Add To Favorites</button>
           </div>
+          {removeButton()}
         </div>
       </div>
     </div>

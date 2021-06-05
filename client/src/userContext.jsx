@@ -20,7 +20,12 @@ function UserContextProvider({children}) {
       const { googleId, username, favorites, creations } = data;
       setUserInfo({ googleId, username, favorites, creations })
       setIsLoggedIn(true)
-      setFavoriteDrinks(favorites);
+
+      //lets set favorites by name
+      favorites.forEach(drink => {
+        let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+        setFavoriteDrinks(prevFavs => [...prevFavs, key])
+      })
     })
     .catch(err => console.log(err));
   };
@@ -30,9 +35,7 @@ function UserContextProvider({children}) {
     setIsLoggedIn(false);
   };
 
-  // const checkCreation = () => {
-  //   return userInfo.creations.includes(drink);
-  // }
+
 
   const addCreation = (creationObj) => {
     //we have a creation object and we want to send a request 
@@ -50,19 +53,13 @@ function UserContextProvider({children}) {
   }
 
 
-  const checkFavorite = (drink) => {
-    return userInfo.favorites.includes(drink);
-  };
+ 
+
 
   const toggleFavorite = (drink) => {
-    // const isFav = favoriteDrinks.includes(drink);
-    // console.log('These Are Favorite Drinks ', favoriteDrinks, 'THis is this Drink', drink)
-    // console.log(userInfo)
-
-    // isFav ?
-    //   setFavoriteDrinks(prevFavs => prevFavs.filter(item => item.idDrink != drink.idDrink)) :
-    //   setFavoriteDrinks(prevFavs => [...prevFavs, drink]);
-
+    
+    let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+    setFavoriteDrinks(prevFavs => [...prevFavs, key])
 
     const { googleId } = userInfo 
 
@@ -101,7 +98,7 @@ function UserContextProvider({children}) {
     userCreations,
     setUserCreations,
     addCreation,
-    checkFavorite,
+    // checkFavorite,
     toggleFavorite,
     favoriteDrinks,
     isLegal,
