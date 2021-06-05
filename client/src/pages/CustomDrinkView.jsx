@@ -9,8 +9,9 @@ const CustomDrinkView = () => {
 
   let { ingredients, instructions, name, alcoholic } = drink
 
-
+  console.log('Ingredients Before Parser ', ingredients)
   ingredients = ingredientMap(ingredients)
+  console.log('Ingredients After Parser ', ingredients)
 
   return (
     <div className="container">

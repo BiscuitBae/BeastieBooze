@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const UserFavorites = ({ favorites }) => {
 
@@ -12,9 +13,14 @@ const UserFavorites = ({ favorites }) => {
 
   return (
     <ul>
-      {favorites.map((e, i) => {
+      {favorites.map((drink, i) => {
         return (
-          <li key={i}>{whichDb(e)}</li>
+          <Link to={{
+            pathname: `/drink/${drink.idDrink}`,
+            state: { drink }
+            }}>
+            <li key={i}>{whichDb(drink)}</li>
+          </Link>
         )
       })}
     </ul>
