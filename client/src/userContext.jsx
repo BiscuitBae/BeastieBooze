@@ -70,7 +70,7 @@ function UserContextProvider({children}) {
     console.log(drink)
     drink.favId = drink._id || drink.idDrink
 
-    axios.patch(`/routes/users/favorites/:id`, { id: googleId, favorites: drink })  
+    axios.patch(`/routes/users/favorites/:id`, {id: googleId, favorites: drink })  
     .then(({ data }) => {
       setUserInfo(data)
     }).catch((err) => console.error(err))
@@ -80,10 +80,10 @@ function UserContextProvider({children}) {
 const removeFavorite = (drink) => {
 //removes favorite
   console.log('MADE IT TO REMOVE FAVORITES', drink)
-  const { favId } = drink 
+  drink.favId = drink._id || drink.idDrink 
   const { googleId } = userInfo 
 
-  axios.patch(`/routes/users/favorites/delete/:favId`, { favId, googleId } )
+  axios.patch(`/routes/users/favorites/delete/:favId`, { favId: drink.favId , googleId: googleId } )
 }
 
 

@@ -11,10 +11,8 @@ usersRouter.get('/', async (req, res) => {
   const existingUser = await getUser(googleId);
 
   if (existingUser.length) {
-    console.log('server: existing user ==> ', existingUser);
     res.status(201).send(existingUser[0]);
   } else if (!existingUser.length) {
-    console.log('newUser: ', existingUser);
     createUser(req.query)
       .then(user => {
         res.status(200)
@@ -34,10 +32,9 @@ usersRouter.get('/', async (req, res) => {
 
 usersRouter.patch('/favorites/:id', (req, res) => {
   const { id, favorites } = req.body
-  console.log(req.body)
   findAndUpdateFavorites(id, favorites)
   .then((user) => {
-    console.log('PATCHED SUCCESSFULLY TO FAVORITES')
+    console.log('PATCHED SUCCESSFULLY TO FAVORITES',)
     res.status(201).send(user)
   })
   .catch(err => {
@@ -48,11 +45,11 @@ usersRouter.patch('/favorites/:id', (req, res) => {
 
 usersRouter.patch('/favorites/delete/:favId', (req, res) => {
   const { googleId, favId } = req.body
-  console.log(req)
+  console.log(req.body)
   findAndDeleteFavorites(googleId, favId)
   .then((user) => {
     console.log('REMOVED SUCCESSFULLY FROM FAVORITES', favId)
-    res.status(201).send(user)
+    res.status(201).send(user);
   })
   .catch(err => {
     console.error(err)
@@ -61,7 +58,7 @@ usersRouter.patch('/favorites/delete/:favId', (req, res) => {
 });
 
 usersRouter.patch('/custom/:id', (req, res) => {
-  const { id, creations } = req.body.userInfo
+  const { id, creations } = req.body
   findAndUpdate(id, creations)
   .then((user) => {
     console.log('PATCHED SUCCESSFULLY TO CREATIONS')
