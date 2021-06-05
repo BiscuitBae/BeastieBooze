@@ -6,7 +6,7 @@ const CustomDrinkTile = ({ drink, imageSrc }) => {
   const alcohol = drink.alcoholic ? 'alcoholic' : 'non-alcoholic';
 
   return (
-    <div className="card bg-dark justify-content-center" style={{width: '18rem'}}>
+    <div className="card bg-dark justify-content-center col-md-3 m-1">
         <Link to={{
           pathname: `/custom/${drink._id}`,
           state:{ drink }
