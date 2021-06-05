@@ -48,7 +48,6 @@ const addDrink = async (drink) => {
 };
 
 const getDrinks = async () => {
-  console.log('atlas url:', process.env.ATLAS_URL);
   return await Drink.find({}).exec();
 };
 
