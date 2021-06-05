@@ -8,13 +8,23 @@ const CustomDrinkView = () => {
   const { drink } = location.state;
   console.log(drink)
 
-  const { checkFavorite, toggleFavorite } = useContext(UserContext);
+  const { favoriteDrinks, toggleFavorite } = useContext(UserContext);
 
-  let { ingredients, instructions, name, alcoholic } = drink
+  let { ingredients, instructions, drinkName: name, alcoholic } = drink
 
   console.log('Ingredients Before Parser ', ingredients)
   ingredients = ingredientMap(ingredients)
   console.log('Ingredients After Parser ', ingredients)
+
+  const removeButton = () => {
+    if(favoriteDrinks.includes(name)){
+      return (
+        <div className="drink-button">
+            <button type="button" className="btn btn-danger" >Remove from Favorites</button>
+          </div>
+      )
+    }
+  }
 
   return (
     <div className="container">
@@ -42,6 +52,7 @@ const CustomDrinkView = () => {
           <span className="drink-button">
             <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>
           </span>
+          { removeButton() }
         </div>
       </div>
       <div className="row">
