@@ -44,7 +44,6 @@ function UserContextProvider({children}) {
     // we need to patch this into user db
     axios.patch(`/routes/users/custom/:id`, { id: googleId, creations: creationObj })  
     .then(({ data }) => {
-      console.log('USER INFORMATION UPDATED')
       setUserInfo(data)
     }).catch((err) => console.error(err))
 
@@ -64,13 +63,11 @@ function UserContextProvider({children}) {
     //   setFavoriteDrinks(prevFavs => prevFavs.filter(item => item.idDrink != drink.idDrink)) :
     //   setFavoriteDrinks(prevFavs => [...prevFavs, drink]);
 
-    console.log(drink)
 
     const { googleId } = userInfo 
 
     axios.patch(`/routes/users/favorites/:id`, { id: googleId, favorites: drink })  
     .then(({ data }) => {
-      console.log('USER INFORMATION UPDATED')
       setUserInfo(data)
     }).catch((err) => console.error(err))
   }
