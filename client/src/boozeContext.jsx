@@ -1,5 +1,5 @@
-import React, {useState, useEffect, createContext} from 'react';
-import axios from 'axios';
+import React, {useState, useEffect, createContext} from 'react'
+import axios from 'axios'
 
 const BoozeContext = createContext();
 
@@ -41,18 +41,6 @@ function BoozeContextProvider({children}) {
   // This receives the user input from the Create component. This is where we'll parse that data and make a post request to
   // to add the new drink to the db
   const makeADrink = (userInput) => {
-    // console.log("we gotta do something with this drank data: ", userInput);
-    // let { drinkName, instructions, alcoholic, ingredients } = userInput 
-
-    // ingredients = ingredients.split(`\n`)
-    userInput.ingredients = userInput.ingredients.split(`\n`).reduce((output, ingredient) => {
-      ingredient = ingredient.split(':');
-      ingredient[1] = ingredient[1].trim()
-      output[ingredient[1]] = ingredient[0]
-      return output;
-    }, {})
-
-
     axios.post('/routes/custom', userInput)
     .then(() => {
       console.log('USER INPUT POSTED')
@@ -96,18 +84,20 @@ function BoozeContextProvider({children}) {
     .catch(err => console.log('error fetching data from api in Context: ', err));
   };
 
+
+
+ 
 const drinksProps = {
-  drinksFeed,
-  random10,
-  renderDrink,
-  aDrink,
-  makeADrink,
-  searchDrinks,
+  drinksFeed, 
+  random10, 
+  renderDrink, 
+  aDrink, 
+  makeADrink, 
+  mocktail10,
+  searchDrinks, 
   searchResults,
   customDrinks,
-  getCustomDrinks,
-  mocktail10
-};
+  getCustomDrinks};
 
 // anything we want to pass on to other components must go in this value object
   return (
@@ -115,6 +105,7 @@ const drinksProps = {
       {children}
     </BoozeContext.Provider>
   )
+
 }
 
-export {BoozeContextProvider, BoozeContext};
+export {BoozeContextProvider, BoozeContext}

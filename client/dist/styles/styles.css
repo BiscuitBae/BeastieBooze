@@ -70,6 +70,10 @@ body {
   padding-top: 20px;
 }
 
+.remove-button {
+  padding-left: 10px;
+}
+
 
 /* Register / Login Styles */
 
@@ -116,6 +120,12 @@ body {
 /* Create-View Styles */
 .create-view-button {
   padding-right: 8px;
+}
+
+/* Profile Styles */
+
+.profile-heading {
+  font-family: 'Roboto';
 }
 
 /* Create-Feed Styles */

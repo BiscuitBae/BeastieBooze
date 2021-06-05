@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
   googleId: String, // not sure if this will a string or a number, need to check once we can get data from google
   username: String,
   favorites: [],
-  concoctions: []   //? for storing a users submitted custom drinks
+  creations: []
 });
 
 const DrinkSchema = new mongoose.Schema({
@@ -30,7 +30,7 @@ const DrinkSchema = new mongoose.Schema({
   instructions: String,
   ingredients: {},
   alcoholic: Boolean,
-  concoctedBy: String //? may want to link this to the user object
+  createdBy: String
   //add a createdBy to the drinkSchema to link to Users once created
 });
 

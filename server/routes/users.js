@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getUser, createUser } = require('../database/helpers');
+const { getUser, createUser, findAndUpdate, findAndUpdateFavorites } = require('../database/helpers');
 const axios = require('axios');
 
 const usersRouter = Router();
@@ -15,18 +15,46 @@ usersRouter.get('/', async (req, res) => {
     console.log('newUser: ', existingUser);
     createUser(req.query)
       .then(user => {
-        console.log(user)
         res.status(200)
         .send(user);
       })
       .catch(err => {
-        console.log('error creating user', err);
+        // console.log('error creating user', err);
         res.sendStatus(500);
       })
   } else {
-    console.log('not found');
+    // console.log('not found');
     res.sendStatus(404);
   }
 });
+
+//Create a User Patch and a User Destroy route//
+
+usersRouter.patch('/favorites/:id', (req, res) => {
+  const { id, favorites } = req.body
+  console.log(req.body)
+  findAndUpdateFavorites(id, favorites)
+  .then((user) => {
+    console.log('PATCHED SUCCESSFULLY TO FAVORITES')
+    res.status(201).send(user)
+  })
+  .catch(err => {
+    console.error(err)
+    res.sendStatus(500)
+  })
+})
+
+usersRouter.patch('/custom/:id', (req, res) => {
+  const { id, creations } = req.body
+  findAndUpdate(id, creations)
+  .then((user) => {
+    console.log('PATCHED SUCCESSFULLY TO CREATIONS')
+    res.status(201).send(user)
+  })
+  .catch(err => {
+    console.error(err)
+    res.sendStatus(500)
+  })
+})
 
 module.exports = { usersRouter };

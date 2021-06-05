@@ -22,7 +22,7 @@ const clientId = '862811879315-ur20fqc030th5oure5vsmkdg8ll94o8r.apps.googleuserc
 
 const Login = () => {
 
-  const { loginUser, logoutUser } = useContext(UserContext);
+  const { loginUser, logoutUser} = useContext(UserContext);
   const [showLoginButton, setShowLoginButton] = useState(true);
   const [showLogoutButton, setShowLogoutButton] = useState(false);
 
@@ -30,6 +30,7 @@ const Login = () => {
     // console.log('[Login Success] currentUser:', res.profileObj);
     setShowLoginButton(false);
     setShowLogoutButton(true);
+
 
     loginUser(res.profileObj);
     // refreshTokenSetup(res);
