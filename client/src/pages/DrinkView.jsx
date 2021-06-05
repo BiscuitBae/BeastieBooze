@@ -61,7 +61,8 @@ const DrinkView = () => {
   } = aDrink;
   
   const removeButton = () => {
-    if(favoriteDrinks.includes(name)){
+    let drinkId = aDrink._id || aDrink.idDrink
+    if(favoriteDrinks.includes(drinkId)){
       return (
         <span className="remove-button" onClick={() => removeFavorite(aDrink)}>
             <button type="button" className="btn btn-danger" >Remove from Favorites</button>

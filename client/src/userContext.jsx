@@ -23,8 +23,8 @@ function UserContextProvider({children}) {
 
       //lets set favorites by name
       favorites.forEach(drink => {
-        let key = drink.strDrink ? drink.strDrink : drink.drinkName;
-        setFavoriteDrinks(prevFavs => [...prevFavs, key])
+        // let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+        setFavoriteDrinks(prevFavs => [...prevFavs, drink.favId])
       })
     })
     .catch(err => console.log(err));
@@ -58,18 +58,19 @@ function UserContextProvider({children}) {
 
   const toggleFavorite = (drink) => {
     
-    let key = drink.strDrink ? drink.strDrink : drink.drinkName;
-    setFavoriteDrinks(prevFavs => [...prevFavs, key])
-
-    if(favoriteDrinks.includes(key)){
+    drink.favId = drink._id || drink.idDrink
+    
+    // let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+    
+    if(favoriteDrinks.includes(drink.favId)){
       alert('You Have Already Favorited This Item')
     } else {
-
+      
+    setFavoriteDrinks(prevFavs => [...prevFavs, drink.favId])
     const { googleId } = userInfo 
     
-    console.log(drink)
-    drink.favId = drink._id || drink.idDrink
-
+    
+    
     axios.patch(`/routes/users/favorites/:id`, { id: googleId, favorites: drink })  
     .then(({ data }) => {
       setUserInfo(data)
