@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ingredientMap } from '../../utils/parseIng'
+import { UserContext } from '../userContext'
 
 const CustomDrinkView = () => {
   const location = useLocation();
   const { drink } = location.state;
   console.log(drink)
+
+  const { checkFavorite, toggleFavorite } = useContext(UserContext);
 
   let { ingredients, instructions, name, alcoholic } = drink
 
@@ -37,7 +40,7 @@ const CustomDrinkView = () => {
             <button type="button" className="btn btn-dark">Make Virgin</button>
           </span> */}
           <span className="drink-button">
-            <button type="button" className="btn btn-dark">Add To Favorites</button>
+            <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>
           </span>
         </div>
       </div>
