@@ -34,7 +34,7 @@ const findAndUpdateFavorites = async (id, data) => {
 } 
 
 const findAndDeleteFavorites = async (id, drinkId) => {
-  const updatedUser = await User.findOneAndUpdate({ googleId: id }, { $pull:{favorites: { favId: drinkId }}})
+  const updatedUser = await User.findOneAndUpdate({ googleId: id }, { $pull:{favorites: { favId: drinkId }}}, {new: true})
   return updatedUser
 
 
