@@ -61,6 +61,10 @@ function UserContextProvider({children}) {
     let key = drink.strDrink ? drink.strDrink : drink.drinkName;
     setFavoriteDrinks(prevFavs => [...prevFavs, key])
 
+    if(favoriteDrinks.includes(key)){
+      alert('You Have Already Favorited This Item')
+    } else {
+
     const { googleId } = userInfo 
 
     axios.patch(`/routes/users/favorites/:id`, { id: googleId, favorites: drink })  
@@ -68,8 +72,7 @@ function UserContextProvider({children}) {
       setUserInfo(data)
     }).catch((err) => console.error(err))
   }
-
- 
+}
 
 
   const verifyAge = () => {

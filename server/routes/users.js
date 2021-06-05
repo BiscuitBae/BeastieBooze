@@ -35,7 +35,7 @@ usersRouter.patch('/favorites/:id', (req, res) => {
   console.log(req.body)
   findAndUpdateFavorites(id, favorites)
   .then((user) => {
-    console.log('PATCHED SUCCESSFULLY FAVORITES', user)
+    console.log('PATCHED SUCCESSFULLY TO FAVORITES')
     res.status(201).send(user)
   })
   .catch(err => {
@@ -48,7 +48,7 @@ usersRouter.patch('/custom/:id', (req, res) => {
   const { id, creations } = req.body
   findAndUpdate(id, creations)
   .then((user) => {
-    console.log('PATCHED SUCCESSFULLY', user)
+    console.log('PATCHED SUCCESSFULLY TO CREATIONS')
     res.status(201).send(user)
   })
   .catch(err => {

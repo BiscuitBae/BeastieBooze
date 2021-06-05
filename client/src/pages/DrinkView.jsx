@@ -54,9 +54,9 @@ const DrinkView = () => {
   const removeButton = () => {
     if(favoriteDrinks.includes(name)){
       return (
-        <div className="drink-button">
+        <span className="remove-button">
             <button type="button" className="btn btn-danger" >Remove from Favorites</button>
-          </div>
+          </span>
       )
     }
   }
@@ -94,10 +94,10 @@ const DrinkView = () => {
           {/* <div className='drink-button'>
             <button type="button" className="btn btn-dark">Make Virgin</button>
           </div> */}
-          <div className="drink-button">
-            <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(aDrink)}}>Add To Favorites</button>
-          </div>
-          {removeButton()}
+          <span className="drink-button">
+            <button type="button" className="btn btn-dark" onClick={() => { toggleFavorite(aDrink) }}>Add To Favorites</button>
+          </span>
+          { removeButton() }
         </div>
       </div>
     </div>

@@ -16,23 +16,23 @@ const Profile = () => {
   
   const { userInfo, isLoggedIn } = useContext(UserContext)
   const { username, favorites, creations } = userInfo
-  
+
 
   //dummy variables to start of with
 
 
   return (
-  <>
+  <div className ='container'>
     <h1 className='page-heading'>{`Welcome Back ${username}`}</h1>
     <div>
-      <h5 className='sub-heading'> Creations </h5>
+      <h3 className='profile-heading'> Creations </h3>
       <UserCreations creations={creations} />
     </div>
     <div>
-      <h5 className='sub-heading'> Favorites </h5>
+      <h3 className='profile-heading'> Favorites </h3>
       <UserFavorites favorites={favorites} />
     </div>
-  </>
+  </div>
   )
 
 }
