@@ -1,5 +1,8 @@
-const { API_KEY } = process.env;
+const { API_KEY, ATLAS_URL, HOST, KEY } = process.env;
 
 module.exports = {
-  API_KEY
+  API_KEY,
+  ATLAS_URL,
+  HOST,
+  KEY
 };

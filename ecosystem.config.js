@@ -7,18 +7,20 @@ module.exports = {
     script: './server/app.js',
     env: {
       NODE_ENV: 'development',
-      API_KEY: process.env.API_KEY
+      API_KEY: process.env.API_KEY,
+      ATLAS_URL: process.env.ATLAS_URL
     },
     env_production: {
       NODE_ENV: 'production',
-      API_KEY: process.env.API_KEY
+      API_KEY: process.env.API_KEY,
+      ATLAS_URL: process.env.ATLAS_URL
     }
   }],
   deploy: {
     production: {
       user: 'ubuntu',
-      host: process.env.HOST,
-      key: process.env.KEY,
+      host: 'ec2-18-117-160-178.us-east-2.compute.amazonaws.com',
+      key: '~/.ssh/beastie-booze-key.pem',
       ref: 'origin/main',
       repo: 'git@github.com:BiscuitBae/BeastieBooze.git',
       path: '/home/ubuntu/BeastieBooze',
@@ -29,11 +31,13 @@ module.exports = {
       'post-deploy': 'npm run-script restart',
       env: {
         NODE_ENV: 'development',
-        API_KEY: process.env.API_KEY
+        API_KEY: process.env.API_KEY,
+        ATLAS_URL: process.env.ATLAS_URL
       },
       env_production: {
         NODE_ENV: 'production',
-        API_KEY: process.env.API_KEY
+        API_KEY: process.env.API_KEY,
+        ATLAS_URL: process.env.ATLAS_URL
       }
     }
   }

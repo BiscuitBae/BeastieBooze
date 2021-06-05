@@ -5,7 +5,7 @@ const getUser = async (id) => {
   try {
     const user = await User.find({googleId: id});
     return user;
-  } catch {
+  } catch (err) {
     console.log('getUser failed', err);
   }
 }
@@ -17,7 +17,7 @@ const createUser = async (userObj) => {
   try {
     const newUser = await User.create({googleId, username});
     return newUser;
-  } catch {
+  } catch (err) {
     console.log('createUser failed', err);
   }
 }
