@@ -1,16 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ingredientMap } from '../../utils/parseIng'
+import { UserContext } from '../userContext'
 
 const CustomDrinkView = () => {
   const location = useLocation();
   const { drink } = location.state;
   console.log(drink)
 
-  let { ingredients, instructions, name, alcoholic } = drink
+  const { favoriteDrinks, toggleFavorite } = useContext(UserContext);
 
+  let { ingredients, instructions, drinkName: name, alcoholic } = drink
 
+  console.log('Ingredients Before Parser ', ingredients)
   ingredients = ingredientMap(ingredients)
+  console.log('Ingredients After Parser ', ingredients)
+
+  const removeButton = () => {
+    if(favoriteDrinks.includes(name)){
+      return (
+        <span className="remove-button">
+            <button type="button" className="btn btn-danger" >Remove from Favorites</button>
+          </span>
+      )
+    }
+  }
 
   return (
     <div className="container">
@@ -36,14 +50,9 @@ const CustomDrinkView = () => {
             <button type="button" className="btn btn-dark">Make Virgin</button>
           </span> */}
           <span className="drink-button">
-            <button type="button" className="btn btn-dark">Add To Favorites</button>
+            <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>
           </span>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <hr></hr>
-          <h2 className="page-heading">Reviews</h2>
+          { removeButton() }
         </div>
       </div>
     </div>

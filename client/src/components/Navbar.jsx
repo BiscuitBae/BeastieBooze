@@ -4,9 +4,12 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Login from '../pages/Login.jsx';
-import { UserContext } from '../userContext.jsx';
+// import { UserContext } from '../userContext.jsx';
+
+import { UserContext } from '../userContext'
 
 const Navbar = () => {
+
   //* links to endpoints that will be handled by Routes in App component
   const { userInfo, isLoggedIn } = useContext(UserContext);
   const { username } = userInfo;
@@ -44,7 +47,7 @@ const Navbar = () => {
         </ul>
         {username ?
               <li className="nav-item">
-                <Link to="/profile">
+                <Link to={`/profile/${userInfo.googleId}`}>
                   <p className="nav-item grey">
                     Welcome, {username}!&nbsp;&nbsp;&nbsp;&nbsp;
                   </p>

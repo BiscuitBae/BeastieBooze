@@ -8,6 +8,7 @@ function UserContextProvider({children}) {
 
   const [userInfo, setUserInfo] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userCreations, setUserCreations] = useState([])
   const [favoriteDrinks, setFavoriteDrinks] = useState([])
   const [isLegal, setIsLegal] = useState(null);
 
@@ -15,11 +16,16 @@ function UserContextProvider({children}) {
 
     axios.get('/routes/users', {params: userData})
     .then(({data}) => {
-      const { googleId, username, favorites } = data;
-      setUserInfo({ googleId, username, favorites });
-      setIsLoggedIn(true);
-      setFavoriteDrinks(favorites);
-      console.log('in loginUser userContext, userInfo is: ', userInfo);
+      // console.log('===> userContext user response:', data)
+      const { googleId, username, favorites, creations } = data;
+      setUserInfo({ googleId, username, favorites, creations })
+      setIsLoggedIn(true)
+
+      //lets set favorites by name
+      favorites.forEach(drink => {
+        let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+        setFavoriteDrinks(prevFavs => [...prevFavs, key])
+      })
     })
     .catch(err => console.log(err));
   };
@@ -29,17 +35,45 @@ function UserContextProvider({children}) {
     setIsLoggedIn(false);
   };
 
-  const checkFavorite = (drink) => {
-    return userInfo.favorites.includes(drink);
-  };
+
+
+  const addCreation = (creationObj) => {
+    //we have a creation object and we want to send a request 
+    //to the database and add the creation to the database on 
+    //submit.
+
+    const { googleId } = userInfo 
+
+    // we need to patch this into user db
+    axios.patch(`/routes/users/custom/:id`, { id: googleId, creations: creationObj })  
+    .then(({ data }) => {
+      setUserInfo(data)
+    }).catch((err) => console.error(err))
+
+  }
+
+
+ 
+
 
   const toggleFavorite = (drink) => {
-    const isFav = favoriteDrinks.includes(drink);
+    
+    let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+    setFavoriteDrinks(prevFavs => [...prevFavs, key])
 
-    isFav ?
-      setFavoriteDrinks(prevFavs => prevFavs.filter(item => item.idDrink != drink.idDrink)) :
-      setFavoriteDrinks(prevFavs => [...prevFavs, drink]);
+    if(favoriteDrinks.includes(key)){
+      alert('You Have Already Favorited This Item')
+    } else {
+
+    const { googleId } = userInfo 
+
+    axios.patch(`/routes/users/favorites/:id`, { id: googleId, favorites: drink })  
+    .then(({ data }) => {
+      setUserInfo(data)
+    }).catch((err) => console.error(err))
   }
+}
+
 
   const verifyAge = () => {
     Swal.fire({
@@ -64,7 +98,10 @@ function UserContextProvider({children}) {
     loginUser,
     logoutUser,
     isLoggedIn,
-    checkFavorite,
+    userCreations,
+    setUserCreations,
+    addCreation,
+    // checkFavorite,
     toggleFavorite,
     favoriteDrinks,
     isLegal,
