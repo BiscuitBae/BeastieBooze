@@ -11,7 +11,7 @@ const ImgWrapper = ({drink}) => {
   } = drink;
 
   //is thumbnail loaded? Use a placehholder until image fetches from API
-  const [source, setSource] = useState('/images/martini.gif')
+  const [source, setSource] = useState('/images/Loader.gif')
   useEffect(() => { setSource(thumbnail) }, [])
 
   //create hover state
