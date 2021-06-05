@@ -19,7 +19,7 @@ const CustomDrinkView = () => {
   const removeButton = () => {
     if(favoriteDrinks.includes(name)){
       return (
-        <span className="remove-button">
+        <span className="remove-button" onClick={() => removeFavorite(aDrink)}>
             <button type="button" className="btn btn-danger" >Remove from Favorites</button>
           </span>
       )
