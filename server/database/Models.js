@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 
 const DATABASE = 'BeastieBooze';
 // for dev - uncomment the next line and comment out line 10
-const dbLocation = `mongodb://localhost:27017/${DATABASE}`;
+// const dbLocation = `mongodb://localhost:27017/${DATABASE}`;
 // for prod
+const dbLocation = `mongodb://127.0.0.1:27017/${DATABASE}`;
 // const dbLocation = process.env.ATLAS_URL;
 
 mongoose.connect(dbLocation, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -48,7 +49,7 @@ const addDrink = async (drink) => {
 };
 
 const getDrinks = async () => {
-  console.log('atlas url:', process.env.ATLAS_URL);
+  console.log('atlas url:', dbLocation);
   return await Drink.find({}).exec();
 };
 
