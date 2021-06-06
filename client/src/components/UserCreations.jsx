@@ -11,10 +11,10 @@ const { makeADrink } = useContext(BoozeContext)
           console.log(drink.ingredients)
           return (
             <Link to={{
-              pathname: `/custom/${drink.drinkName}`,
+              pathname: `/custom/${drink.drinkName || drink.name}`,
               state: { drink }
             }}>
-              <li key={i}>{drink.drinkName}</li>
+              <li key={i}>{drink.drinkName || drink.name}</li>
             </Link>
           )
         })}

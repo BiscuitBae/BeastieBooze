@@ -74,6 +74,12 @@ body {
   padding-left: 10px;
 }
 
+/* Custom DrinkView Styles */
+.custom-drink-display {
+  width: 300px;
+  height: auto;
+}
+
 
 /* Register / Login Styles */
 

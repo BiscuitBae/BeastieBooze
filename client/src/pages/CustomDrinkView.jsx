@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ingredientMap } from '../../utils/parseIng'
 import { UserContext } from '../userContext'
+import { imageUrlParser } from '../../utils/imageUrls'
 
 const CustomDrinkView = () => {
   const location = useLocation();
@@ -11,6 +12,8 @@ const CustomDrinkView = () => {
   const { favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
 
   let { ingredients, instructions, name, alcoholic } = drink
+  let imgSrc = imageUrlParser()
+  console.log(imgSrc)
 
   console.log('Ingredients Before Parser ', ingredients)
   ingredients = ingredientMap(ingredients)
@@ -18,7 +21,18 @@ const CustomDrinkView = () => {
 
   const removeButton = () => {
     // let drinkId = drink._id || drink.idDrink
-    let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+    // let key = drink.name ? drink.name : drink.drinkName;
+    let key = '';
+
+    if(drink.strDrink){
+      key = drink.strDrink
+    } else if(drink.drinkName){
+      key = drink.drinkName
+    } else {
+      key = drink.name
+    }
+    console.log(favoriteDrinks)
+    console.log(drink)
     if(favoriteDrinks.includes(key)){
       return (
         <span className="remove-button" onClick={() => removeFavorite(drink)}>
@@ -27,15 +41,16 @@ const CustomDrinkView = () => {
       )
     }
   }
+  
 
   return (
     <div className="container">
       <h2 className="page-heading">{name || drink.drinkName}</h2>
       <div className="row">
-        {/* <div className="col-md-8">
-          <img src={thumbnail} className="img-fluid drink-display" alt={name} />
-        </div> */}
-        <div className="col">
+        <div className='col-md-6'>
+          <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' alt='custom cocktail image' /> 
+        </div>
+        <div className="col-md-6">
           <h4>{alcoholic}</h4>
           <hr></hr>
           <h5>Ingredients</h5>
