@@ -27,12 +27,31 @@ function UserContextProvider({children}) {
         setFavoriteDrinks(prevFavs => [...prevFavs, key])
       })
     })
+    .then( Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      icon: 'success',
+      title: 'Signed in successfully'
+    }))
     .catch(err => console.log(err));
+   
   };
 
   const logoutUser = () => {
     setUserInfo({});
     setIsLoggedIn(false);
+    Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      icon: 'success',
+      title: 'Signed out successfully'
+    })
   };
 
 
@@ -66,12 +85,24 @@ function UserContextProvider({children}) {
     } else {
 
     const { googleId } = userInfo 
+    
+    console.log(drink)
+    drink.favId = drink._id || drink.idDrink
 
-    axios.patch(`/routes/users/favorites/:id`, { id: googleId, favorites: drink })  
+    axios.patch(`/routes/users/favorites/:id`, {id: googleId, favorites: drink })  
     .then(({ data }) => {
       setUserInfo(data)
     }).catch((err) => console.error(err))
   }
+}
+
+const removeFavorite = (drink) => {
+//removes favorite
+  console.log('MADE IT TO REMOVE FAVORITES', drink)
+  drink.favId = drink._id || drink.idDrink 
+  const { googleId } = userInfo 
+
+  axios.patch(`/routes/users/favorites/delete/:favId`, { favId: drink.favId , googleId: googleId } )
 }
 
 
@@ -101,7 +132,7 @@ function UserContextProvider({children}) {
     userCreations,
     setUserCreations,
     addCreation,
-    // checkFavorite,
+    removeFavorite,
     toggleFavorite,
     favoriteDrinks,
     isLegal,

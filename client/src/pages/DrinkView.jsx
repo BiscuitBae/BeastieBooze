@@ -46,20 +46,9 @@ const DrinkView = () => {
   // const { drink } = location.state;
   const ingredients = ingredientParser(aDrink);
 
-  const { favoriteDrinks, toggleFavorite } = useContext(UserContext);
-  const [isFavorite, setFavorite] = useState(false);
-
+  const { favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
+  
   console.log('These Are My Favorite Drinks', favoriteDrinks)
-
-  const removeButton = () => {
-    if(favoriteDrinks.includes(name)){
-      return (
-        <span className="remove-button">
-            <button type="button" className="btn btn-danger" >Remove from Favorites</button>
-          </span>
-      )
-    }
-  }
 
   // grab what we need from drink object, reassign names
   const { 
@@ -71,6 +60,15 @@ const DrinkView = () => {
     strInstructions: directions, 
   } = aDrink;
   
+  const removeButton = () => {
+    if(favoriteDrinks.includes(name)){
+      return (
+        <span className="remove-button" onClick={() => removeFavorite(aDrink)}>
+            <button type="button" className="btn btn-danger" >Remove from Favorites</button>
+          </span>
+      )
+    }
+  }
 
   return (
     <div className="container">
@@ -105,32 +103,3 @@ const DrinkView = () => {
 }
 
 export default DrinkView
-
-////The Below Comments pertain to making an axios call to the url parameters to get individual drinks
-//Originally implemented at the beginning of the component function.
-
-//{   useParams will grab the param passed in url. grabbing drinkId from params.
-//   const { drinkId } = useParams()
-
-//   const {renderDrink, aDrink} = useContext(BoozeContext)
-
-//   useEffect(() => {
-//     if (aDrink && aDrink.idDrink != drinkId) {
-//       renderDrink(drinkId)
-//     }
-//   }, [])
-
- 
-// ? Here we want to discard the state and axios call in this component and pass that responsibility to 
-// ? context, as with the above commented out code. The problem there is that data isn't persisting 
-// ? after refreshing DrinkView page currently. When we figure that out we'll switch back to using context 
-
-//   const [aDrink, setADrink] = useState({})
-
-//    useEffect(() => {
-//     axios.get(`/routes/drink/${drinkId}`)
-//     .then(( { data }) => {
-//     setADrink(data.drinks[0])
-//     })
-//     .catch((err) => console.error('THIS IS OUR ERROR!', err, drinkId))
-//   }, []) }

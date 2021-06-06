@@ -31,12 +31,20 @@ const findAndUpdate = async (id, data) => {
 const findAndUpdateFavorites = async (id, data) => {
   const updatedUser = await User.findOneAndUpdate({ googleId: id }, { $push:{favorites: data} }, { new: true})
   return updatedUser
+} 
+
+const findAndDeleteFavorites = async (id, drinkId) => {
+  const updatedUser = await User.findOneAndUpdate({ googleId: id }, { $pull:{favorites: { favId: drinkId }}}, {new: true})
+  return updatedUser
+
 
 } 
+
 
 module.exports = {
   getUser,
   createUser,
   findAndUpdate,
-  findAndUpdateFavorites
+  findAndUpdateFavorites,
+  findAndDeleteFavorites
 }
