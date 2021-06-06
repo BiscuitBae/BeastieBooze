@@ -8,7 +8,7 @@ const CustomDrinkView = () => {
   const { drink } = location.state;
   console.log(drink)
 
-  const { favoriteDrinks, toggleFavorite } = useContext(UserContext);
+  const { favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
 
   let { ingredients, instructions, drinkName: name, alcoholic } = drink
 
@@ -19,7 +19,7 @@ const CustomDrinkView = () => {
   const removeButton = () => {
     if(favoriteDrinks.includes(name)){
       return (
-        <span className="remove-button">
+        <span className="remove-button" onClick={() => removeFavorite(drink)}>
             <button type="button" className="btn btn-danger" >Remove from Favorites</button>
           </span>
       )
