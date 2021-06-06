@@ -49,7 +49,7 @@ const CustomDrinkView = () => {
     :
     (
       <div className='col-md-6'>
-          <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' style={{filter: 'grayscale(100%)'}} alt='custom cocktail image' /> 
+          <img src={`../images/emptyglass.png`}  className='img-fluid custom-drink-display' alt='empty cocktail img' /> 
         </div>
     )
   }
