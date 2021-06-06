@@ -54,6 +54,21 @@ const CustomDrinkView = () => {
     )
   }
 
+  const userButtons = () => {
+    if(isLoggedIn){
+      return (
+        <>
+        <br></br>
+        <span className="drink-button">
+          <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>
+        </span>
+        { removeButton() }
+        </>
+      )
+    }
+
+  }
+
 
   return (
     <div className="container">
@@ -79,11 +94,7 @@ const CustomDrinkView = () => {
           <br />
           <h5>Directions</h5>
           <p>{instructions}</p>
-          <br></br>
-          <span className="drink-button">
-            <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>
-          </span>
-          { removeButton() }
+          {userButtons()}
           <br></br>
           <br></br>
           <br></br>
