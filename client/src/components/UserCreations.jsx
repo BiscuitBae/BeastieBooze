@@ -8,14 +8,15 @@ const { makeADrink } = useContext(BoozeContext)
   return (
     <ul>
         {creations.map((drink, i) => {
-          console.log(drink.ingredients)
           return (
+            <div key={i}>
             <Link to={{
-              pathname: `/custom/${drink.drinkName}`,
+              pathname: `/custom/${drink.drinkName || drink.name}`,
               state: { drink }
             }}>
-              <li key={i}>{drink.drinkName}</li>
+              <li>{drink.drinkName || drink.name}</li>
             </Link>
+            </div>
           )
         })}
     </ul>

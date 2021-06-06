@@ -18,9 +18,6 @@ const Profile = () => {
   const { username, favorites, creations } = userInfo
 
 
-  //dummy variables to start of with
-
-
   return (
   <div className ='container'>
     <h1 className='page-heading'>{`Welcome Back ${username}`}</h1>

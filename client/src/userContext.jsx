@@ -23,7 +23,16 @@ function UserContextProvider({children}) {
 
       //lets set favorites by name
       favorites.forEach(drink => {
-        let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+        // let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+        let key = '';
+
+        if(drink.strDrink){
+          key = drink.strDrink
+        } else if(drink.drinkName){
+          key = drink.drinkName
+        } else {
+          key = drink.name
+        }
         setFavoriteDrinks(prevFavs => [...prevFavs, key])
       })
     })
@@ -77,13 +86,25 @@ function UserContextProvider({children}) {
 
   const toggleFavorite = (drink) => {
     
-    let key = drink.strDrink ? drink.strDrink : drink.drinkName;
-    setFavoriteDrinks(prevFavs => [...prevFavs, key])
+    // drink.favId = drink._id || drink.idDrink
+    // drink.strDrink ? drink.strDrink : drink.drinkName;
+    
+    let key = '';
+    
+    if(drink.strDrink){
+      key = drink.strDrink
+    } else if(drink.drinkName){
+      key = drink.drinkName
+    } else {
+      key = drink.name
+    }
+
 
     if(favoriteDrinks.includes(key)){
       alert('You Have Already Favorited This Item')
     } else {
-
+      
+    setFavoriteDrinks(prevFavs => [...prevFavs, key])
     const { googleId } = userInfo 
     
     console.log(drink)

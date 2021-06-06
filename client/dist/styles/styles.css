@@ -78,6 +78,16 @@ a:hover {
   padding-left: 10px;
 }
 
+/* Custom DrinkView Styles */
+.custom-drink-display {
+  width: 350px;
+  height: auto;
+}
+
+.custom-info {
+  padding-top: 100px;
+}
+
 
 /* Register / Login Styles */
 
@@ -122,6 +132,14 @@ a:hover {
 }
 
 /* Create-View Styles */
+.closer {
+  line-height: 0.5;
+}
+
+.circle-bullets {
+  list-style-type: circle;
+}
+
 .create-view-button {
   padding-right: 8px;
 }
@@ -170,11 +188,4 @@ a:hover {
   text-align: center;
 }
 
-/* Custom view styles */
-.closer {
-  line-height: 0.5;
-}
 
-.circle-bullets {
-  list-style-type: circle;
-}
