@@ -1,30 +1,30 @@
-import React, { useContext } from 'react'
-import { useLocation } from 'react-router-dom'
-import { ingredientMap } from '../../utils/parseIng'
-import { UserContext } from '../userContext'
+import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import { ingredientMap } from '../../utils/parseIng';
+import { UserContext } from '../userContext';
 
 const CustomDrinkView = () => {
   const location = useLocation();
   const { drink } = location.state;
-  console.log(drink)
+  console.log(drink);
 
   const { favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
 
-  let { ingredients, instructions, name, alcoholic } = drink
+  let { ingredients, instructions, name, alcoholic } = drink;
 
-  console.log('Ingredients Before Parser ', ingredients)
-  ingredients = ingredientMap(ingredients)
-  console.log('Ingredients After Parser ', ingredients)
+  console.log('Ingredients Before Parser ', ingredients);
+  ingredients = ingredientMap(ingredients);
+  console.log('Ingredients After Parser ', ingredients);
 
   const removeButton = () => {
-    if(favoriteDrinks.includes(name)){
+    if (favoriteDrinks.includes(name)) {
       return (
         <span className="remove-button" onClick={() => removeFavorite(drink)}>
-            <button type="button" className="btn btn-danger" >Remove from Favorites</button>
-          </span>
-      )
-    }
-  }
+          <button type="button" className="btn btn-danger" >Remove from Favorites</button>
+        </span>
+      );
+    };
+  };
 
   return (
     <div className="container">
@@ -40,7 +40,7 @@ const CustomDrinkView = () => {
           <div className='closer'>
             {
               ingredients.map((i, index) => {
-                return <p key={index}>- {i[1]}  {i[0]}</p>   //* each element is an array containing an ingredient followed by it's measurement
+                return <p key={index}>&bull; {i[1]}  {i[0]}</p>   //* each element is an array containing an ingredient followed by it's measurement
               })
             }
           </div>
