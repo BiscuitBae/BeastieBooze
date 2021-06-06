@@ -51,7 +51,7 @@ const CustomDrinkView = () => {
           <h4 style={{paddingBottom: '10px'}}>{alcoholic}</h4>
           <hr></hr>
           <h5 style={{paddingBottom: '10px'}}>Ingredients</h5>
-          <ul className='closer'>
+          <ul>
             {
               ingredients.map((i, index) => {
                 return <li key={index}> {i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
