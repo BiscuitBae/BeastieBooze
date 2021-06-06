@@ -7,15 +7,15 @@ const UserFavorites = ({ favorites }) => {
 
 
   return (
-    <ul>
+    <ul className="circle-bullets">
       {favorites.map((drink, i) => {
-       return drink.idDrink ? 
+       return drink.idDrink ?
          (
           <Link to={{
             pathname: `/drink/${drink.idDrink}`,
             state: { drink }
             }}>
-            <li key={i}>{drink.strDrink}</li>
+            <li key={i} className="favorite">{drink.strDrink}</li>
           </Link>
         )
         :
@@ -24,7 +24,7 @@ const UserFavorites = ({ favorites }) => {
             pathname: `/custom/${drink.drinkName || drink.name}`,
             state: { drink }
             }}>
-            <li key={i}>{drink.drinkName || drink.name}</li>
+            <li key={i} className="favorite">{drink.drinkName || drink.name}</li>
           </Link>
         )
       })}
@@ -46,7 +46,7 @@ export default UserFavorites
 //   return (
 //     <div className='container'>
 //       {favorites.map((drink, i) => {
-//        return drink.idDrink ? 
+//        return drink.idDrink ?
 //          (
 //           <Link to={{
 //             pathname: `/drink/${drink.idDrink}`,
