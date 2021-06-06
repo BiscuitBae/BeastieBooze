@@ -1,6 +1,6 @@
 // table of contents
 // renders all of our different views
-// view switcher - main, single drink, create, profile, login/signup buttons, search bar
+// view switcher - main, single drink, create, profile, login/signup buttons, search
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -16,7 +16,7 @@ import Profile from '../pages/Profile';
 
 const App = () => {
 
-  //* using react router to conditionally render views. We'll add more as we go
+  // using react router to conditionally render views
 
   return (
     <div className="app-body">
@@ -32,8 +32,8 @@ const App = () => {
         <Route path='/custom/:drinkId' component={CustomDrinkView} />
       </Switch>
     </div>
-  )
+  );
 
 };
 
-export default App
+export default App;

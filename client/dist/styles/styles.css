@@ -21,6 +21,10 @@ body {
   padding: 0px 0px 20px 0px;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 /* Drink Tile Styles */
 .drink-tile {
   padding: 10px 10px;
@@ -128,6 +132,15 @@ body {
   font-family: 'Roboto';
 }
 
+.favorite {
+  color: rgb(83, 81, 81);
+}
+
+.favorite:hover {
+  color: black;
+  text-decoration: underline;
+}
+
 /* Create-Feed Styles */
 
 
@@ -157,6 +170,11 @@ body {
   text-align: center;
 }
 
-a:hover {
-  text-decoration: none;
+/* Custom view styles */
+.closer {
+  line-height: 0.5;
+}
+
+.circle-bullets {
+  list-style-type: circle;
 }
