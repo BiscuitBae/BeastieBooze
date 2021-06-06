@@ -19,17 +19,17 @@ const CustomDrinkView = () => {
 
   ingredients = ingredientMap(ingredients);
 
+  let key = '';
+
+  if(drink.strDrink){
+    key = drink.strDrink
+  } else if(drink.drinkName){
+    key = drink.drinkName
+  } else {
+    key = drink.name
+
+  }
   const removeButton = () => {
-    let key = '';
-
-    if(drink.strDrink){
-      key = drink.strDrink
-    } else if(drink.drinkName){
-      key = drink.drinkName
-    } else {
-      key = drink.name
-    }
-
     if(favoriteDrinks.includes(key)){
       return (
         <span className="remove-button" onClick={() => removeFavorite(drink)}>
@@ -38,15 +38,28 @@ const CustomDrinkView = () => {
       )
     }
   }
-  
+
+  const drinkImage = () => {
+    return favoriteDrinks.includes(key) ?
+    (
+      <div className='col-md-6'>
+          <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' alt='custom cocktail image' /> 
+      </div>
+    )
+    :
+    (
+      <div className='col-md-6'>
+          <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' style={{filter: 'grayscale(100%)'}} alt='custom cocktail image' /> 
+        </div>
+    )
+  }
+
 
   return (
     <div className="container">
       <h2 className="page-heading" style={{padding: '55px 0px 0px 0px'}}>{name || drink.drinkName}</h2>
       <div className="row">
-        <div className='col-md-6'>
-          <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' alt='custom cocktail image' /> 
-        </div>
+        {drinkImage()}
         <div className="col-md-6 align-self-center custom-info">
           <h4 style={{paddingBottom: '10px'}}>{alcoholic}</h4>
           <hr></hr>
