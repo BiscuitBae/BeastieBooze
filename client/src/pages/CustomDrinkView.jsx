@@ -7,7 +7,6 @@ import { imageUrlParser } from '../../utils/imageUrls'
 const CustomDrinkView = () => {
   const location = useLocation();
   const { drink } = location.state;
-  console.log(drink);
 
   const { favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
 
@@ -17,11 +16,8 @@ const CustomDrinkView = () => {
   alcoholic = alcoholic ? 'Alcoholic' : 'Non-Alcoholic';
 
   let imgSrc = imageUrlParser()
-  console.log(imgSrc)
 
-  console.log('Ingredients Before Parser ', ingredients);
   ingredients = ingredientMap(ingredients);
-  console.log('Ingredients After Parser ', ingredients);
 
   const removeButton = () => {
     let key = '';
@@ -33,8 +29,7 @@ const CustomDrinkView = () => {
     } else {
       key = drink.name
     }
-    console.log(favoriteDrinks)
-    console.log(drink)
+
     if(favoriteDrinks.includes(key)){
       return (
         <span className="remove-button" onClick={() => removeFavorite(drink)}>
@@ -56,18 +51,16 @@ const CustomDrinkView = () => {
           <h4 style={{paddingBottom: '10px'}}>{alcoholic}</h4>
           <hr></hr>
           <h5 style={{paddingBottom: '10px'}}>Ingredients</h5>
-          <div className='closer'>
+          <ul className='closer'>
             {
               ingredients.map((i, index) => {
-                return <p key={index}>&bull; {i[1]}  {i[0]}</p>   //* each element is an array containing an ingredient followed by it's measurement
+                return <li key={index}> {i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
               })
             }
-          </div>
+          </ul>
+          <br />
           <h5>Directions</h5>
           <p>{instructions}</p>
-          {/* <span className='drink-button create-view-button'>
-            <button type="button" className="btn btn-dark">Make Virgin</button>
-          </span> */}
           <br></br>
           <span className="drink-button">
             <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>

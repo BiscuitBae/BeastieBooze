@@ -132,6 +132,14 @@ a:hover {
 }
 
 /* Create-View Styles */
+.closer {
+  line-height: 0.5;
+}
+
+.circle-bullets {
+  list-style-type: circle;
+}
+
 .create-view-button {
   padding-right: 8px;
 }
@@ -180,11 +188,4 @@ a:hover {
   text-align: center;
 }
 
-/* Custom view styles */
-.closer {
-  line-height: 0.5;
-}
 
-.circle-bullets {
-  list-style-type: circle;
-}
