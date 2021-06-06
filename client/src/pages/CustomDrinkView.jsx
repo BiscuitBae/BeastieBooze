@@ -10,7 +10,7 @@ const CustomDrinkView = () => {
 
   const { favoriteDrinks, toggleFavorite } = useContext(UserContext);
 
-  let { ingredients, instructions, drinkName: name, alcoholic } = drink
+  let { ingredients, instructions, name, alcoholic } = drink
 
   console.log('Ingredients Before Parser ', ingredients)
   ingredients = ingredientMap(ingredients)
@@ -28,31 +28,37 @@ const CustomDrinkView = () => {
 
   return (
     <div className="container">
-      <h2 className="page-heading">{name}</h2>
+      <h2 className="page-heading" style={{padding: '55px 0px 0px 0px'}}>{name}</h2>
       <div className="row">
         {/* <div className="col-md-8">
           <img src={thumbnail} className="img-fluid drink-display" alt={name} />
         </div> */}
-        <div className="col">
+        <div className="col text-center">
           <h4>{alcoholic}</h4>
           <hr></hr>
-          <h5>Ingredients</h5>
-          <ul>
+          <h5 style={{paddingBottom: '10px'}}>Ingredients</h5>
+          <div className='closer'>
             {
-            ingredients.map((i, index) => {
-              return <li key={index}>{i[1]}  {i[0]}</li>   //* each element is an array containing an ingredient followed by it's measurement
-            })
+              ingredients.map((i, index) => {
+                return <p key={index}>- {i[1]}  {i[0]}</p>   //* each element is an array containing an ingredient followed by it's measurement
+              })
             }
-          </ul>
+          </div>
           <h5>Directions</h5>
           <p>{instructions}</p>
           {/* <span className='drink-button create-view-button'>
             <button type="button" className="btn btn-dark">Make Virgin</button>
           </span> */}
+          <br></br>
           <span className="drink-button">
             <button type="button" className="btn btn-dark" onClick={() => {toggleFavorite(drink)}}>Add To Favorites</button>
           </span>
           { removeButton() }
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
         </div>
       </div>
     </div>

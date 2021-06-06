@@ -160,3 +160,20 @@ body {
 a:hover {
   text-decoration: none;
 }
+
+.closer {
+  line-height: 0.5;
+}
+
+.circle-bullets {
+  list-style-type: circle;
+}
+
+.favorite {
+  color: rgb(83, 81, 81);
+}
+
+.favorite:hover {
+  color: black;
+  text-decoration: underline;
+}
