@@ -27,12 +27,31 @@ function UserContextProvider({children}) {
         setFavoriteDrinks(prevFavs => [...prevFavs, key])
       })
     })
+    .then( Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      icon: 'success',
+      title: 'Signed in successfully'
+    }))
     .catch(err => console.log(err));
+   
   };
 
   const logoutUser = () => {
     setUserInfo({});
     setIsLoggedIn(false);
+    Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      icon: 'success',
+      title: 'Signed out successfully'
+    })
   };
 
 
