@@ -8,7 +8,7 @@ const CustomDrinkView = () => {
   const location = useLocation();
   const { drink } = location.state;
 
-  const { favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
+  const { isLoggedIn, favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
 
   let { ingredients, instructions, name, alcoholic } = drink
 
@@ -59,7 +59,12 @@ const CustomDrinkView = () => {
     <div className="container">
       <h2 className="page-heading" style={{padding: '55px 0px 0px 0px'}}>{name || drink.drinkName}</h2>
       <div className="row">
-        {drinkImage()}
+        {isLoggedIn ? 
+          drinkImage() : 
+          <div className='col-md-6'>
+            <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' alt='custom cocktail image' /> 
+          </div>
+        }
         <div className="col-md-6 align-self-center custom-info">
           <h4 style={{paddingBottom: '10px'}}>{alcoholic}</h4>
           <hr></hr>
