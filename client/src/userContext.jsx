@@ -23,16 +23,35 @@ function UserContextProvider({children}) {
 
       //lets set favorites by name
       favorites.forEach(drink => {
-        // let key = drink.strDrink ? drink.strDrink : drink.drinkName;
-        setFavoriteDrinks(prevFavs => [...prevFavs, drink.favId])
+        let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+        setFavoriteDrinks(prevFavs => [...prevFavs, key])
       })
     })
+    .then( Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      icon: 'success',
+      title: 'Signed in successfully'
+    }))
     .catch(err => console.log(err));
+   
   };
 
   const logoutUser = () => {
     setUserInfo({});
     setIsLoggedIn(false);
+    Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      icon: 'success',
+      title: 'Signed out successfully'
+    })
   };
 
 
@@ -58,20 +77,21 @@ function UserContextProvider({children}) {
 
   const toggleFavorite = (drink) => {
     
-    drink.favId = drink._id || drink.idDrink
+    // drink.favId = drink._id || drink.idDrink
     
-    // let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+    let key = drink.strDrink ? drink.strDrink : drink.drinkName;
     
-    if(favoriteDrinks.includes(drink.favId)){
+    if(favoriteDrinks.includes(key)){
       alert('You Have Already Favorited This Item')
     } else {
       
-    setFavoriteDrinks(prevFavs => [...prevFavs, drink.favId])
+    setFavoriteDrinks(prevFavs => [...prevFavs, key])
     const { googleId } = userInfo 
     
-    
-    
-    axios.patch(`/routes/users/favorites/:id`, { id: googleId, favorites: drink })  
+    console.log(drink)
+    drink.favId = drink._id || drink.idDrink
+
+    axios.patch(`/routes/users/favorites/:id`, {id: googleId, favorites: drink })  
     .then(({ data }) => {
       setUserInfo(data)
     }).catch((err) => console.error(err))
@@ -81,10 +101,10 @@ function UserContextProvider({children}) {
 const removeFavorite = (drink) => {
 //removes favorite
   console.log('MADE IT TO REMOVE FAVORITES', drink)
-  const { favId } = drink 
+  drink.favId = drink._id || drink.idDrink 
   const { googleId } = userInfo 
 
-  axios.patch(`/routes/users/favorites/delete/:favId`, { favId, googleId } )
+  axios.patch(`/routes/users/favorites/delete/:favId`, { favId: drink.favId , googleId: googleId } )
 }
 
 

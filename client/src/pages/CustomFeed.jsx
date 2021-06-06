@@ -14,15 +14,13 @@ const CustomFeed = () => {
 return (
   <div className='container'>
     <h1 className='page-heading'>User Submitted Drinks</h1>
-      <div className='row'>
-        <div className='card-deck'>
+      <div className="row d-flex justify-content-center">
         { customDrinks.map((drink, i) => {
           //selects an image address for randomizing drink images
           let imageSrc = imageUrlParser()
           return (
-            <CustomDrinkTile drink={drink} key={i} imageSrc={imageSrc} />
+            <CustomDrinkTile drink={drink} key={i} imageSrc={imageSrc}/>
         )})}
-          </div>
       </div>
   </div >
   )

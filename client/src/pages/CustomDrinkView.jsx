@@ -8,19 +8,20 @@ const CustomDrinkView = () => {
   const { drink } = location.state;
   console.log(drink)
 
-  const { favoriteDrinks, toggleFavorite } = useContext(UserContext);
+  const { favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
 
-  let { ingredients, instructions, drinkName: name, alcoholic } = drink
+  let { ingredients, instructions, name, alcoholic } = drink
 
   console.log('Ingredients Before Parser ', ingredients)
   ingredients = ingredientMap(ingredients)
   console.log('Ingredients After Parser ', ingredients)
 
   const removeButton = () => {
-    let drinkId = drink._id || drink.idDrink
-    if(favoriteDrinks.includes(drinkId)){
+    // let drinkId = drink._id || drink.idDrink
+    let key = drink.strDrink ? drink.strDrink : drink.drinkName;
+    if(favoriteDrinks.includes(key)){
       return (
-        <span className="remove-button" onClick={() => removeFavorite(aDrink)}>
+        <span className="remove-button" onClick={() => removeFavorite(drink)}>
             <button type="button" className="btn btn-danger" >Remove from Favorites</button>
           </span>
       )
@@ -29,7 +30,7 @@ const CustomDrinkView = () => {
 
   return (
     <div className="container">
-      <h2 className="page-heading">{name}</h2>
+      <h2 className="page-heading">{name || drink.drinkName}</h2>
       <div className="row">
         {/* <div className="col-md-8">
           <img src={thumbnail} className="img-fluid drink-display" alt={name} />
