@@ -24,7 +24,7 @@ const DrinkView = () => {
 
   const ingredients = ingredientParser(aDrink);
 
-  const { favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
+  const { isLoggedIn, favoriteDrinks, toggleFavorite, removeFavorite } = useContext(UserContext);
 
 
   // grab what we need from drink object, reassign names
@@ -43,6 +43,20 @@ const DrinkView = () => {
         <span className="remove-button" onClick={() => removeFavorite(aDrink)}>
           <button type="button" className="btn btn-danger" >Remove from Favorites</button>
         </span>
+      )
+    }
+  }
+
+  const userButtons = () => {
+    if(isLoggedIn){
+      return (
+        <>
+          <br></br>
+          <span className="drink-button">
+            <button type="button" className="btn btn-dark" onClick={() => { toggleFavorite(aDrink) }}>Add To Favorites</button>
+          </span>
+          { removeButton() }
+        </>
       )
     }
   }
@@ -66,11 +80,7 @@ const DrinkView = () => {
           </ul>
           <h5>Directions</h5>
           <p>{directions}</p>
-          <br></br>
-          <span className="drink-button">
-            <button type="button" className="btn btn-dark" onClick={() => { toggleFavorite(aDrink) }}>Add To Favorites</button>
-          </span>
-          { removeButton() }
+          {userButtons()}
           <br></br>
           <br></br>
         </div>
