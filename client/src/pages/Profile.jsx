@@ -13,14 +13,14 @@ import { UserContext } from '../userContext'
 //The profile page tracks users creations and their favorites.
 
 const Profile = () => {
-  
+
   const { userInfo, isLoggedIn } = useContext(UserContext)
   const { username, favorites, creations } = userInfo
 
 
   return (
   <div className ='container'>
-    <h1 className='page-heading'>{`Welcome Back ${username}`}</h1>
+    <h1 className='page-heading'>{`Hello Beastie ${username}`}</h1>
     <div>
       <h3 className='profile-heading'> Creations </h3>
       <UserCreations creations={creations} />
