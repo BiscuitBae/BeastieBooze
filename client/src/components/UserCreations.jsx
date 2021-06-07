@@ -14,7 +14,7 @@ const { makeADrink } = useContext(BoozeContext)
               pathname: `/custom/${drink.drinkName || drink.name}`,
               state: { drink }
             }}>
-              <li>{drink.drinkName || drink.name}</li>
+              <li className="favorite">{drink.drinkName || drink.name}</li>
             </Link>
             </div>
           )
