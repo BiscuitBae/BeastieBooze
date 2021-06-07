@@ -56,8 +56,8 @@ const Create = () => {
         {errors.instructions?.message ? <p className='required'>*{errors.instructions?.message}</p> : null}
         <h4 className='create-form-heading'>And is it boozy?</h4>
         <select className='form-control' {...register("alcoholic")}>
-          <option value={true}>Why, yes it is</option>
-          <option value={false}>It's a virgin drank</option>
+          <option value={true}>Why, yes it is!</option>
+          <option value={false}>It's a virgin drank.</option>
         </select>
         <div className='create-button'>
         <button className="btn btn-dark" type="submit"> Submit </button>

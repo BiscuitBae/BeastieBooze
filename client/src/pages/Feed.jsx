@@ -30,7 +30,7 @@ const {drinksFeed, random10, mocktail10} = useContext(BoozeContext);
   })
   return (
     <div className="container">
-      <h1 className="page-heading">Featured Drinks</h1>
+      <h1 className="page-heading">Creature Features</h1>
       <div className="row">
       {drinkList}
       </div>
