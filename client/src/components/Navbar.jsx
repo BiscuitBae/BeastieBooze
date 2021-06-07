@@ -3,7 +3,7 @@
 
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Login from '../pages/Login.jsx';
+import Login from './Login.jsx';
 // import { UserContext } from '../userContext.jsx';
 
 import { UserContext } from '../userContext'
