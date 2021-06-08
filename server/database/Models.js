@@ -40,7 +40,7 @@ const DrinkSchema = new mongoose.Schema({
 });
 
 const BusinessSchema = new mongoose.Schema({
-  name: String,
+  barName: String,
   contactInformation: {
     address: String,
     phone: String,
