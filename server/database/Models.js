@@ -33,7 +33,7 @@ const DrinkSchema = new mongoose.Schema({
   //add a createdBy to the drinkSchema to link to Users once created
 });
 const BusinessSchema = new mongoose.Schema({
-  name: String,
+  barName: String,
   contactInformation: {
     address: String,
     phone: String,
