@@ -29,7 +29,7 @@ const DrinkSchema = new mongoose.Schema({
   ingredients: {},
   alcoholic: Boolean,
   createdBy: String,
-  soldAt: [{ type: mongoose.Schema.Types.ObjectId }],
+  soldAt: [{ type: mongoose.Schema.Types.ObjectId, default: [] }],
   //add a createdBy to the drinkSchema to link to Users once created
 });
 const BusinessSchema = new mongoose.Schema({
@@ -43,8 +43,8 @@ const BusinessSchema = new mongoose.Schema({
     hoursOfOperation: String,
     description: String,
   },
-  menu: [{ type: mongoose.Schema.Types.ObjectId }], // drink docs
-  transactions: [{ type: mongoose.Schema.Types.ObjectId }], // transaction docs
+  menu: [{ type: mongoose.Schema.Types.ObjectId, default: [] }], // drink docs
+  transactions: [{ type: mongoose.Schema.Types.ObjectId, default: [] }], // transaction docs
 });
 const TransactionSchema = new mongoose.Schema({
   drinkId: mongoose.Schema.Types.ObjectId,
