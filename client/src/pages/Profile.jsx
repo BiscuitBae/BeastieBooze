@@ -1,9 +1,10 @@
 //Profile component to connect. An option if a user registers to be a member of the site.
 
 import React, { useContext } from 'react'
+import BarRegisterForm from './BarRegisterForm';
 
 import UserCreations from '../components/UserCreations'
-import UserFavorites from '../components/UserFavorites' 
+import UserFavorites from '../components/UserFavorites'
 
 import { UserContext } from '../userContext'
 
@@ -28,6 +29,10 @@ const Profile = () => {
     <div>
       <h3 className='profile-heading'> Favorites </h3>
       <UserFavorites favorites={favorites} />
+    </div>
+    <div>
+      <h3 className='profile-heading'> Create your bar </h3>
+      <BarRegisterForm userInfo={userInfo} />
     </div>
   </div>
   )

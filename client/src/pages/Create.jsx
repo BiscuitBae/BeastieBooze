@@ -14,7 +14,6 @@ const schema = yup.object().shape({
 })
 
 const Create = () => {
-
   const { makeADrink } = useContext(BoozeContext);
   const { userInfo, addCreation, } = useContext(UserContext);
 
@@ -22,10 +21,8 @@ const Create = () => {
     resolver: yupResolver(schema)
   });
 
-
   const onSubmit = (data, e) => {
-    
-    
+
     //separate drink ingredients into something more reasonable
     data.ingredients = data.ingredients.split(`\n`).reduce((output, ingredient) => {
       ingredient = ingredient.split(':');
@@ -33,7 +30,7 @@ const Create = () => {
       output[ingredient[1]] = ingredient[0]
       return output;
     }, {})
-    
+
     //send data for axios calls
     addCreation(data)
     makeADrink(data);
