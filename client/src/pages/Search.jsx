@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import { useForm } from 'react-hook-form';
 import {BoozeContext} from '../boozeContext';
 import SearchFeed from '../components/SearchFeed';
+import OwnerRegisterForm from './OwnerRegisterFrom';
 
 const Search = () => {
 
@@ -32,6 +33,7 @@ const Search = () => {
         </form>
       </div>
       <SearchFeed />
+      <OwnerRegisterForm />
     </div>
   )
 }
