@@ -3,9 +3,18 @@ const {
   registerBusiness,
   addMenuItem,
   removeMenuItem,
+  getAllBusinesses,
 } = require('../database/helpers.js');
 
 const businessesRouter = Router();
+
+businessesRouter.get('/', (req, res) => {
+  getAllBusinesses()
+    .then((businesses) => {
+      res.send(businesses);
+    })
+    .catch((err) => console.log(err));
+});
 
 businessesRouter.post('/', (req, res) => {
   const {

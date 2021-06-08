@@ -40,7 +40,7 @@ const DrinkView = () => {
     axios
       .delete('/routes/businesses/drink', {
         data: {
-          businessId: '60bf6c592cbc1f8bcabd72b9', // extract from state
+          businessId: '60bf6c592cbc1f8bcabd72b9',
           drinkObj: { name, directions, ingredients, alcoholic },
         },
       })

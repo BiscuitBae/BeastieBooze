@@ -51,6 +51,27 @@ const findAndDeleteFavorites = async (id, drinkId) => {
   return updatedUser;
 };
 
+const getAllBusinesses = async () => {
+  try {
+    const businesses = await Business.find();
+    const mappedBusinesses = await Promise.all(
+      businesses.map(async (business) => {
+        const mappedMenu = await Promise.all(
+          business.menu.map(async (drinkId) => {
+            const drink = await Drink.findById(drinkId);
+            console.log(drink);
+            return drink;
+          })
+        );
+        return { ...business._doc, menu: mappedMenu };
+      })
+    );
+    return mappedBusinesses;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const registerBusiness = async (
   googleId,
   name,
@@ -147,4 +168,5 @@ module.exports = {
   registerBusiness,
   addMenuItem,
   removeMenuItem,
+  getAllBusinesses,
 };
