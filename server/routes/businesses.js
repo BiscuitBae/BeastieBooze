@@ -3,6 +3,7 @@ const {
   registerBusiness,
   addMenuItem,
   removeMenuItem,
+  removeBusiness,
 } = require('../database/helpers.js');
 
 const businessesRouter = Router();
@@ -47,5 +48,13 @@ businessesRouter.delete('/drink', (req, res) => {
     })
     .catch((err) => console.log(err));
 });
+
+businessesRouter.delete('/', (req, res) => {
+  console.log(req.body)
+const { businessId, googleId  } = req.body
+removeBusiness(businessId, googleId)
+.then((Success) => { res.send(Success)})
+.catch((err) => console.log(err))
+})
 
 module.exports = { businessesRouter };

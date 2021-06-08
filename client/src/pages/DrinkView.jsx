@@ -40,7 +40,7 @@ const DrinkView = () => {
     axios
       .delete('/routes/businesses/drink', {
         data: {
-          businessId: '60bf6c592cbc1f8bcabd72b9', // extract from state
+          businessId: '60bfcbe9dcf87f97054d4517', // extract from state
           drinkObj: { name, directions, ingredients, alcoholic },
         },
       })
@@ -61,7 +61,7 @@ const DrinkView = () => {
   const addToMenu = () => {
     axios
       .post('/routes/businesses/drink', {
-        businessId: '60bf6c592cbc1f8bcabd72b9', // extract from state
+        businessId: '60bfcbe9dcf87f97054d4517', // extract from state
         drinkObj: { name, directions, ingredients, alcoholic },
       })
       .then(({ data: newMenu }) => console.log(newMenu))
@@ -90,6 +90,17 @@ const DrinkView = () => {
     }
   };
 
+  const youTube = () => {
+    if (true) {
+      return (
+        <React.Fragment>
+        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={trailer} onClose={() => setOpen(false)} />
+        <button className="trailer-button" onClick={()=> prepTrailer(show.media_type === 'tv' ? show.name : show.title)}>View Trailer</button>
+      </React.Fragment>
+      )
+    }
+  }
+
   const userButtons = () => {
     if (isLoggedIn) {
       return (
@@ -106,6 +117,7 @@ const DrinkView = () => {
               Add To Favorites
             </button>
           </span>
+          {youTube()}
           {removeButton()}
           {addToMenuButton()}
           {removeFromMenuButton()}
