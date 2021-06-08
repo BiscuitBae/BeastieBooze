@@ -24,7 +24,22 @@ const BarContextProvider = ({ children }) => {
   });
   const [hoursOfOperation, setHoursOfOperation] = useState('');
   const [description, setDescription] = useState('');
-}
+
+  return (
+    <BarContext.Provider
+    value={{
+      barName,
+      contactInformation,
+      address,
+      phone,
+      email,
+      details,
+      hoursOfOperation,
+      description }}>
+      {children}
+      </BarContext.Provider>
+  );
+};
 
 export {
   BarContext,

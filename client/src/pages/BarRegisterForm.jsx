@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { useForm } from 'react-hook-form'
-import { OwnerContex } from '../barContext'
+import { BarContext } from '../barContext'
 import { UserContext } from '../userContext'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -19,8 +19,8 @@ const schema = yup.object().shape({
   }
 })
 
-const OwnerRegisterForm = () => {
-  const { makeABar } = useContext(BarContext);
+const BarRegisterForm = () => {
+  const { phone } = useContext(BarContext);
   const { userInfo } = useContext(UserContext);
 
   const {register, handleSubmit, formState:{ errors }} = useForm({
@@ -32,7 +32,7 @@ const OwnerRegisterForm = () => {
 
     // send data for axios calls
     // addCreation(data)
-    // makeADrink(data);
+    // makeABar(data);
     // e.target.reset();
   };
 
@@ -53,7 +53,7 @@ const OwnerRegisterForm = () => {
         <input type='tel' className="form-control"{...register("phone")} placeholder="(504) 524-9504" />
         {errors.phone?.message ? <p className='required'>*{errors.phone?.message}</p> : null}
         <h4 className='create-form-heading'>Email</h4>
-        <input type="email" className="form-control"{...register("email")} placeholder="(504) 524-9504" />
+        <input type="email" className="form-control"{...register("email")} placeholder="help@fattuesday.com" />
         {errors.email?.message ? <p className='required'>*{errors.email?.message}</p> : null}
         <h2 className="page-heading" style={{paddingBottom: '0px'}}>Other Details</h2>
         <h4 className='create-form-heading'>Hours of Operation</h4>
@@ -72,4 +72,4 @@ const OwnerRegisterForm = () => {
   )
 }
 
-export default OwnerRegisterForm;
+export default BarRegisterForm;
