@@ -1,35 +1,31 @@
 import React, { useEffect, useContext } from 'react';
-// import DrinkTile from '../components/DrinkTile';
-// import { BoozeContext } from '../boozeContext';
-// import { UserContext } from '../userContext';
+import { BarContext } from '../barContext';
+import { UserContext } from '../userContext';
+import BusinessDetail from './BusinessDetail.jsx';
+import BarTile from '../components/BarTile';
+import { v4 as getKey } from 'uuid';
 
 const BusinessSummary = () => {
-  // // pull drinksFeed (current assortment of drinks) and random10 function from BoozeContext
-  // const { isLoggedIn, userInfo, favoriteDrinks, verifyAge, isLegal } =
-  //   useContext(UserContext);
-  // const { drinksFeed, random10, mocktail10 } = useContext(BoozeContext);
-  // // when component loads, call random10 to populate drinksFeed with 10 new, random drinks from api
-  // useEffect(() => {
-  //   if (isLegal === null) {
-  //     verifyAge();
-  //   }
-  // }, []);
-  // useEffect(() => {
-  //   if (!isLegal) {
-  //     mocktail10();
-  //   } else {
-  //     random10();
-  //   }
-  // }, [isLegal]);
-  // let dranks = drinksFeed.slice(1);
-  // const drinkList = dranks.map((drink) => {
-  //   return <DrinkTile key={drink.idDrink} drink={drink} />;
-  // });
-  return (
+  const { verifyAge, isLegal } = useContext(UserContext);
+
+  useEffect(() => {
+    if (isLegal === null) {
+      verifyAge();
+    }
+  }, []);
+  const { bars } = useContext(BarContext);
+  return isLegal ? (
     <div className="container">
       <h1 className="page-heading">Businesses</h1>
-      <div className="row">{[]}</div>
+      <div className="row">
+        {bars.map((barObj) => (
+          // <BusinessDetail key={getKey()} barObj={barObj} />
+          <BarTile key={getKey()} barObj={barObj} />
+        ))}
+      </div>
     </div>
+  ) : (
+    <h1>not legal</h1>
   );
 };
 

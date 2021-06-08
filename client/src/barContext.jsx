@@ -20,28 +20,41 @@ const BarContextProvider = ({ children }) => {
   // Details holds hours of operation and a description.
   const [details, setDetails] = useState({
     hoursOfOperation,
-    description
+    description,
   });
   const [hoursOfOperation, setHoursOfOperation] = useState('');
   const [description, setDescription] = useState('');
 
+  const [bars, setBars] = useState([]);
+
+  const fetchBars = async () => {
+    const response = await axios.get('/routes/businesses');
+    return response.data;
+  };
+
+  useEffect(() => {
+    fetchBars()
+      .then((bars) => setBars(bars))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <BarContext.Provider
-    value={{
-      barName,
-      contactInformation,
-      address,
-      phone,
-      email,
-      details,
-      hoursOfOperation,
-      description }}>
+      value={{
+        barName,
+        contactInformation,
+        address,
+        phone,
+        email,
+        details,
+        hoursOfOperation,
+        description,
+        bars,
+      }}
+    >
       {children}
-      </BarContext.Provider>
+    </BarContext.Provider>
   );
 };
 
-export {
-  BarContext,
-  BarContextProvider,
-};
+export { BarContext, BarContextProvider };

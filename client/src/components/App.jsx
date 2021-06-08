@@ -13,7 +13,8 @@ import Search from '../pages/Search';
 import CustomFeed from '../pages/CustomFeed';
 import CustomDrinkView from '../pages/CustomDrinkView';
 import Profile from '../pages/Profile';
-import BusinessSummary from '../pages/BusinessSummary';
+import BusinessSummary from '../pages/BusinessSummary.jsx';
+import BusinessDetail from '../pages/BusinessDetail.jsx';
 
 const App = () => {
   // using react router to conditionally render views
@@ -32,6 +33,7 @@ const App = () => {
         <Route exact path="/custom" component={CustomFeed} />
         <Route path="/custom/:drinkId" component={CustomDrinkView} />
         <Route exact path="/businesses" component={BusinessSummary} />
+        <Route path="/businesses/:businessId" component={BusinessDetail} />
       </Switch>
     </div>
   );

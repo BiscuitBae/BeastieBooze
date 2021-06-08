@@ -4,7 +4,7 @@
   "description": "Drinks app",
   "main": "app.js",
   "scripts": {
-    "start": "node --exec babel-node server/app.js",
+    "start": "node server/app.js",
     "start:dev": "nodemon --exec babel-node server/app.js --mode development",
     "build:dev": "webpack --config webpack.config.js --mode development --watch",
     "build:prod": "webpack --config webpack.config.js --mode production",
@@ -46,14 +46,17 @@
     "react-router-dom": "^5.2.0",
     "resolve-cwd": "^3.0.0",
     "sweetalert2": "^11.0.16",
+    "uuid": "^3.4.0",
     "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/eslint-parser": "^7.14.4",
     "@babel/node": "^7.14.2",
+    "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
+    "@babel/runtime": "^7.14.0",
     "babel-loader": "^8.2.2",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
