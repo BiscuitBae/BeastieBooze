@@ -25,17 +25,31 @@ const BarContextProvider = ({ children }) => {
   const [hoursOfOperation, setHoursOfOperation] = useState('');
   const [description, setDescription] = useState('');
 
+  const [showForm, setShowForm] = useState(false);
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
   return (
     <BarContext.Provider
-    value={{
-      barName,
-      contactInformation,
-      address,
-      phone,
-      email,
-      details,
-      hoursOfOperation,
-      description }}>
+      value={{
+        barName,
+        setBarName,
+        contactInformation,
+        address,
+        setAddress,
+        phone,
+        setPhone,
+        email,
+        setEmail,
+        details,
+        hoursOfOperation,
+        setHoursOfOperation,
+        description,
+        setDescription,
+        showForm,
+        toggleForm,
+      }}>
       {children}
       </BarContext.Provider>
   );
