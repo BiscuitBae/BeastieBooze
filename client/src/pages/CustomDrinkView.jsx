@@ -43,13 +43,13 @@ const CustomDrinkView = () => {
     return favoriteDrinks.includes(key) ?
     (
       <div className='col-md-6'>
-          <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' alt='custom cocktail image' /> 
+          <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' alt='custom cocktail image' />
       </div>
     )
     :
     (
       <div className='col-md-6'>
-          <img src={`../images/emptyglass.png`}  className='img-fluid custom-drink-display' alt='empty cocktail img' /> 
+          <img src={`../images/emptyglass.png`}  className='img-fluid custom-drink-display' alt='empty cocktail img' />
         </div>
     )
   }
@@ -74,10 +74,10 @@ const CustomDrinkView = () => {
     <div className="container">
       <h2 className="page-heading" style={{padding: '55px 0px 0px 0px'}}>{name || drink.drinkName}</h2>
       <div className="row">
-        {isLoggedIn ? 
-          drinkImage() : 
+        {isLoggedIn ?
+          drinkImage() :
           <div className='col-md-6'>
-            <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' alt='custom cocktail image' /> 
+            <img src={`../${imgSrc}`} className='img-fluid custom-drink-display' alt='custom cocktail image' />
           </div>
         }
         <div className="col-md-6 align-self-center custom-info">
