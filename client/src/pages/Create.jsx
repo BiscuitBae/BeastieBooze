@@ -22,14 +22,13 @@ const Create = () => {
   });
 
   const onSubmit = (data, e) => {
-
-    //separate drink ingredients into something more reasonable
-    data.ingredients = data.ingredients.split(`\n`).reduce((output, ingredient) => {
-      ingredient = ingredient.split(':');
-      ingredient[1] = ingredient[1].trim()
-      output[ingredient[1]] = ingredient[0]
-      return output;
-    }, {})
+    // //separate drink ingredients into something more reasonable
+    // data.ingredients = data.ingredients.split(`\n`).reduce((output, ingredient) => {
+    //   ingredient = ingredient.split(':');
+    //   ingredient[1] = ingredient[1].trim()
+    //   output[ingredient[1]] = ingredient[0]
+    //   return output;
+    // }, {})
 
     //send data for axios calls
     addCreation(data)

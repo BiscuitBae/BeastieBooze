@@ -34,13 +34,19 @@ const BarContextProvider = ({ children }) => {
     <BarContext.Provider
       value={{
         barName,
+        setBarName,
         contactInformation,
         address,
+        setAddress,
         phone,
+        setPhone,
         email,
+        setEmail,
         details,
         hoursOfOperation,
+        setHoursOfOperation,
         description,
+        setDescription,
         showForm,
         toggleForm,
       }}>
