@@ -15,7 +15,6 @@ const DrinkView = () => {
   const [isOpen, setOpen] = useState(false);
   const [tutorial, setTutorial] = useState();
 
-
   useEffect(() => {
     axios
       .get(`/routes/drink/${drinkId}`)
@@ -44,7 +43,7 @@ const DrinkView = () => {
     axios
       .delete('/routes/businesses/drink', {
         data: {
-          businessId: '60bfcbe9dcf87f97054d4517', // extract from state
+          businessId: '60c0e5c5a022a6d97d9ea675',
           drinkObj: { name, directions, ingredients, alcoholic },
         },
       })
@@ -65,7 +64,7 @@ const DrinkView = () => {
   const addToMenu = () => {
     axios
       .post('/routes/businesses/drink', {
-        businessId: '60bfcbe9dcf87f97054d4517', // extract from state
+        businessId: '60c0e5c5a022a6d97d9ea675', // extract from state
         drinkObj: { name, directions, ingredients, alcoholic },
       })
       .then(({ data: newMenu }) => console.log(newMenu))
@@ -99,8 +98,9 @@ const DrinkView = () => {
     getVideo(title);
   };
   const getVideo = (title) => {
-    axios.get(`/routes/tutorial/${name}`)
-      .then(({data}) => {
+    axios
+      .get(`/routes/tutorial/${name}`)
+      .then(({ data }) => {
         setTutorial(data);
         console.log('DATA FROM Youtube request', data);
       })
@@ -111,12 +111,20 @@ const DrinkView = () => {
     if (true) {
       return (
         <React.Fragment>
-        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={tutorial} onClose={() => setOpen(false)} />
-        <button className="trailer-button" onClick={()=> prepVideo()}>View Tutorial</button>
-      </React.Fragment>
-      )
+          <ModalVideo
+            channel="youtube"
+            autoplay
+            isOpen={isOpen}
+            videoId={tutorial}
+            onClose={() => setOpen(false)}
+          />
+          <button className="trailer-button" onClick={() => prepVideo()}>
+            View Tutorial
+          </button>
+        </React.Fragment>
+      );
     }
-  }
+  };
 
   const userButtons = () => {
     if (isLoggedIn) {

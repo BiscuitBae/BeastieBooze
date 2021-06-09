@@ -13,27 +13,30 @@ import Search from '../pages/Search';
 import CustomFeed from '../pages/CustomFeed';
 import CustomDrinkView from '../pages/CustomDrinkView';
 import Profile from '../pages/Profile';
+import BusinessSummary from '../pages/BusinessSummary.jsx';
+import BusinessDetail from '../pages/BusinessDetail.jsx';
 
 const App = () => {
-
   // using react router to conditionally render views
 
   return (
     <div className="app-body">
       <Navbar />
       <Switch>
-        <Route exact path='/' component={Feed} />
-        <Route exact path='/create' component={Create} />
-        <Route exact path='/search' component={Search} />
-        <Route path='/login' component={Login} />
-        <Route path='/profile/:userId' component={Profile} />
-        <Route path='/drink/:drinkId' component={DrinkView} />  {/* // takes a param and dynamically renders a drinkView */}
-        <Route exact path='/custom' component={CustomFeed} />
-        <Route path='/custom/:drinkId' component={CustomDrinkView} />
+        <Route exact path="/" component={Feed} />
+        <Route exact path="/create" component={Create} />
+        <Route exact path="/search" component={Search} />
+        <Route path="/login" component={Login} />
+        <Route path="/profile/:userId" component={Profile} />
+        <Route path="/drink/:drinkId" component={DrinkView} />{' '}
+        {/* // takes a param and dynamically renders a drinkView */}
+        <Route exact path="/custom" component={CustomFeed} />
+        <Route path="/custom/:drinkId" component={CustomDrinkView} />
+        <Route exact path="/businesses" component={BusinessSummary} />
+        <Route path="/businesses/:businessId" component={BusinessDetail} />
       </Switch>
     </div>
   );
-
 };
 
 export default App;

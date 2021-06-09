@@ -1,9 +1,12 @@
 import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
+import { UserContext } from './userContext';
 
 const BarContext = createContext();
 
 const BarContextProvider = ({ children }) => {
+  const { userInfo } = useContext(UserContext);
+
   // Bar name
   const [barName, setBarName] = useState('');
 
@@ -20,16 +23,41 @@ const BarContextProvider = ({ children }) => {
   // Details holds hours of operation and a description.
   const [details, setDetails] = useState({
     hoursOfOperation,
-    description
+    description,
   });
   const [hoursOfOperation, setHoursOfOperation] = useState('');
   const [description, setDescription] = useState('');
+
+  const [bars, setBars] = useState([]);
+
+  const fetchBars = async () => {
+    const response = await axios.get('/routes/businesses');
+    return response.data;
+  };
+
+  useEffect(() => {
+    fetchBars()
+      .then((bars) => setBars(bars))
+      .catch((err) => console.log(err));
+  }, []);
 
   // Determine if the register form should be rendered.
   const [showForm, setShowForm] = useState(false);
   const toggleForm = () => {
     setShowForm(!showForm);
   };
+
+  const [currentBar, setCurrentBar] = useState(null);
+  useEffect(() => {
+    if (userInfo.businessId) {
+      axios
+        .get(`/routes/businesses/${businessId}`)
+        .then(({ data: barInfo }) => {
+          setCurrentBar(barInfo);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [userInfo]);
 
   return (
     <BarContext.Provider
@@ -50,13 +78,12 @@ const BarContextProvider = ({ children }) => {
         setDescription,
         showForm,
         toggleForm,
-      }}>
+        bars,
+      }}
+    >
       {children}
-      </BarContext.Provider>
+    </BarContext.Provider>
   );
 };
 
-export {
-  BarContext,
-  BarContextProvider,
-};
+export { BarContext, BarContextProvider };

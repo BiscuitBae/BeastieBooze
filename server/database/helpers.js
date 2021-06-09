@@ -6,6 +6,7 @@ const { API_KEY } = require('../config.js');
 const getUser = async (id) => {
   try {
     const user = await User.find({ googleId: id });
+    console.log(user);
     return user;
   } catch (err) {
     console.log('getUser failed', err);
@@ -51,6 +52,27 @@ const findAndDeleteFavorites = async (id, drinkId) => {
   return updatedUser;
 };
 
+const getAllBusinesses = async () => {
+  try {
+    const businesses = await Business.find();
+    const mappedBusinesses = await Promise.all(
+      businesses.map(async (business) => {
+        const mappedMenu = await Promise.all(
+          business.menu.map(async (drinkId) => {
+            const drink = await Drink.findById(drinkId);
+            console.log(drink);
+            return drink;
+          })
+        );
+        return { ...business._doc, menu: mappedMenu };
+      })
+    );
+    return mappedBusinesses;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const registerBusiness = async (
   googleId,
   name,
@@ -78,30 +100,32 @@ const registerBusiness = async (
 
 const removeBusiness = async (businessId, googleId, drinkId) => {
   try {
-    const user = await User.findOne({ googleId })
-    console.log(user, 'user')
+    const user = await User.findOne({ googleId });
+    console.log(user, 'user');
     if (!user) {
-      return false
+      return false;
     }
-    user.businessId = null
+    user.businessId = null;
     //  await user.save()
-     const business = await Business.findOne({_id: businessId})
+    const business = await Business.findOne({ _id: businessId });
     //  await Business.findOneAndDelete({_id : businessId})
-     const menu = business.menu.slice()
-     if(!business){
-       return false
-     }
-     console.log(business, 'business')
+    const menu = business.menu.slice();
+    if (!business) {
+      return false;
+    }
+    console.log(business, 'business');
 
-     for(drinkId of menu){
-       const drink = await Drink.findById(drinkId)
-       const filterId = drink.soldAt.filter(currentBusinessId => currentBusinessId.toString() !== businessId)
-       console.log(filterId, 'yoyooyoyoy')
-       console.log(drink, 'drink')
-      }
-      await user.save()
-      await Business.findOneAndDelete({_id : businessId})
-     return true
+    for (drinkId of menu) {
+      const drink = await Drink.findById(drinkId);
+      const filterId = drink.soldAt.filter(
+        (currentBusinessId) => currentBusinessId.toString() !== businessId
+      );
+      console.log(filterId, 'yoyooyoyoy');
+      console.log(drink, 'drink');
+    }
+    await user.save();
+    await Business.findOneAndDelete({ _id: businessId });
+    return true;
   } catch (error) {
     throw error;
   }
@@ -166,7 +190,22 @@ const removeMenuItem = async (businessId, drinkObj) => {
     return savedBusiness.menu;
   } catch (error) {
     throw error;
+    ``;
   }
+};
+
+const getSingleBusinessInfo = async (businessId) => {
+  const business = await Business.findById(businessId);
+  if (!business) {
+    return false;
+  }
+  const mappedMenu = await Promise.all(
+    business.menu.map(async (id) => {
+      const foundDrink = await Drink.findById(id);
+      return { name: foundDrink.name, drinkId: foundDrink._id };
+    })
+  );
+  return { ...business._doc, menu: mappedMenu };
 };
 
 module.exports = {
@@ -178,5 +217,7 @@ module.exports = {
   registerBusiness,
   addMenuItem,
   removeMenuItem,
+  getAllBusinesses,
   removeBusiness,
+  getSingleBusinessInfo,
 };
