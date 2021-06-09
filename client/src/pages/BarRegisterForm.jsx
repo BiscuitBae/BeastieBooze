@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { BarContext } from '../barContext'
 import { UserContext } from '../userContext'
 import axios from 'axios'
@@ -22,7 +22,6 @@ const BarRegisterForm = () => {
     toggleForm,
   } = useContext(BarContext);
   const { userInfo, setUserInfo } = useContext(UserContext);
-  console.log(userInfo);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,11 +41,12 @@ const BarRegisterForm = () => {
     };
 
     axios.post('/routes/businesses', newBar)
-    .then(({ data: bizInfo }) => {
-      const barId = bizInfo._id;
-      setUserInfo({...userInfo, businessId: barId});
-      console.log(userInfo);
-    })
+      .then(({ data: bizInfo }) => {
+        const barId = bizInfo._id;
+        setUserInfo({ ...userInfo, businessId: barId });
+        toggleForm();
+      })
+      .catch((err) => console.error(err));
 
     // send data for axios calls
     // addCreation(data)
@@ -58,11 +58,11 @@ const BarRegisterForm = () => {
       <div>
         <div>
           <div className='create-button'>
-            <button className="btn btn-dark" type="button" onClick={toggleForm} > Cancel </button>
-            </div>
+            <button className="btn btn-dark" type="button" onClick={toggleForm} > X </button>
+          </div>
         </div>
         <div className='form-group'>
-          <h1 className="page-heading" style={{paddingBottom: '0px'}}>Create your business</h1>
+          <h1 className="page-heading" style={{ paddingBottom: '0px' }}>Create your business</h1>
           <form className='input-form ' onSubmit={handleSubmit}>
             <div>
               <h4 className='create-form-heading'>Name Your Business *</h4>
@@ -77,7 +77,7 @@ const BarRegisterForm = () => {
               />
             </div>
             <div>
-              <h3 className="page-heading" style={{paddingBottom: '0px'}}>Contact Information</h3>
+              <h3 className="page-heading" style={{ paddingBottom: '0px' }}>Contact Information</h3>
               <h4 className='create-form-heading'>Address *</h4>
               <textarea
                 className='form-control'
@@ -97,7 +97,7 @@ const BarRegisterForm = () => {
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 name="phone"
                 value={phone}
-                onChange={(e) =>setPhone(e.target.value)}
+                onChange={(e) => setPhone(e.target.value)}
                 required
               />
               <p className='text-muted'>Required Format: 555-555-5555</p>
@@ -112,7 +112,7 @@ const BarRegisterForm = () => {
               />
             </div>
             <div>
-              <h3 className="page-heading" style={{paddingBottom: '0px'}}>Other Details</h3>
+              <h3 className="page-heading" style={{ paddingBottom: '0px' }}>Other Details</h3>
               <h4 className='create-form-heading'>Hours of Operation *</h4>
               <textarea
                 className='form-control'
@@ -130,11 +130,11 @@ const BarRegisterForm = () => {
                 rows='4'
                 cols='50'
                 placeholder={`The Best Party in Town. Any Town.\n\nEverywhere else it’s just a Tuesday. Want in?`}
-                  name='description'
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  required
-                />
+                name='description'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
               <h5 className='create-form-heading'>Required *</h5>
             </div>
             <div className='create-button'>
@@ -144,13 +144,20 @@ const BarRegisterForm = () => {
         </div>
       </div>
     )
-    : (
-      <div>
-          <div className='create-button'>
-            <button className="btn btn-dark" type="button" onClick={toggleForm} > Register your bar </button>
+      : userInfo.businessId ?
+        (
+          <div>
+            <div className='create-button'>
+              <button className="btn btn-dark" type="button" onClick={toggleForm} > Edit your bar </button>
+            </div>
           </div>
-      </div>
-    )
+        ) : (
+          <div>
+            <div className='create-button'>
+              <button className="btn btn-dark" type="button" onClick={toggleForm} > Register your bar </button>
+            </div>
+          </div>
+        )
   )
 }
 

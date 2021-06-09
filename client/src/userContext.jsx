@@ -17,8 +17,8 @@ function UserContextProvider({ children }) {
     axios.get('/routes/users', { params: userData })
       .then(({ data }) => {
         // console.log('===> userContext user response:', data)
-        const { googleId, username, favorites, creations } = data;
-        setUserInfo({ googleId, username, favorites, creations })
+        const { googleId, username, favorites, creations, businessId } = data;
+        setUserInfo({ googleId, username, favorites, creations, businessId })
         setIsLoggedIn(true)
 
         //lets set favorites by name
