@@ -18,10 +18,7 @@ function UserContextProvider({ children }) {
       .then(({ data }) => {
         // console.log('===> userContext user response:', data)
         const { googleId, username, favorites, creations, businessId } = data;
-        setUserInfo({ googleId, username, favorites, creations })
-        if (businessId !== undefined) {
-          setUserInfo({ ...userInfo, businessId });
-        }
+        setUserInfo({ googleId, username, favorites, creations, businessId })
         setIsLoggedIn(true)
 
         //lets set favorites by name
