@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import ModalVideo from 'react-modal-video';
 
 import { BoozeContext } from '../boozeContext';
 import { UserContext } from '../userContext';
@@ -11,6 +12,8 @@ const DrinkView = () => {
   // useParams will grab the param passed in url. grabbing drinkId from params.
   const { drinkId } = useParams();
   const [aDrink, setADrink] = useState({});
+  const [isOpen, setOpen] = useState(false);
+  const [tutorial, setTutorial] = useState();
 
   useEffect(() => {
     axios
@@ -90,6 +93,39 @@ const DrinkView = () => {
     }
   };
 
+  const prepVideo = (title) => {
+    setOpen(true);
+    getVideo(title);
+  };
+  const getVideo = (title) => {
+    axios
+      .get(`/routes/tutorial/${name}`)
+      .then(({ data }) => {
+        setTutorial(data);
+        console.log('DATA FROM Youtube request', data);
+      })
+      .catch();
+  };
+
+  const youTube = () => {
+    if (true) {
+      return (
+        <React.Fragment>
+          <ModalVideo
+            channel="youtube"
+            autoplay
+            isOpen={isOpen}
+            videoId={tutorial}
+            onClose={() => setOpen(false)}
+          />
+          <button className="trailer-button" onClick={() => prepVideo()}>
+            View Tutorial
+          </button>
+        </React.Fragment>
+      );
+    }
+  };
+
   const userButtons = () => {
     if (isLoggedIn) {
       return (
@@ -106,6 +142,7 @@ const DrinkView = () => {
               Add To Favorites
             </button>
           </span>
+          {youTube()}
           {removeButton()}
           {addToMenuButton()}
           {removeFromMenuButton()}

@@ -97,6 +97,39 @@ const registerBusiness = async (
   }
 };
 
+const removeBusiness = async (businessId, googleId, drinkId) => {
+  try {
+    const user = await User.findOne({ googleId });
+    console.log(user, 'user');
+    if (!user) {
+      return false;
+    }
+    user.businessId = null;
+    //  await user.save()
+    const business = await Business.findOne({ _id: businessId });
+    //  await Business.findOneAndDelete({_id : businessId})
+    const menu = business.menu.slice();
+    if (!business) {
+      return false;
+    }
+    console.log(business, 'business');
+
+    for (drinkId of menu) {
+      const drink = await Drink.findById(drinkId);
+      const filterId = drink.soldAt.filter(
+        (currentBusinessId) => currentBusinessId.toString() !== businessId
+      );
+      console.log(filterId, 'yoyooyoyoy');
+      console.log(drink, 'drink');
+    }
+    await user.save();
+    await Business.findOneAndDelete({ _id: businessId });
+    return true;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const addMenuItem = async (businessId, drinkObj) => {
   try {
     const { name, alcoholic, directions, ingredients } = drinkObj;
@@ -156,7 +189,24 @@ const removeMenuItem = async (businessId, drinkObj) => {
     return savedBusiness.menu;
   } catch (error) {
     throw error;
+    ``;
   }
+};
+
+const getSingleBusinessInfo = async (businessId) => {
+  const business = await Business.findById(businessId);
+  if (!business) {
+    return false;
+  }
+  const mappedMenu = await Promise.all(
+    business.menu.map(async (id) => {
+      const foundDrink = await Drink.findById(id);
+      return foundDrink;
+    })
+  );
+  console.log(mappedMenu);
+  business.menu = mappedMenu;
+  return business;
 };
 
 module.exports = {
@@ -169,4 +219,6 @@ module.exports = {
   addMenuItem,
   removeMenuItem,
   getAllBusinesses,
+  removeBusiness,
+  getSingleBusinessInfo,
 };

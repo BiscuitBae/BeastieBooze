@@ -38,17 +38,30 @@ const BarContextProvider = ({ children }) => {
       .catch((err) => console.log(err));
   }, []);
 
+  const [showForm, setShowForm] = useState(false);
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
+
   return (
     <BarContext.Provider
       value={{
         barName,
+        setBarName,
         contactInformation,
         address,
+        setAddress,
         phone,
+        setPhone,
         email,
+        setEmail,
         details,
         hoursOfOperation,
+        setHoursOfOperation,
         description,
+        setDescription,
+        showForm,
+        toggleForm,
         bars,
       }}
     >

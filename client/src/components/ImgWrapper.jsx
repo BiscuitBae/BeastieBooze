@@ -31,10 +31,7 @@ const ImgWrapper = ({ drink = {}, barObj }) => {
       setSource(thumbnail);
     } else {
       getPhoto()
-        .then((url) => {
-          console.log(url);
-          setSource(url);
-        })
+        .then((url) => setSource(url))
         .catch((err) => console.log(err));
     }
   }, []);
@@ -42,27 +39,6 @@ const ImgWrapper = ({ drink = {}, barObj }) => {
   //create hover state
   const [hoverRef, hovering] = useHover();
 
-  if (Object.keys(drink).length) {
-    return (
-      <div className="img-wrap" ref={hoverRef}>
-        <img
-          className={
-            // toggling classes for hover state
-            hovering
-              ? 'img-fluid drink-thumb border border-secondary tint'
-              : 'img-fluid drink-thumb border border-secondary'
-          }
-          src={source}
-          alt={name}
-        />
-        <div className={hovering ? 'wrap-text' : 'wrap-text hidden'}>
-          {name}
-        </div>
-      </div>
-    );
-  }
-
-  const { name: barName } = barObj;
   return (
     <div className="img-wrap" ref={hoverRef}>
       <img
@@ -73,10 +49,10 @@ const ImgWrapper = ({ drink = {}, barObj }) => {
             : 'img-fluid drink-thumb border border-secondary'
         }
         src={source}
-        alt={barName}
+        alt={name || barObj.name}
       />
       <div className={hovering ? 'wrap-text' : 'wrap-text hidden'}>
-        {barName}
+        {name || barObj.name}
       </div>
     </div>
   );

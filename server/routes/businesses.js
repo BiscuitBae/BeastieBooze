@@ -4,9 +4,23 @@ const {
   addMenuItem,
   removeMenuItem,
   getAllBusinesses,
+  removeBusiness,
+  getSingleBusinessInfo,
 } = require('../database/helpers.js');
 
 const businessesRouter = Router();
+
+businessesRouter.get('/:businessId', (req, res) => {
+  const { businessId } = req.params;
+  getSingleBusinessInfo(businessId)
+    .then((business) => {
+      if (!business) {
+        return res.send(false);
+      }
+      res.send(business);
+    })
+    .catch((err) => console.log(err));
+});
 
 businessesRouter.get('/', (req, res) => {
   getAllBusinesses()
@@ -53,6 +67,16 @@ businessesRouter.delete('/drink', (req, res) => {
         return res.send(newMenu);
       }
       res.send(newMenu);
+    })
+    .catch((err) => console.log(err));
+});
+
+businessesRouter.delete('/', (req, res) => {
+  console.log(req.body);
+  const { businessId, googleId } = req.body;
+  removeBusiness(businessId, googleId)
+    .then((Success) => {
+      res.send(Success);
     })
     .catch((err) => console.log(err));
 });
