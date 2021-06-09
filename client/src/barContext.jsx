@@ -41,6 +41,7 @@ const BarContextProvider = ({ children }) => {
       .catch((err) => console.log(err));
   }, []);
 
+  // Determine if the register form should be rendered.
   const [showForm, setShowForm] = useState(false);
   const toggleForm = () => {
     setShowForm(!showForm);

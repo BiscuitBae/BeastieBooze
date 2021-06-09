@@ -13,10 +13,11 @@ const uri = `mongodb+srv://DavidSosa20:${process.env.DATABASE_PASSWORD}@cluster0
 //   .catch();
 
 // for dev - uncomment the next line and comment out line 10
-const dbLocation = `mongodb://localhost:27017/${DATABASE}`;
+// const dbLocation = `mongodb://localhost:27017/${DATABASE}`;
 // for prod
 // const dbLocation = `${process.env.ATLAS_URL}${DATABASE}`;
 // const dbLocation = process.env.ATLAS_URL;
+
 mongoose
   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     // eslint-disable-next-line no-console
@@ -41,7 +42,7 @@ const DrinkSchema = new mongoose.Schema({
   //add a createdBy to the drinkSchema to link to Users once created
 });
 const BusinessSchema = new mongoose.Schema({
-  barName: String,
+  name: String,
   contactInformation: {
     address: String,
     phone: String,
