@@ -4,7 +4,7 @@
   "description": "Drinks app",
   "main": "app.js",
   "scripts": {
-    "start": "node --exec babel-node server/app.js",
+    "start": "node server/app.js",
     "start:dev": "nodemon --exec babel-node server/app.js --mode development",
     "build:dev": "webpack --config webpack.config.js --mode development --watch",
     "build:prod": "webpack --config webpack.config.js --mode production",
