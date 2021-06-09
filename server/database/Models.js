@@ -3,17 +3,25 @@ dotenv.config();
 const mongoose = require('mongoose');
 const { number } = require('prop-types');
 const DATABASE = 'BeastieBooze';
+
+const uri = `mongodb+srv://DavidSosa20:${process.env.DATABASE_PASSWORD}@cluster0.z2svn.mongodb.net/beastie-booze?retryWrites=true&w=majority`;
+
+// const db = mongoose
+//   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+//   // eslint-disable-next-line no-console
+//   .then(() => console.log('connected to db'))
+//   .catch();
+
 // for dev - uncomment the next line and comment out line 10
 const dbLocation = `mongodb://localhost:27017/${DATABASE}`;
 // for prod
 // const dbLocation = `${process.env.ATLAS_URL}${DATABASE}`;
 // const dbLocation = process.env.ATLAS_URL;
 mongoose
-  .connect(dbLocation, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log(`sucessfully connected! ${DATABASE}`);
-  })
-  .catch((err) => console.error('Failed to connect to database', err));
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    // eslint-disable-next-line no-console
+    .then(() => console.log('connected to db'))
+    .catch();
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 const UserSchema = new mongoose.Schema({
