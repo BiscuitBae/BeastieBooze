@@ -11,13 +11,24 @@ function UserContextProvider({ children }) {
   const [favoriteDrinks, setFavoriteDrinks] = useState([]);
   const [isLegal, setIsLegal] = useState(null);
 
+  // useEffect(() => {
+  //   if (businessId) {
+  //     axios
+  //       .get(`/routes/businesses/${businessId}`)
+  //       .then(({ data: barInfo }) => {
+  //         //
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, [userInfo]);
+
   const loginUser = (userData) => {
     axios
       .get('/routes/users', { params: userData })
       .then(({ data }) => {
         // console.log('===> userContext user response:', data)
-        const { googleId, username, favorites, creations } = data;
-        setUserInfo({ googleId, username, favorites, creations });
+        const { googleId, username, favorites, creations, businessId } = data;
+        setUserInfo({ googleId, username, favorites, creations, businessId });
         setIsLoggedIn(true);
 
         //lets set favorites by name

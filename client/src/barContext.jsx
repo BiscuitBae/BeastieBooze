@@ -1,9 +1,12 @@
 import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
+import { UserContext } from './userContext';
 
 const BarContext = createContext();
 
 const BarContextProvider = ({ children }) => {
+  const { userInfo } = useContext(UserContext);
+
   // Bar name
   const [barName, setBarName] = useState('');
 
@@ -42,6 +45,18 @@ const BarContextProvider = ({ children }) => {
   const toggleForm = () => {
     setShowForm(!showForm);
   };
+
+  const [currentBar, setCurrentBar] = useState(null);
+  useEffect(() => {
+    if (userInfo.businessId) {
+      axios
+        .get(`/routes/businesses/${businessId}`)
+        .then(({ data: barInfo }) => {
+          setCurrentBar(barInfo);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [userInfo]);
 
   return (
     <BarContext.Provider

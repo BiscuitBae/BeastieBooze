@@ -19,7 +19,6 @@ const BusinessSummary = () => {
       <h1 className="page-heading">Businesses</h1>
       <div className="row">
         {bars.map((barObj) => (
-          // <BusinessDetail key={getKey()} barObj={barObj} />
           <BarTile key={getKey()} barObj={barObj} />
         ))}
       </div>

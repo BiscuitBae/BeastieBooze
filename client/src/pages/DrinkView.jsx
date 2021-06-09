@@ -43,7 +43,7 @@ const DrinkView = () => {
     axios
       .delete('/routes/businesses/drink', {
         data: {
-          businessId: '60bf6c592cbc1f8bcabd72b9',
+          businessId: '60c0e5c5a022a6d97d9ea675',
           drinkObj: { name, directions, ingredients, alcoholic },
         },
       })
@@ -64,7 +64,7 @@ const DrinkView = () => {
   const addToMenu = () => {
     axios
       .post('/routes/businesses/drink', {
-        businessId: '60bf6c592cbc1f8bcabd72b9', // extract from state
+        businessId: '60c0e5c5a022a6d97d9ea675', // extract from state
         drinkObj: { name, directions, ingredients, alcoholic },
       })
       .then(({ data: newMenu }) => console.log(newMenu))

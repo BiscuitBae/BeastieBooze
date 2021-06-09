@@ -6,6 +6,7 @@ const { API_KEY } = require('../config.js');
 const getUser = async (id) => {
   try {
     const user = await User.find({ googleId: id });
+    console.log(user);
     return user;
   } catch (err) {
     console.log('getUser failed', err);
@@ -201,12 +202,10 @@ const getSingleBusinessInfo = async (businessId) => {
   const mappedMenu = await Promise.all(
     business.menu.map(async (id) => {
       const foundDrink = await Drink.findById(id);
-      return foundDrink;
+      return { name: foundDrink.name, drinkId: foundDrink._id };
     })
   );
-  console.log(mappedMenu);
-  business.menu = mappedMenu;
-  return business;
+  return { ...business._doc, menu: mappedMenu };
 };
 
 module.exports = {
