@@ -40,11 +40,9 @@ const BarRegisterForm = () => {
       },
     };
 
-    console.log(bar);
-
     // send data for axios calls
     // addCreation(data)
-    // makeABar(data);
+    makeABar(bar);
     // e.target.reset();
   };
 
@@ -95,6 +93,7 @@ const BarRegisterForm = () => {
                 onChange={(e) =>setPhone(e.target.value)}
                 required
               />
+              <p className='text-muted'>Required Format: 555-555-5555</p>
               <h4 className='create-form-heading'>Email</h4>
               <input
                 type="email"
