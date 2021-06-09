@@ -26,8 +26,13 @@ const DrinkView = () => {
 
   const ingredients = ingredientParser(aDrink);
 
-  const { isLoggedIn, favoriteDrinks, toggleFavorite, removeFavorite } =
-    useContext(UserContext);
+  const {
+    isLoggedIn,
+    favoriteDrinks,
+    toggleFavorite,
+    removeFavorite,
+    userInfo,
+  } = useContext(UserContext);
 
   // grab what we need from drink object, reassign names
   const {
@@ -43,7 +48,7 @@ const DrinkView = () => {
     axios
       .delete('/routes/businesses/drink', {
         data: {
-          businessId: '60c0e5c5a022a6d97d9ea675',
+          businessId: userInfo.businessId,
           drinkObj: { name, directions, ingredients, alcoholic },
         },
       })
@@ -55,7 +60,9 @@ const DrinkView = () => {
     if (true) {
       return (
         <span className="remove-from-menu-button" onClick={removeFromMenu}>
-          <button type="button btn btn-primary">Remove from Menu</button>
+          <button type="button" className="btn btn-dark drink-view-btn">
+            Remove from Menu
+          </button>
         </span>
       );
     }
@@ -64,7 +71,7 @@ const DrinkView = () => {
   const addToMenu = () => {
     axios
       .post('/routes/businesses/drink', {
-        businessId: '60c0e5c5a022a6d97d9ea675', // extract from state
+        businessId: userInfo.businessId,
         drinkObj: { name, directions, ingredients, alcoholic },
       })
       .then(({ data: newMenu }) => console.log(newMenu))
@@ -75,7 +82,9 @@ const DrinkView = () => {
     if (true) {
       return (
         <span className="add-to-menu-button" onClick={addToMenu}>
-          <button type="button btn btn-primary">Add to Menu</button>
+          <button type="button" className="btn btn-dark drink-view-btn">
+            Add to Menu
+          </button>
         </span>
       );
     }
@@ -85,7 +94,7 @@ const DrinkView = () => {
     if (favoriteDrinks.includes(name)) {
       return (
         <span className="remove-button" onClick={() => removeFavorite(aDrink)}>
-          <button type="button" className="btn btn-danger">
+          <button type="button" className="btn btn-dark drink-view-btn">
             Remove from Favorites
           </button>
         </span>
@@ -118,7 +127,10 @@ const DrinkView = () => {
             videoId={tutorial}
             onClose={() => setOpen(false)}
           />
-          <button className="trailer-button" onClick={() => prepVideo()}>
+          <button
+            className="btn btn-dark drink-view-btn"
+            onClick={() => prepVideo()}
+          >
             View Tutorial
           </button>
         </React.Fragment>
@@ -134,7 +146,7 @@ const DrinkView = () => {
           <span className="drink-button">
             <button
               type="button"
-              className="btn btn-dark"
+              className="btn btn-dark drink-view-btn"
               onClick={() => {
                 toggleFavorite(aDrink);
               }}
