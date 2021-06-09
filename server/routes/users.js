@@ -49,7 +49,7 @@ usersRouter.patch('/favorites/:id', (req, res) => {
 
 usersRouter.patch('/favorites/delete/:favId', (req, res) => {
   const { googleId, favId } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   findAndDeleteFavorites(googleId, favId)
     .then((user) => {
       console.log('REMOVED SUCCESSFULLY FROM FAVORITES', favId);

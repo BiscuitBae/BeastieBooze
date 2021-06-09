@@ -25,6 +25,7 @@ const BarContextProvider = ({ children }) => {
   const [hoursOfOperation, setHoursOfOperation] = useState('');
   const [description, setDescription] = useState('');
 
+  // Determine if the register form should be rendered.
   const [showForm, setShowForm] = useState(false);
   const toggleForm = () => {
     setShowForm(!showForm);
