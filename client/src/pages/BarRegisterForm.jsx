@@ -22,9 +22,25 @@ const BarRegisterForm = () => {
     toggleForm,
   } = useContext(BarContext);
   const { userInfo } = useContext(UserContext);
+  console.log(userInfo);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const bar = {
+      barName,
+      contactInformation: {
+        address,
+        phone,
+        email,
+      },
+      details: {
+        hoursOfOperation,
+        description,
+      },
+    };
+
+    console.log(bar);
 
     // send data for axios calls
     // addCreation(data)

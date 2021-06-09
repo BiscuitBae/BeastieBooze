@@ -11,7 +11,7 @@ const Login = () => {
   const [showLogoutButton, setShowLogoutButton] = useState(false);
 
   const onLoginSuccess = (res) => {
-    console.log('[Login Success] currentUser:', res.profileObj);
+    // console.log('[Login Success] currentUser:', res.profileObj);
     setShowLoginButton(false);
     setShowLogoutButton(true);
 
