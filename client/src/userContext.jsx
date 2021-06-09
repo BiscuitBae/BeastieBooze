@@ -136,6 +136,7 @@ function UserContextProvider({ children }) {
 
   const userProps = {
     userInfo,
+    setUserInfo,
     loginUser,
     logoutUser,
     isLoggedIn,

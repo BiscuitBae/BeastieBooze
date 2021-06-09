@@ -1,19 +1,19 @@
 import React, {useContext} from 'react'
 import { BarContext } from '../barContext'
 import { UserContext } from '../userContext'
+import axios from 'axios'
+import { log } from 'async'
 
 const BarRegisterForm = () => {
   const {
     barName,
     setBarName,
-    contactInformation,
     address,
     setAddress,
     phone,
     setPhone,
     email,
     setEmail,
-    details,
     hoursOfOperation,
     setHoursOfOperation,
     description,
@@ -21,14 +21,15 @@ const BarRegisterForm = () => {
     showForm,
     toggleForm,
   } = useContext(BarContext);
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
   console.log(userInfo);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const bar = {
-      barName,
+    const newBar = {
+      name: barName,
+      googleId: userInfo.googleId,
       contactInformation: {
         address,
         phone,
@@ -40,9 +41,15 @@ const BarRegisterForm = () => {
       },
     };
 
+    axios.post('/routes/businesses', newBar)
+    .then(({ data: bizInfo }) => {
+      const barId = bizInfo._id;
+      setUserInfo({...userInfo, businessId: barId});
+      console.log(userInfo);
+    })
+
     // send data for axios calls
     // addCreation(data)
-    makeABar(bar);
     // e.target.reset();
   };
 
