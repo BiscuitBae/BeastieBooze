@@ -1,7 +1,11 @@
 import React from 'react';
+import ThisWeek from './charts/week/ThisWeek';
 
 const Reports = () => {
-  return <h1>Reports Page</h1>;
+
+  return (
+    <ThisWeek />
+  );
 };
 
 export default Reports;
