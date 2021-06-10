@@ -1,5 +1,5 @@
 import React from 'react';
-import ThisWeek from './charts/week/ThisWeek';
+import ThisWeek from '../components/charts/week/ThisWeek';
 
 const Reports = () => {
 
