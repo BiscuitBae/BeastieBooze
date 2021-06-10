@@ -278,9 +278,8 @@ const getAllTransactions = async (businessId) => {
           return formattedTransaction;
         })
       );
-
+      
       return mappedTransactions;
-
     } else {
       return false;
     }
