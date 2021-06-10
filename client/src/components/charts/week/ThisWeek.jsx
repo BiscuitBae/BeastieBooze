@@ -96,15 +96,15 @@ const ThisWeek = () => {
   };
 
   return (
-    <>
-      <div className='header'>
-        <h1 className='title'>This Week's Sales</h1>
-      </div>
+    <div className='col'>
+      <h1 className='mb-3 text-center'>
+        This Week's Sales
+      </h1>
       <Bar data={chartData} options={options} />
-      <div className='sub-heading'>
-        <h2 className='subtitle'>Total sales this week: {getTotals('total')}</h2>
-      </div>
-    </>
+      <h3 className='mb-3 text-center'>
+        Total sales this week: {getTotals('total')}
+      </h3>
+    </div>
   )
 }
 

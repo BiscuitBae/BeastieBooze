@@ -7,27 +7,35 @@ const ReportsContext = createContext();
 const ReportsContextProvider = ({ children }) => {
   const { userInfo } = useContext(UserContext);
   const [allTransactions, setAllTransactions] = useState([]);
-  const [chart, setChart] = useState('month');
+  const [chartView, setChartView] = useState('week');
   const [drink, setDrink] = useState(null);
 
-  const thisWeek = () => {
-
-  }
+  // Use effect to set all transactions the states when the user logs in
+  useEffect(() => {
+    if (userInfo.businessId) {
+      axios
+        .get(`/routes/transactions/${userInfo.businessId}`)
+        .then(({ data: transactions }) => {
+          setAllTransactions(transactions);
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [userInfo]);
 
   return (
-    <BarContext.Provider
+    <ReportsContext.Provider
       value={{
         allTransactions,
         setAllTransactions,
-        chart,
-        setChart,
+        chartView,
+        setChartView,
         drink,
         setDrink,
       }}
     >
       {children}
-    </BarContext.Provider>
-  )
+    </ReportsContext.Provider>
+  );
 };
 
 export { ReportsContext, ReportsContextProvider };
