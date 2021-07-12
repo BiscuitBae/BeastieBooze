@@ -8,7 +8,7 @@ import Navbar from './Navbar';
 import Create from '../pages/Create';
 import Feed from '../pages/Feed';
 import DrinkView from '../pages/DrinkView';
-import Login from '../pages/Login';
+import Login from '../components/Login';
 import Search from '../pages/Search';
 import CustomFeed from '../pages/CustomFeed';
 import CustomDrinkView from '../pages/CustomDrinkView';
